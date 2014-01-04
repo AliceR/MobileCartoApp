@@ -2,6 +2,7 @@ package com.marialice.mapapp;
 
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -71,6 +72,12 @@ public class MapActivity extends FragmentActivity implements ActionBar.OnNavigat
         getMenuInflater().inflate(R.menu.map, menu);
         return true;
     }
+    
+    public void onClickShowMenu(View view) {
+    	 Intent intent = new Intent(MapActivity.this, MenuActivity.class);
+         startActivity(intent);
+    }
+    
     
     @Override
     public boolean onNavigationItemSelected(int position, long id) {

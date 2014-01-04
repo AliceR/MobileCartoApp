@@ -6,5 +6,10 @@
     <string name="action_search">Search</string>
     <string name="title_section1">České Budějovice</string>
     <string name="title_section2">Český Krumlov</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    
+    <string name="about_us">About</string>
+    <string name="places">Places</string>
+    <string name="info">Info</string>
 
 </resources>
