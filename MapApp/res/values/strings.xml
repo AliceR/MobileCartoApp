@@ -2,9 +2,13 @@
 <resources>
 
     <string name="app_name">MapApp</string>
+    <string name="app_name">USE-IT Map App</string>
     <string name="action_settings">Settings</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
+    <string name="action_search">Search</string>
+    <string name="title_section1">České Budějovice</string>
+    <string name="title_section2">Český Krumlov</string>
 
 </resources>
