@@ -2,8 +2,10 @@ package com.marialice.mapapp;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.support.v4.app.NavUtils;
 
 public class MenuActivity extends Activity {
@@ -14,6 +16,12 @@ public class MenuActivity extends Activity {
 		setContentView(R.layout.activity_menu);
 		// Show the Up button in the action bar.
 		setupActionBar();
+	}
+
+	/* Do something when I click on a test item */
+	public void onClickShowCeskeBudejoviceMap(View view) {
+		Intent intent = new Intent(MenuActivity.this, AboutActivity.class);
+		startActivity(intent);
 	}
 
 	/**

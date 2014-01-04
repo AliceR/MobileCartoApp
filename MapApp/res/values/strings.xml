@@ -8,9 +8,10 @@
     <string name="title_section2">Český Krumlov</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="get_menu">Get Menu</string>
-    
     <string name="about_us">About</string>
     <string name="places">Places</string>
     <string name="info">Info</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
