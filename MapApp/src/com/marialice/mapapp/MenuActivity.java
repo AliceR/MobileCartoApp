@@ -18,8 +18,8 @@ public class MenuActivity extends Activity {
 		setupActionBar();
 	}
 
-	/* Do something when I click on a test item */
-	public void onClickShowCeskeBudejoviceMap(View view) {
+	/* Do something when I click on a text item */
+	public void onClickShowAbout(View view) {
 		Intent intent = new Intent(MenuActivity.this, AboutActivity.class);
 		startActivity(intent);
 	}
