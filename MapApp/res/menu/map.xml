@@ -1,9 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:id="@+id/action_search"
+          android:icon="@drawable/ic_action_search"
+          android:title="@string/action_search"
+          android:showAsAction="always" />
 
+    
     <item
         android:id="@+id/action_settings"
+        android:icon="@drawable/ic_action_overflow"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="always"
         android:title="@string/action_settings"/>
-
+    
+    
+    
 </menu>
