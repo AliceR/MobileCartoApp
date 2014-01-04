@@ -13,6 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import com.google.android.gms.maps.*;
+import android.app.Activity;
+import android.os.Bundle;
+
+
 
 public class MapActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
@@ -23,10 +28,17 @@ public class MapActivity extends FragmentActivity implements
 	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
+		
+		GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(
+				R.id.map)).getMap();
+		map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+		map.setMyLocationEnabled(true);
+		map.getUiSettings().setZoomControlsEnabled(true);
 
 		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
@@ -71,11 +83,11 @@ public class MapActivity extends FragmentActivity implements
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.action_search:
-			
+
 			return true;
 		case R.id.get_menu:
 			Intent intent = new Intent(MapActivity.this, MenuActivity.class);
-	        startActivity(intent);
+			startActivity(intent);
 
 			return true;
 		default:
