@@ -57,8 +57,12 @@ public class MapActivity extends FragmentActivity {
     private void setUpMap() {
         mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
         
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.8108425,
-				14.3144269), 15));
+        mMap.setMyLocationEnabled(true);
+        
+		mMap.getUiSettings().setZoomControlsEnabled(true);
+             
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.9744094,
+        		14.4746094), 15));
         
        
         TileProvider tileProvider = new UrlTileProvider(256, 256) {
