@@ -16,9 +16,7 @@ public class AboutActivity extends Activity {
 		setupActionBar();
 	}
 
-	/**
-	 * Set up the {@link android.app.ActionBar}.
-	 */
+	// Set up the {@link android.app.ActionBar}.
 	private void setupActionBar() {
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -28,7 +26,7 @@ public class AboutActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu, menu);
+		getMenuInflater().inflate(R.menu.map, menu);
 		return true;
 	}
 
