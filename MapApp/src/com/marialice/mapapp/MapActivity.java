@@ -59,7 +59,8 @@ public class MapActivity extends FragmentActivity {
         
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.8108425,
 				14.3144269), 15));
-               
+        
+       
         TileProvider tileProvider = new UrlTileProvider(256, 256) {
             @Override
             public synchronized URL getTileUrl(int x, int y, int zoom) {
