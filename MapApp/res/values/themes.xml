@@ -11,7 +11,7 @@
     
     <!--  custom style for the action bar -->
     <style name="CBactionbar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/fuchsia</item>
+        <item name="android:background">@color/gray</item>
     </style>
 
 </resources>
