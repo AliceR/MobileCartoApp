@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">USE-IT Map App</string>
+    <string name="app_name">Budweis Map</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
-    <string name="title_section1">České Budějovice</string>
-    <string name="title_section2">Český Krumlov</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="get_menu">Get Menu</string>
     <string name="about_us">About</string>
