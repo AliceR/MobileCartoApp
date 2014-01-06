@@ -17,12 +17,15 @@ import com.google.android.gms.maps.model.UrlTileProvider;
 
 
 import android.graphics.Color;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.text.SpannableString;
 import android.widget.TextView;
 import android.text.style.ForegroundColorSpan;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -30,8 +33,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class MapActivity extends FragmentActivity implements OnInfoWindowClickListener{
@@ -40,12 +46,18 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 	private GoogleMap mMap;
 	private Marker mCernavez;
 	private Marker mBazen;
+	
+	//For the connection to the database
+	SQLiteDatabase db = null;
+	Cursor dbCursor;
+	DatabaseHelper dbHelper = new DatabaseHelper(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
 		setUpMapIfNeeded();
+		queryDataFromDatabase();
 	}
 
 	@Override
@@ -179,6 +191,41 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 
 		// call the function that creates the markers
 		addMarkersToMap();
+	}
+	
+	private final List<Marker> poiMarker = new ArrayList<Marker>();
+	
+	public void queryDataFromDatabase() {
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		List<String> list_values = new ArrayList<String>();
+		try {
+
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT title FROM cbpois;", null);
+			dbCursor.moveToFirst();
+			int lat = dbCursor.getColumnIndex("lat");
+			int lon = dbCursor.getColumnIndex("lon");
+			int title = dbCursor.getColumnIndex("title");
+			
+			while (!dbCursor.isAfterLast()) {
+				poiMarker.add(mMap.addMarker(new MarkerOptions()
+					.position(new LatLng(
+						dbCursor.getFloat(lat), dbCursor.getFloat(lon))
+						)
+					.title(dbCursor.getString(title))
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
+						));
+				dbCursor.moveToNext();
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+		
 	}
 
 	private void addMarkersToMap() {
