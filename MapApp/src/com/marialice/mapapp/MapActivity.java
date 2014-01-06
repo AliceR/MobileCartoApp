@@ -281,7 +281,8 @@ public class MapActivity extends FragmentActivity implements
 						dbCursor.getDouble(lat), dbCursor.getDouble(lon))
 						)
 					.title(dbCursor.getString(title))
-					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
+					.anchor(0f,1f)
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_museum))
 						));
 				dbCursor.moveToNext();
 			}
