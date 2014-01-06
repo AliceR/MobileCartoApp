@@ -15,7 +15,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static String DB_PATH;
 	private static String DB_PATH_PREFIX = "/data/data/";
 	private static String DB_PATH_SUFFIX = "/databases/";
-	private static String DB_NAME = "pois.db";  /* CHANGE THIS ACCORDINGLY */
+	// set the name of the database. the .db file has to be stored in the assets folder
+	private static String DB_NAME = "pois.db";  
 	private SQLiteDatabase myDataBase;
 	private final Context myContext;
 
