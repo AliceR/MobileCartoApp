@@ -58,7 +58,7 @@ public class PlacesActivity extends ListActivity {
 		try {
 
 			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT title FROM cb_pois;", null);
+			dbCursor = db.rawQuery("SELECT title FROM cbpois;", null);
 			dbCursor.moveToFirst();
 			int index = dbCursor.getColumnIndex("title");
 			while (!dbCursor.isAfterLast()) {
