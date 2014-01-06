@@ -206,17 +206,17 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 			dbHelper.createDataBase();
 		} catch (IOException ioe) {
 		}
-		List<String> list_values = new ArrayList<String>();
 		try {
 
 			db = dbHelper.getDataBase();
 			dbCursor = db.rawQuery("SELECT title FROM cbpois;", null);
 			dbCursor.moveToFirst();
+			
 			int lat = dbCursor.getColumnIndex("lat");
 			int lon = dbCursor.getColumnIndex("lon");
 			int title = dbCursor.getColumnIndex("title");
 			
-			while (!dbCursor.isAfterLast()) {
+			for (int i = 0; i < poiMarker.size(); i++) {
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
 					.position(new LatLng(
 						dbCursor.getFloat(lat), dbCursor.getFloat(lon))
