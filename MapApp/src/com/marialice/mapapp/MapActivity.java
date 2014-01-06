@@ -24,8 +24,20 @@ import java.util.Locale;
 public class MapActivity extends FragmentActivity {
 
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
-
 	private GoogleMap mMap;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_map);
+		setUpMapIfNeeded();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		setUpMapIfNeeded();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,22 +62,8 @@ public class MapActivity extends FragmentActivity {
 		}
 	}
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_map);
-		setUpMapIfNeeded();
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		setUpMapIfNeeded();
-	}
-
 	private void setUpMapIfNeeded() {
-		// Do a null check to confirm that we have not already instantiated the
-		// map.
+		// Do a null check to confirm that we have not already instantiated the map.
 		if (mMap == null) {
 			// Try to obtain the map from the SupportMapFragment.
 			mMap = ((SupportMapFragment) getSupportFragmentManager()
@@ -78,15 +76,14 @@ public class MapActivity extends FragmentActivity {
 	}
 
 	private void setUpMap() {
+		// declare some map properties
 		mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
-
 		mMap.setMyLocationEnabled(true);
-
 		mMap.getUiSettings().setZoomControlsEnabled(true);
-
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				48.9744094, 14.4746094), 15));
 
+		// create the tile overlay
 		TileProvider tileProvider = new UrlTileProvider(256, 256) {
 			@Override
 			public synchronized URL getTileUrl(int x, int y, int zoom) {
@@ -102,8 +99,14 @@ public class MapActivity extends FragmentActivity {
 			}
 		};
 
+		//add the tile overlay to the map
 		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(tileProvider));
 
+		// call the function that creates the markers
+		addMarkersToMap();
+	}
+
+	private void addMarkersToMap() {
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.cb_cerna_vez))
@@ -142,7 +145,6 @@ public class MapActivity extends FragmentActivity {
 				.position(new LatLng(48.9728661, 14.4725350))
 				.anchor(0.5f, 0.75f).rotation(355).title("Železná panna")
 				.snippet("Iron maiden").infoWindowAnchor(0.5f, 0.5f));
-
 	}
 
 }
