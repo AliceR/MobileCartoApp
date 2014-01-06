@@ -23,17 +23,9 @@ import java.util.Locale;
 
 public class MapActivity extends FragmentActivity {
 
-<<<<<<< HEAD
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
 
 	private GoogleMap mMap;
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_map);
-		setUpMapIfNeeded();
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,51 +33,6 @@ public class MapActivity extends FragmentActivity {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.map, menu);
 		return super.onCreateOptionsMenu(menu);
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		setUpMapIfNeeded();
-	}
-
-	private void setUpMapIfNeeded() {
-		// Do a null check to confirm that we have not already instantiated the
-		// map.
-		if (mMap == null) {
-			// Try to obtain the map from the SupportMapFragment.
-			mMap = ((SupportMapFragment) getSupportFragmentManager()
-					.findFragmentById(R.id.map)).getMap();
-			// Check if we were successful in obtaining the map.
-			if (mMap != null) {
-				setUpMap();
-			}
-		}
-	}
-
-	private void setUpMap() {
-		mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
-
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-				48.8108425, 14.3144269), 15));
-
-		TileProvider tileProvider = new UrlTileProvider(256, 256) {
-			@Override
-			public synchronized URL getTileUrl(int x, int y, int zoom) {
-				String s = String.format(Locale.US, MAPBOX_BASEMAP_URL_FORMAT,
-						zoom, x, y);
-				URL url = null;
-				try {
-					url = new URL(s);
-				} catch (MalformedURLException e) {
-					throw new AssertionError(e);
-				}
-				return url;
-			}
-		};
-
-		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(tileProvider));
-
 	}
 
 	@Override
@@ -102,13 +49,6 @@ public class MapActivity extends FragmentActivity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-=======
-public class MapActivity extends FragmentActivity {
-
-	/** This returns moon tiles. */
-	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
-
-	private GoogleMap mMap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -197,11 +137,12 @@ public class MapActivity extends FragmentActivity {
 				.snippet("Cinema").infoWindowAnchor(0.5f, 0.5f));
 
 		mMap.addMarker(new MarkerOptions()
-				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_zeleznapanna))
-				.position(new LatLng(48.9728661 , 14.4725350))
+				.icon(BitmapDescriptorFactory
+						.fromResource(R.drawable.cb_zeleznapanna))
+				.position(new LatLng(48.9728661, 14.4725350))
 				.anchor(0.5f, 0.75f).rotation(355).title("Železná panna")
 				.snippet("Iron maiden").infoWindowAnchor(0.5f, 0.5f));
 
 	}
->>>>>>> 99d8a1203f967d4b660736488a04496ef8305594
+
 }
