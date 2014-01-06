@@ -197,12 +197,13 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 
 		// call the function that creates the markers
 		addMarkersToMap();
-		queryDataFromDatabase();
+		//queryDataFromDatabase();
+		addPoisFromDatabase();
 	}
 	
 	private final List<Marker> poiMarker = new ArrayList<Marker>();
 	
-	public void queryDataFromDatabase() {
+/*	public void queryDataFromDatabase() {
 		try {
 			dbHelper.createDataBase();
 		} catch (IOException ioe) {
@@ -220,13 +221,11 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 			for (int i = 0; i < poiMarker.size(); i++) {
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
 					.position(new LatLng(
-						dbCursor.getFloat(lat), dbCursor.getFloat(lon))
+						dbCursor.getDouble(lat), dbCursor.getDouble(lon))
 						)
 					.title(dbCursor.getString(title))
 					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
 						));
-				
-				dbCursor.moveToNext();
 			}
 		} finally {
 			if (db != null) {
@@ -234,6 +233,19 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 			}
 		}
 		
+	}*/
+	
+	public void addPoisFromDatabase() {
+		double lat = 48.9750742;
+		double lon = 14.4744181;
+		
+		for (int i=0; i< 12; i++){
+			poiMarker.add(mMap.addMarker(new MarkerOptions()
+					.position(new LatLng(lat, lon))
+					.title("Hey Mary!")
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
+					));
+		}
 	}
 
 	private void addMarkersToMap() {
