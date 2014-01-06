@@ -253,30 +253,29 @@ public class MapActivity extends FragmentActivity implements
 		// add the tile overlay to the map
 		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(tileProvider));
 
-		// call the function that creates the markers
+		// call the functions that create the markers
 		addMarkersToMap();
-		//queryDataFromDatabase();
 		addPoisFromDatabase();
 	}
 	
+	// pois are requested from database, written in an arraylist and displayed on the map
 	private final List<Marker> poiMarker = new ArrayList<Marker>();
 	
-/*	public void queryDataFromDatabase() {
+	public void addPoisFromDatabase() {
 		try {
 			dbHelper.createDataBase();
 		} catch (IOException ioe) {
 		}
 		try {
-
 			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT title FROM cbpois;", null);
+			dbCursor = db.rawQuery("SELECT * FROM cbpois;", null);
 			dbCursor.moveToFirst();
 			
 			int lat = dbCursor.getColumnIndex("lat");
 			int lon = dbCursor.getColumnIndex("lon");
 			int title = dbCursor.getColumnIndex("title");
 			
-			for (int i = 0; i < poiMarker.size(); i++) {
+			while (!dbCursor.isAfterLast()) {
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
 					.position(new LatLng(
 						dbCursor.getDouble(lat), dbCursor.getDouble(lon))
@@ -284,6 +283,7 @@ public class MapActivity extends FragmentActivity implements
 					.title(dbCursor.getString(title))
 					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
 						));
+				dbCursor.moveToNext();
 			}
 		} finally {
 			if (db != null) {
@@ -291,19 +291,6 @@ public class MapActivity extends FragmentActivity implements
 			}
 		}
 		
-	}*/
-	
-	public void addPoisFromDatabase() {
-		double lat = 48.9750742;
-		double lon = 14.4744181;
-		
-		for (int i=0; i< 12; i++){
-			poiMarker.add(mMap.addMarker(new MarkerOptions()
-					.position(new LatLng(lat, lon))
-					.title("Hey Mary!")
-					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
-					));
-		}
 	}
 
 	private void addMarkersToMap() {
