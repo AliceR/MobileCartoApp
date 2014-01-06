@@ -21,8 +21,10 @@
         android:theme="@style/CBtheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAqJCXIHonp4zqyFHRO5aTc2DxACZZTuBc" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAfyXB5-zFNb2EyjABWj2NOTeH3deSSLJM" />
-        <!-- android:value="AIzaSyDJ_zz04m5YVB629KwiQzgUlhUPgLBbkrU" /> -->
 
         <meta-data
             android:name="com.google.android.gms.version"
