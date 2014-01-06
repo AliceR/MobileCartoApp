@@ -46,12 +46,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MapActivity extends FragmentActivity implements OnInfoWindowClickListener{
+public class MapActivity extends FragmentActivity implements
+	ConnectionCallbacks,
+	OnConnectionFailedListener,
+	LocationListener,
+	OnMyLocationButtonClickListener,
+	OnInfoWindowClickListener {
 
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
 	private GoogleMap mMap;
+	private LocationClient mLocationClient; //for location
 	private Marker mCernavez;
 	private Marker mBazen;
+	
+	//For getting the location
+		private static final LocationRequest REQUEST = LocationRequest.create()
+	            .setInterval(5000)         // 5 seconds
+	            .setFastestInterval(16)    // 16ms = 60fps
+	            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 	
 	//For the connection to the database
 	SQLiteDatabase db = null;
@@ -70,7 +82,17 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 	protected void onResume() {
 		super.onResume();
 		setUpMapIfNeeded();
+        setUpLocationClientIfNeeded();
+        mLocationClient.connect();
 	}
+	
+	@Override
+    public void onPause() {
+        super.onPause();
+        if (mLocationClient != null) {
+            mLocationClient.disconnect();
+        }
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -163,8 +185,44 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				setUpMap();
+                mMap.setMyLocationEnabled(true);
+                mMap.setOnMyLocationButtonClickListener(this);
 			}
 		}
+	}
+	
+	private void setUpLocationClientIfNeeded() {
+        if (mLocationClient == null) {
+            mLocationClient = new LocationClient(
+                    getApplicationContext(),
+                    this,  // ConnectionCallbacks
+                    this); // OnConnectionFailedListener
+        }
+    }
+	
+    @Override
+    public void onLocationChanged(Location location) { }
+
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        mLocationClient.requestLocationUpdates(
+                REQUEST,
+                this);  // LocationListener
+    }
+    
+    @Override
+    public void onDisconnected() {
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult result) {
+        // Do nothing
+    }
+
+	@Override
+	public boolean onMyLocationButtonClick() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	private void setUpMap() {
