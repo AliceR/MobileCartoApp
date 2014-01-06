@@ -63,7 +63,7 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
 		setUpMapIfNeeded();
-		queryDataFromDatabase();
+		
 	}
 
 	@Override
@@ -197,6 +197,7 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 
 		// call the function that creates the markers
 		addMarkersToMap();
+		queryDataFromDatabase();
 	}
 	
 	private final List<Marker> poiMarker = new ArrayList<Marker>();
@@ -224,6 +225,7 @@ public class MapActivity extends FragmentActivity implements OnInfoWindowClickLi
 					.title(dbCursor.getString(title))
 					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
 						));
+				
 				dbCursor.moveToNext();
 			}
 		} finally {
