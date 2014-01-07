@@ -21,14 +21,21 @@ import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.android.gms.maps.model.TileProvider;
 import com.google.android.gms.maps.model.UrlTileProvider;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.widget.ImageView;
 import android.text.SpannableString;
 import android.widget.TextView;
 import android.text.style.ForegroundColorSpan;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -47,25 +54,22 @@ import java.util.List;
 import java.util.Locale;
 
 public class MapActivity extends FragmentActivity implements
-	ConnectionCallbacks,
-	OnConnectionFailedListener,
-	LocationListener,
-	OnMyLocationButtonClickListener,
-	OnInfoWindowClickListener {
+		ConnectionCallbacks, OnConnectionFailedListener, LocationListener,
+		OnMyLocationButtonClickListener, OnInfoWindowClickListener {
 
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
 	private GoogleMap mMap;
-	private LocationClient mLocationClient; //for location
+	private LocationClient mLocationClient; // for location
 	private Marker mCernavez;
 	private Marker mBazen;
-	
-	//For getting the location
-		private static final LocationRequest REQUEST = LocationRequest.create()
-	            .setInterval(5000)         // 5 seconds
-	            .setFastestInterval(16)    // 16ms = 60fps
-	            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-	
-	//For the connection to the database
+
+	// For getting the location
+	private static final LocationRequest REQUEST = LocationRequest.create()
+			.setInterval(5000) // 5 seconds
+			.setFastestInterval(16) // 16ms = 60fps
+			.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+	// For the connection to the database
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -75,24 +79,24 @@ public class MapActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
 		setUpMapIfNeeded();
-		
+
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		setUpMapIfNeeded();
-        setUpLocationClientIfNeeded();
-        mLocationClient.connect();
+		setUpLocationClientIfNeeded();
+		mLocationClient.connect();
 	}
-	
+
 	@Override
-    public void onPause() {
-        super.onPause();
-        if (mLocationClient != null) {
-            mLocationClient.disconnect();
-        }
-    }
+	public void onPause() {
+		super.onPause();
+		if (mLocationClient != null) {
+			mLocationClient.disconnect();
+		}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -133,7 +137,8 @@ public class MapActivity extends FragmentActivity implements
 
 		private void render(Marker marker, View view) {
 			int badge;
-			// Use the equals() method on a Marker to check for equals. Do not use ==.
+			// Use the equals() method on a Marker to check for equals. Do not
+			// use ==.
 			if (marker.equals(mCernavez)) {
 				badge = R.drawable.cb_cerna_vez;
 			} else if (marker.equals(mBazen)) {
@@ -146,11 +151,12 @@ public class MapActivity extends FragmentActivity implements
 
 			String title = marker.getTitle();
 			Typeface tf = Typeface.createFromAsset(getAssets(),
-	                "fonts/DINNextRounded.otf");     
+					"fonts/DINNextRounded.otf");
 			TextView titleUi = ((TextView) view.findViewById(R.id.title));
 			titleUi.setTypeface(tf);
 			if (title != null) {
-				// Spannable string allows us to edit the formatting of the text.
+				// Spannable string allows us to edit the formatting of the
+				// text.
 				SpannableString titleText = new SpannableString(title);
 				titleText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
 						titleText.length(), 0);
@@ -161,7 +167,7 @@ public class MapActivity extends FragmentActivity implements
 
 			String snippet = marker.getSnippet();
 			TextView snippetUi = ((TextView) view.findViewById(R.id.snippet));
-			if (snippet != null ) {
+			if (snippet != null) {
 				SpannableString snippetText = new SpannableString(snippet);
 				snippetText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
 						snippet.length(), 0);
@@ -188,39 +194,36 @@ public class MapActivity extends FragmentActivity implements
 			// Check if we were successful in obtaining the map.
 			if (mMap != null) {
 				setUpMap();
-                mMap.setMyLocationEnabled(true);
-                mMap.setOnMyLocationButtonClickListener(this);
+				mMap.setMyLocationEnabled(true);
+				mMap.setOnMyLocationButtonClickListener(this);
 			}
 		}
 	}
-	
+
 	private void setUpLocationClientIfNeeded() {
-        if (mLocationClient == null) {
-            mLocationClient = new LocationClient(
-                    getApplicationContext(),
-                    this,  // ConnectionCallbacks
-                    this); // OnConnectionFailedListener
-        }
-    }
-	
-    @Override
-    public void onLocationChanged(Location location) { }
+		if (mLocationClient == null) {
+			mLocationClient = new LocationClient(getApplicationContext(), this, // ConnectionCallbacks
+					this); // OnConnectionFailedListener
+		}
+	}
 
-    @Override
-    public void onConnected(Bundle connectionHint) {
-        mLocationClient.requestLocationUpdates(
-                REQUEST,
-                this);  // LocationListener
-    }
-    
-    @Override
-    public void onDisconnected() {
-    }
+	@Override
+	public void onLocationChanged(Location location) {
+	}
 
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        // Do nothing
-    }
+	@Override
+	public void onConnected(Bundle connectionHint) {
+		mLocationClient.requestLocationUpdates(REQUEST, this); // LocationListener
+	}
+
+	@Override
+	public void onDisconnected() {
+	}
+
+	@Override
+	public void onConnectionFailed(ConnectionResult result) {
+		// Do nothing
+	}
 
 	@Override
 	public boolean onMyLocationButtonClick() {
@@ -260,10 +263,44 @@ public class MapActivity extends FragmentActivity implements
 		addMarkersToMap();
 		addPoisFromDatabase();
 	}
-	
-	// pois are requested from database, written in an arraylist and displayed on the map
+
+	// draw text over the icons - pois numbers
+	private Bitmap drawTextToBitmap(Context gContext, int gResId,
+			String gText) {
+		Resources resources = gContext.getResources();
+		float scale = resources.getDisplayMetrics().density;
+		Bitmap bitmap = BitmapFactory.decodeResource(resources, gResId);
+
+		android.graphics.Bitmap.Config bitmapConfig = bitmap.getConfig();
+		if (bitmapConfig == null) {
+			bitmapConfig = android.graphics.Bitmap.Config.ARGB_8888;
+		}
+		bitmap = bitmap.copy(bitmapConfig, true);
+		
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/DINNextRounded.otf");
+
+		Canvas canvas = new Canvas(bitmap);
+		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		paint.setColor(Color.WHITE);
+		paint.setTypeface(tf);
+		paint.setTextSize((int) (13 * scale));
+		//paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
+
+		Rect bounds = new Rect();
+		paint.getTextBounds(gText, 0, gText.length(), bounds);
+		int x = (bitmap.getWidth() - bounds.width()) / 10 * 4;
+		int y = (bitmap.getHeight() + bounds.height()) / 4;
+
+		canvas.drawText(gText, x * scale, y * scale, paint);
+
+		return bitmap;
+	}
+
+	// pois are requested from database, written in an arraylist and displayed
+	// on the map
 	private final List<Marker> poiMarker = new ArrayList<Marker>();
-	
+
 	public void addPoisFromDatabase() {
 		try {
 			dbHelper.createDataBase();
@@ -273,20 +310,21 @@ public class MapActivity extends FragmentActivity implements
 			db = dbHelper.getDataBase();
 			dbCursor = db.rawQuery("SELECT * FROM cbpois;", null);
 			dbCursor.moveToFirst();
-			
+
 			int lat = dbCursor.getColumnIndex("lat");
 			int lon = dbCursor.getColumnIndex("lon");
+			int id = dbCursor.getColumnIndex("id");
 			int title = dbCursor.getColumnIndex("title");
-			
+
 			while (!dbCursor.isAfterLast()) {
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
-					.position(new LatLng(
-						dbCursor.getDouble(lat), dbCursor.getDouble(lon))
-						)
-					.title(dbCursor.getString(title))
-					.anchor(0f,1f)
-					.icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_museum))
-						));
+						.position(
+								new LatLng(dbCursor.getDouble(lat), dbCursor
+										.getDouble(lon)))
+						.title(dbCursor.getString(title))
+						.anchor(0f, 1f)
+						.icon(BitmapDescriptorFactory
+								.fromBitmap(drawTextToBitmap(getApplicationContext(),R.drawable.poi_museum, dbCursor.getString(id))))));
 				dbCursor.moveToNext();
 			}
 		} finally {
@@ -294,7 +332,7 @@ public class MapActivity extends FragmentActivity implements
 				dbHelper.close();
 			}
 		}
-		
+
 	}
 
 	private void addMarkersToMap() {
@@ -318,11 +356,14 @@ public class MapActivity extends FragmentActivity implements
 				.anchor(0.5f, 0.75f).rotation(4).title("Samsonova kašna")
 				.snippet("Samson fountain").infoWindowAnchor(0.5f, 0.5f));
 
-		mBazen = mMap.addMarker(new MarkerOptions()
-				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_bazen))
-				.position(new LatLng(48.9744025, 14.4691572))
-				.anchor(0.5f, 0.75f).rotation(4).title("Plavecký bazén")
-				.snippet("Swiming pool").infoWindowAnchor(0.5f, 0.5f));
+		mBazen = mMap
+				.addMarker(new MarkerOptions()
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.cb_bazen))
+						.position(new LatLng(48.9744025, 14.4691572))
+						.anchor(0.5f, 0.75f).rotation(4)
+						.title("Plavecký bazén").snippet("Swiming pool")
+						.infoWindowAnchor(0.5f, 0.5f));
 
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_kino))
@@ -341,7 +382,7 @@ public class MapActivity extends FragmentActivity implements
 	@Override
 	public void onInfoWindowClick(Marker arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
