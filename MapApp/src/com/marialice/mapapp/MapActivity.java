@@ -296,10 +296,11 @@ public class MapActivity extends FragmentActivity implements
 		return bitmap;
 	}
 
+	
 	// pois are requested from database, written in an arraylist and displayed
 	// on the map
 	private final List<Marker> poiMarker = new ArrayList<Marker>();
-
+	
 	public void addPoisFromDatabase() {
 		try {
 			dbHelper.createDataBase();
@@ -315,8 +316,18 @@ public class MapActivity extends FragmentActivity implements
 			int id = dbCursor.getColumnIndex("id");
 			int cat = dbCursor.getColumnIndex("category");
 			int title = dbCursor.getColumnIndex("title");
-
+			
+			int symbol;
+			String category = dbCursor.getString(cat);
+			if (category.equals("shopping")) {
+				symbol = R.drawable.poi_shopping;
+			} else {
+				symbol = R.drawable.poi_museum;
+			}	
+			
+			
 			while (!dbCursor.isAfterLast()) {
+				
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
 						.position(
 								new LatLng(dbCursor.getDouble(lat), dbCursor
@@ -326,7 +337,7 @@ public class MapActivity extends FragmentActivity implements
 						.icon(BitmapDescriptorFactory
 								.fromBitmap(drawTextToBitmap(
 										getApplicationContext(),
-										R.drawable.poi_museum,
+										symbol,
 										dbCursor.getString(id))))));
 				dbCursor.moveToNext();
 			}
@@ -437,6 +448,11 @@ public class MapActivity extends FragmentActivity implements
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_sport))
 				.position(new LatLng(48.9705756, 14.4712883)));
+
+		// Hostel poi
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_hospital))
+				.position(new LatLng(48.9776061, 14.4773158)));
 
 	}
 
