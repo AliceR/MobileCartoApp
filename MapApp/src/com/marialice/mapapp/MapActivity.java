@@ -468,6 +468,36 @@ public class MapActivity extends FragmentActivity implements
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_hostel))
 				.position(new LatLng(48.9717511, 14.4865869)));
 
+		// Hungry window poi
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory
+						.fromResource(R.drawable.poi_hungry_window)).position(
+				new LatLng(48.9757681, 14.4746567)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory
+						.fromResource(R.drawable.poi_hungry_window)).position(
+				new LatLng(48.9761078, 14.4732386)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory
+						.fromResource(R.drawable.poi_hungry_window)).position(
+				new LatLng(48.9743269, 14.4762639)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory
+						.fromResource(R.drawable.poi_hungry_window)).position(
+				new LatLng(48.9749553, 14.4769472)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory
+						.fromResource(R.drawable.poi_hungry_window)).position(
+				new LatLng(48.9751936, 14.4779286)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory
+						.fromResource(R.drawable.poi_hungry_window)).position(
+				new LatLng(48.9765461, 14.4766164)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory
+						.fromResource(R.drawable.poi_hungry_window)).position(
+				new LatLng(48.9742575, 14.4797833)));
+
 	}
 
 	@Override
