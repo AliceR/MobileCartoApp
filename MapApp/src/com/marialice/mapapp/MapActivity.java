@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.TileProvider;
 import com.google.android.gms.maps.model.UrlTileProvider;
 
 import android.graphics.Color;
-import android.widget.ArrayAdapter;
+import android.graphics.Typeface;
 import android.widget.ImageView;
 import android.text.SpannableString;
 import android.widget.TextView;
@@ -145,7 +145,10 @@ public class MapActivity extends FragmentActivity implements
 			((ImageView) view.findViewById(R.id.badge)).setImageResource(badge);
 
 			String title = marker.getTitle();
+			Typeface tf = Typeface.createFromAsset(getAssets(),
+	                "fonts/DINNextRounded.otf");     
 			TextView titleUi = ((TextView) view.findViewById(R.id.title));
+			titleUi.setTypeface(tf);
 			if (title != null) {
 				// Spannable string allows us to edit the formatting of the text.
 				SpannableString titleText = new SpannableString(title);
