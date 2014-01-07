@@ -418,7 +418,12 @@ public class MapActivity extends FragmentActivity implements
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_pharmacy))
 				.position(new LatLng(48.9745075, 14.4823564)));
-		
+
+		// Hospital poi
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_hospital))
+				.position(new LatLng(48.9776061, 14.4773158)));
+
 	}
 
 	@Override
