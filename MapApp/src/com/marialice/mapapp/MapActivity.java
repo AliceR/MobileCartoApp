@@ -265,8 +265,7 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	// draw text over the icons - pois numbers
-	private Bitmap drawTextToBitmap(Context gContext, int gResId,
-			String gText) {
+	private Bitmap drawTextToBitmap(Context gContext, int gResId, String gText) {
 		Resources resources = gContext.getResources();
 		float scale = resources.getDisplayMetrics().density;
 		Bitmap bitmap = BitmapFactory.decodeResource(resources, gResId);
@@ -276,7 +275,7 @@ public class MapActivity extends FragmentActivity implements
 			bitmapConfig = android.graphics.Bitmap.Config.ARGB_8888;
 		}
 		bitmap = bitmap.copy(bitmapConfig, true);
-		
+
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/DINNextRounded.otf");
 
@@ -285,7 +284,7 @@ public class MapActivity extends FragmentActivity implements
 		paint.setColor(Color.WHITE);
 		paint.setTypeface(tf);
 		paint.setTextSize((int) (13 * scale));
-		//paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
+		// paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
 
 		Rect bounds = new Rect();
 		paint.getTextBounds(gText, 0, gText.length(), bounds);
@@ -314,6 +313,7 @@ public class MapActivity extends FragmentActivity implements
 			int lat = dbCursor.getColumnIndex("lat");
 			int lon = dbCursor.getColumnIndex("lon");
 			int id = dbCursor.getColumnIndex("id");
+			int cat = dbCursor.getColumnIndex("category");
 			int title = dbCursor.getColumnIndex("title");
 
 			while (!dbCursor.isAfterLast()) {
@@ -324,7 +324,10 @@ public class MapActivity extends FragmentActivity implements
 						.title(dbCursor.getString(title))
 						.anchor(0f, 1f)
 						.icon(BitmapDescriptorFactory
-								.fromBitmap(drawTextToBitmap(getApplicationContext(),R.drawable.poi_museum, dbCursor.getString(id))))));
+								.fromBitmap(drawTextToBitmap(
+										getApplicationContext(),
+										R.drawable.poi_museum,
+										dbCursor.getString(id))))));
 				dbCursor.moveToNext();
 			}
 		} finally {
@@ -364,7 +367,7 @@ public class MapActivity extends FragmentActivity implements
 						.anchor(0.5f, 0.75f).rotation(4)
 						.title("Plavecký bazén").snippet("Swiming pool")
 						.infoWindowAnchor(0.5f, 0.5f));
-
+		
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_kino))
 				.position(new LatLng(48.9716589, 14.4711061))
@@ -377,6 +380,36 @@ public class MapActivity extends FragmentActivity implements
 				.position(new LatLng(48.9728661, 14.4725350))
 				.anchor(0.5f, 0.75f).rotation(355).title("Železná panna")
 				.snippet("Iron maiden").infoWindowAnchor(0.5f, 0.5f));
+
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9751006, 14.4752786)));
+		
+		//ATM poi
+		mMap.addMarker(new MarkerOptions()
+				.icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9761031, 14.4736317)));				
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9737461, 14.4751256)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9723736, 14.4789214)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9746206, 14.4795131)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9744658, 14.4820906)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9743461, 14.4875100)));		
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9744478, 14.4881442)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9729239, 14.4873264)));
 	}
 
 	@Override
