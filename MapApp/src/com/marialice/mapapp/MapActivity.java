@@ -318,29 +318,29 @@ public class MapActivity extends FragmentActivity implements
 			int title = dbCursor.getColumnIndex("title");
 
 			while (!dbCursor.isAfterLast()) {
-				
+
 				String category = dbCursor.getString(cat);
-				
+
 				int symbol = 0;
-				
+
 				if (category.equals("bar")) {
 					symbol = R.drawable.poi_bar;
-				} else if (category.equals("cafe")){
+				} else if (category.equals("cafe")) {
 					symbol = R.drawable.poi_cafe;
-				} else if (category.equals("eat")){
+				} else if (category.equals("eat")) {
 					symbol = R.drawable.poi_eat;
-				} else if (category.equals("hidden")){
+				} else if (category.equals("hidden")) {
 					symbol = R.drawable.poi_hidden;
-				} else if (category.equals("museum")){
+				} else if (category.equals("museum")) {
 					symbol = R.drawable.poi_museum;
-				} else if (category.equals("shopping")){
+				} else if (category.equals("shopping")) {
 					symbol = R.drawable.poi_shopping;
-				} else if (category.equals("sightseeing")){
+				} else if (category.equals("sightseeing")) {
 					symbol = R.drawable.poi_sightseeing;
 				} else {
 					symbol = R.drawable.ic_launcher;
 				}
-				
+
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
 						.position(
 								new LatLng(dbCursor.getDouble(lat), dbCursor
@@ -462,8 +462,11 @@ public class MapActivity extends FragmentActivity implements
 
 		// Hostel poi
 		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory.fromResource(R.drawable.poi_hospital))
-				.position(new LatLng(48.9776061, 14.4773158)));
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_hostel))
+				.position(new LatLng(48.9770194, 14.4719103)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_hostel))
+				.position(new LatLng(48.9717511, 14.4865869)));
 
 	}
 
