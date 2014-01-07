@@ -367,7 +367,7 @@ public class MapActivity extends FragmentActivity implements
 						.anchor(0.5f, 0.75f).rotation(4)
 						.title("Plavecký bazén").snippet("Swiming pool")
 						.infoWindowAnchor(0.5f, 0.5f));
-		
+
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_kino))
 				.position(new LatLng(48.9716589, 14.4711061))
@@ -384,11 +384,11 @@ public class MapActivity extends FragmentActivity implements
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
 				.position(new LatLng(48.9751006, 14.4752786)));
-		
-		//ATM poi
-		mMap.addMarker(new MarkerOptions()
-				.icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
-				.position(new LatLng(48.9761031, 14.4736317)));				
+
+		// ATM poi
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
+				.position(new LatLng(48.9761031, 14.4736317)));
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
 				.position(new LatLng(48.9737461, 14.4751256)));
@@ -403,13 +403,22 @@ public class MapActivity extends FragmentActivity implements
 				.position(new LatLng(48.9744658, 14.4820906)));
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
-				.position(new LatLng(48.9743461, 14.4875100)));		
+				.position(new LatLng(48.9743461, 14.4875100)));
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
 				.position(new LatLng(48.9744478, 14.4881442)));
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
 				.position(new LatLng(48.9729239, 14.4873264)));
+
+		// Pharmacy poi
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_pharmacy))
+				.position(new LatLng(48.9744306, 14.4752925)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_pharmacy))
+				.position(new LatLng(48.9745075, 14.4823564)));
+		
 	}
 
 	@Override
