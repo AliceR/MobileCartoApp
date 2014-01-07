@@ -424,6 +424,20 @@ public class MapActivity extends FragmentActivity implements
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_hospital))
 				.position(new LatLng(48.9776061, 14.4773158)));
 
+		// Sport poi
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_sport))
+				.position(new LatLng(48.9762472, 14.4692947)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_sport))
+				.position(new LatLng(48.9747333, 14.4657783)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_sport))
+				.position(new LatLng(48.9721067, 14.4677606)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_sport))
+				.position(new LatLng(48.9705756, 14.4712883)));
+
 	}
 
 	@Override
