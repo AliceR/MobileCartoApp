@@ -338,7 +338,7 @@ public class MapActivity extends FragmentActivity implements
 				} else if (category.equals("sightseeing")) {
 					symbol = R.drawable.poi_sightseeing;
 				} else {
-					symbol = R.drawable.ic_launcher;
+					symbol = R.drawable.poi_bar;
 				}
 
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
@@ -497,6 +497,12 @@ public class MapActivity extends FragmentActivity implements
 				BitmapDescriptorFactory
 						.fromResource(R.drawable.poi_hungry_window)).position(
 				new LatLng(48.9742575, 14.4797833)));
+
+		// Post poi
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory
+						.fromResource(R.drawable.poi_post)).position(
+				new LatLng(48.9739094, 14.4784342)));
 
 	}
 
