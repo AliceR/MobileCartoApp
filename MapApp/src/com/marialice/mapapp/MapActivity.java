@@ -135,6 +135,7 @@ public class MapActivity extends FragmentActivity implements
 			return mWindow;
 		}
 
+		// this is for the images in the info window
 		private void render(Marker marker, View view) {
 			int badge;
 			// Use the equals() method on a Marker to check for equals. Do not
@@ -296,11 +297,10 @@ public class MapActivity extends FragmentActivity implements
 		return bitmap;
 	}
 
-	
 	// pois are requested from database, written in an arraylist and displayed
 	// on the map
 	private final List<Marker> poiMarker = new ArrayList<Marker>();
-	
+
 	public void addPoisFromDatabase() {
 		try {
 			dbHelper.createDataBase();
@@ -316,17 +316,30 @@ public class MapActivity extends FragmentActivity implements
 			int id = dbCursor.getColumnIndex("id");
 			int cat = dbCursor.getColumnIndex("category");
 			int title = dbCursor.getColumnIndex("title");
-			
-			int symbol;
-			String category = dbCursor.getString(cat);
-			if (category.equals("shopping")) {
-				symbol = R.drawable.poi_shopping;
-			} else {
-				symbol = R.drawable.poi_museum;
-			}	
-			
-			
+
 			while (!dbCursor.isAfterLast()) {
+				
+				String category = dbCursor.getString(cat);
+				
+				int symbol = 0;
+				
+				if (category.equals("bar")) {
+					symbol = R.drawable.poi_bar;
+				} else if (category.equals("cafe")){
+					symbol = R.drawable.poi_cafe;
+				} else if (category.equals("eat")){
+					symbol = R.drawable.poi_eat;
+				} else if (category.equals("hidden")){
+					symbol = R.drawable.poi_hidden;
+				} else if (category.equals("museum")){
+					symbol = R.drawable.poi_museum;
+				} else if (category.equals("shopping")){
+					symbol = R.drawable.poi_shopping;
+				} else if (category.equals("sightseeing")){
+					symbol = R.drawable.poi_sightseeing;
+				} else {
+					symbol = R.drawable.ic_launcher;
+				}
 				
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
 						.position(
@@ -336,8 +349,7 @@ public class MapActivity extends FragmentActivity implements
 						.anchor(0f, 1f)
 						.icon(BitmapDescriptorFactory
 								.fromBitmap(drawTextToBitmap(
-										getApplicationContext(),
-										symbol,
+										getApplicationContext(), symbol,
 										dbCursor.getString(id))))));
 				dbCursor.moveToNext();
 			}
@@ -346,7 +358,6 @@ public class MapActivity extends FragmentActivity implements
 				dbHelper.close();
 			}
 		}
-
 	}
 
 	private void addMarkersToMap() {
