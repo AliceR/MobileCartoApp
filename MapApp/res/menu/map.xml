@@ -2,7 +2,7 @@
 
     <item
         android:id="@+id/goto_places"
-        android:icon="@drawable/ic_action_favorite"
+        android:icon="@drawable/poi_action_bar3"
         android:showAsAction="always"
         android:title="@string/places"
         android:onClick="onOptionsItemSelected"/>
