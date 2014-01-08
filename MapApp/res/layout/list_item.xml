@@ -2,6 +2,9 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:maxHeight="45dp"
+    android:drawableLeft="@drawable/poi_shopping"
+    android:drawablePadding="5dp"
     android:padding="10dp"
     android:textSize="16sp" >
 
