@@ -12,6 +12,7 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_places">Places</string>
+    <string name="title_activity_places_description">Description</string>
     <string name="title_activity_database_helper">DatabaseHelper</string>
     <string name="desc">Image - place description</string>
 

@@ -3,8 +3,6 @@ package com.marialice.mapapp;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import android.app.Activity;
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +11,12 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.view.View;
+import android.content.Intent;
 
 public class PlacesActivity extends ListActivity {
 	SQLiteDatabase db = null;
@@ -25,8 +29,10 @@ public class PlacesActivity extends ListActivity {
 		setContentView(R.layout.activity_places);
 		setupActionBar();
 		queryDataFromDatabase();
+      
+        
 	}
-	
+
 	private void setupActionBar() {
 		// Defines the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -48,7 +54,7 @@ public class PlacesActivity extends ListActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void queryDataFromDatabase() {
 		try {
 			dbHelper.createDataBase();
@@ -72,5 +78,31 @@ public class PlacesActivity extends ListActivity {
 		}
 		setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
 				list_values));
+
+		// Binding resources Array to ListAdapter
+        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.poi, list_values));
+        
+        ListView poiList = getListView();
+        
+        // listening to single list item on click
+        poiList.setOnItemClickListener(new OnItemClickListener() {
+          public void onItemClick(AdapterView<?> parent, View view,
+              int position, long id) {
+               
+              // selected item 
+              String poi_name = ((TextView) view).getText().toString();
+               
+              // Launching new Activity on selecting single List Item
+              Intent i = new Intent(getApplicationContext(), PlacesDescriptionActivity.class);
+              // sending data to new activity
+              i.putExtra("poi_name", poi_name);
+              startActivity(i);
+             
+          }
+        });
 	}
+
+	
+	
+	
 }

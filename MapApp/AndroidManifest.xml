@@ -25,7 +25,6 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAfyXB5-zFNb2EyjABWj2NOTeH3deSSLJM" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -54,6 +53,10 @@
         <activity
             android:name="com.marialice.mapapp.PlacesActivity"
             android:label="@string/title_activity_places" >
+        </activity>
+        <activity
+            android:name="com.marialice.mapapp.PlacesDescriptionActivity"
+            android:label="@string/title_activity_places_description" >
         </activity>
         <activity
             android:name="com.marialice.mapapp.DatabaseHelper"
