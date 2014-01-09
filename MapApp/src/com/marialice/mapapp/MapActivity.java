@@ -261,6 +261,7 @@ public class MapActivity extends FragmentActivity implements
 		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(tileProvider));
 
 		// call the functions that create the markers
+		
 		addMarkersToMap();
 		addPoisFromDatabase();
 	}
@@ -403,8 +404,6 @@ public class MapActivity extends FragmentActivity implements
 				.anchor(0.5f, 0.75f).rotation(355).title("Železná panna")
 				.snippet("Iron maiden").infoWindowAnchor(0.5f, 0.5f));
 
-		
-
 		// ATM poi
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_atm))
@@ -534,31 +533,40 @@ public class MapActivity extends FragmentActivity implements
 
 		// Grocery shopping poi
 		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory
-						.fromResource(R.drawable.poi_grocery))
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_grocery))
 				.position(new LatLng(48.9730150, 14.4745900)));
 		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory
-						.fromResource(R.drawable.poi_grocery))
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_grocery))
 				.position(new LatLng(48.9731958, 14.4757633)));
 		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory
-						.fromResource(R.drawable.poi_grocery))
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_grocery))
 				.position(new LatLng(48.9737147, 14.4751703)));
 		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory
-						.fromResource(R.drawable.poi_grocery))
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_grocery))
 				.position(new LatLng(48.9738767, 14.4741642)));
 		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory
-						.fromResource(R.drawable.poi_grocery))
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_grocery))
 				.position(new LatLng(48.9758239, 14.4741028)));
 		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory
-						.fromResource(R.drawable.poi_grocery))
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_grocery))
 				.position(new LatLng(48.9761247, 14.4749742)));
 
-
+		// Infocentre poi
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_info))
+				.position(new LatLng(48.9744750, 14.4731875)));
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.poi_info))
+				.position(new LatLng(48.9760192, 14.4725292)));
+		
+		// Bus station
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.bus_station))
+				.position(new LatLng(48.9726139, 14.4873772)).rotation(345));
+		// Train station
+		mMap.addMarker(new MarkerOptions().icon(
+				BitmapDescriptorFactory.fromResource(R.drawable.train_station))
+				.position(new LatLng(48.9744633, 14.4885883)).rotation(75));
 
 	}
 
