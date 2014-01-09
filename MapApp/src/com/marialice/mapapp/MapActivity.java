@@ -330,7 +330,7 @@ public class MapActivity extends FragmentActivity implements
 					symbol = R.drawable.poi_cafe;
 				} else if (category.equals("eat")) {
 					symbol = R.drawable.poi_eat;
-				} else if (category.equals("hidden")) {
+				} else if (category.equals("poi_hidden3")) {
 					symbol = R.drawable.poi_hidden;
 				} else if (category.equals("museum")) {
 					symbol = R.drawable.poi_museum;
