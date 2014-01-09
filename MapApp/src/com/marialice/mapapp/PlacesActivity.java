@@ -17,8 +17,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
+import android.app.Activity;
 
 public class PlacesActivity extends ListActivity {
+	ListView list;
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -30,8 +32,7 @@ public class PlacesActivity extends ListActivity {
 		setupActionBar();
 		queryDataFromDatabase();
       
-        
-	}
+        	}
 
 	private void setupActionBar() {
 		// Defines the action bar
@@ -70,13 +71,21 @@ public class PlacesActivity extends ListActivity {
 			while (!dbCursor.isAfterLast()) {
 				list_values.add(dbCursor.getString(index));
 				dbCursor.moveToNext();
+				
+				
 			}
 		} finally {
 			if (db != null) {
 				dbHelper.close();
 			}
 		}
-		setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
+				
+/*		THIS IS THE PROBLEM :D
+		CustomList adapter = new CustomList(PlacesActivity.this, list_values);
+		list = (ListView) findViewById(R.id.list);
+		list.setAdapter(adapter);*/
+		
+        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
 				list_values));
 
 		// Binding resources Array to ListAdapter
