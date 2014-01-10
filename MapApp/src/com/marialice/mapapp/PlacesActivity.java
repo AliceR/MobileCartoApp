@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -20,7 +21,7 @@ import android.content.Intent;
 import android.app.Activity;
 
 public class PlacesActivity extends ListActivity {
-	//ListView list;
+	// ListView list;
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -31,8 +32,6 @@ public class PlacesActivity extends ListActivity {
 		setContentView(R.layout.activity_places);
 		setupActionBar();
 		queryDataFromDatabase();
-      
-        
 	}
 
 	private void setupActionBar() {
@@ -72,48 +71,43 @@ public class PlacesActivity extends ListActivity {
 			while (!dbCursor.isAfterLast()) {
 				list_values.add(dbCursor.getString(index));
 				dbCursor.moveToNext();
-				
-				//String title= dbCursor.getString(index);
+
+				// String title= dbCursor.getString(index);
 			}
 		} finally {
 			if (db != null) {
 				dbHelper.close();
 			}
 		}
+
+		// try to dynamically change the icon in the poilist
+		TextView poiTV = (TextView) findViewById(R.id.poilistitem);
+		//poiTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.poi_museum, 0, 0, 0);  // there is a bug here! :(
 		
-		
-		/*		String[] title;
-		CustomList adapter = new CustomList(PlacesActivity.this, title);
-		list = (ListView) findViewById(R.id.list);
-		list.setAdapter(adapter);*/
-		
-	setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
-				list_values));
 
 		// Binding resources Array to ListAdapter
-        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.poi, list_values));
-        
-        ListView poiList = getListView();
-        
-        // listening to single list item on click
-        poiList.setOnItemClickListener(new OnItemClickListener() {
-          public void onItemClick(AdapterView<?> parent, View view,
-              int position, long id) {
-               
-              // selected item 
-              String poi_name = ((TextView) view).getText().toString();
-               
-              // Launching new Activity on selecting single List Item
-              Intent i = new Intent(getApplicationContext(), PlacesDescriptionActivity.class);
-              // sending data to new activity
-              i.putExtra("poi_name", poi_name);
-              startActivity(i);
-             
-          }
-        });
+		this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
+				R.id.poilistitem, list_values));
+
+		ListView poiList = getListView();
+
+		// listening to single list item on click
+		poiList.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+
+				// selected item
+				String poi_name = ((TextView) view).getText().toString();
+
+				// Launching new Activity on selecting single List Item
+				Intent i = new Intent(getApplicationContext(),
+						PlacesDescriptionActivity.class);
+				// sending data to new activity
+				i.putExtra("poi_name", poi_name);
+				startActivity(i);
+
+			}
+		});
 	}
 
-	
-	
-	
 }
