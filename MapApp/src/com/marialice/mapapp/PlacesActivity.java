@@ -3,7 +3,9 @@ package com.marialice.mapapp;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
@@ -11,14 +13,12 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.view.View;
-import android.content.Intent;
-import android.app.Activity;
 
 public class PlacesActivity extends ListActivity {
 
@@ -77,8 +77,6 @@ public class PlacesActivity extends ListActivity {
 				String cat = dbCursor.getString(catindex);
 				list_values.add(cat + ": " + title);
 				dbCursor.moveToNext();
-
-				// String title= dbCursor.getString(index);
 			}
 		} finally {
 			if (db != null) {
@@ -90,11 +88,16 @@ public class PlacesActivity extends ListActivity {
 		this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
 				R.id.poilistitem, list_values));
 
-		// try to dynamically change the icon in the poilist
-		TextView poiTV = (TextView) findViewById(R.id.poilistitem);
-		// Drawable img = this.getResources().getDrawable(R.drawable.poi_museum);
-		poiTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.poi_museum, 0, 0, 0);
-		// there is a bug here! :(
+		
+		/* dynamically change the icon in the poilist */
+		TextView poiTV = (TextView) findViewById(R.id.poilistitem);  //the textview does not exist at this point
+		
+		Drawable img = this.getResources().getDrawable(R.drawable.poi_museum);
+		if (poiTV != null){
+			poiTV.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+			//apparently it is null, the icon stays as it is defined statically.
+		}
+		
 
 		ListView poiList = getListView();
 
