@@ -13,17 +13,20 @@
         android:id="@+id/zoom_overview_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="#95FFFFFF"
+        android:layout_marginTop="11dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@+id/zoom_city_center_button"
         android:onClick="zoomOverview"
-        android:src="@drawable/overview" />
+        android:background="@drawable/button_map_overview" />
 
     <ImageButton
         android:id="@+id/zoom_city_center_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_toRightOf="@+id/zoom_overview_button"
-        android:background="#95FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="58dp"
+        android:layout_marginTop="11dp"
         android:onClick="zoomCityCenter"
-        android:src="@drawable/city_center" />
+        android:src="@drawable/button_map_center" />
 
 </RelativeLayout>
