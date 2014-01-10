@@ -65,11 +65,14 @@ public class PlacesActivity extends ListActivity {
 		try {
 
 			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT title FROM cbpois;", null);
+			dbCursor = db.rawQuery("SELECT title, category FROM cbpois;", null);
 			dbCursor.moveToFirst();
-			int index = dbCursor.getColumnIndex("title");
+			int titleindex = dbCursor.getColumnIndex("title");
+			int catindex = dbCursor.getColumnIndex("category");
 			while (!dbCursor.isAfterLast()) {
-				list_values.add(dbCursor.getString(index));
+				String title = dbCursor.getString(titleindex);
+				String cat = dbCursor.getString(catindex);
+				list_values.add(cat+": "+title);
 				dbCursor.moveToNext();
 
 				// String title= dbCursor.getString(index);
