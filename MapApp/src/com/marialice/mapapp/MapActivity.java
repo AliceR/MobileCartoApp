@@ -207,6 +207,16 @@ public class MapActivity extends FragmentActivity implements
 					this); // OnConnectionFailedListener
 		}
 	}
+	
+	//Zoom to city center button
+    public void zoomCityCenter(View view) {
+    	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.9744094, 14.4746094), 16));
+    }
+    
+  //Zoom to overview button
+    public void zoomOverview(View view) {
+    	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.9799567, 14.4759178), 14));
+    }
 
 	@Override
 	public void onLocationChanged(Location location) {

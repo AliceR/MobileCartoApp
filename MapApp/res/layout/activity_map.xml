@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- This can go anywhere in your layout (see other demos for some examples). -->
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/map"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    class="com.google.android.gms.maps.SupportMapFragment" />
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="0.5"
-    android:onClick="onClearMap"
-    android:text="@string/clear_map" />
+    android:layout_height="match_parent" >
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.SupportMapFragment" />
+
+    <ImageButton
+        android:id="@+id/zoom_overview_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="#95FFFFFF"
+        android:onClick="zoomOverview"
+        android:src="@drawable/overview" />
+
+    <ImageButton
+        android:id="@+id/zoom_city_center_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/zoom_overview_button"
+        android:background="#95FFFFFF"
+        android:onClick="zoomCityCenter"
+        android:src="@drawable/city_center" />
+
+</RelativeLayout>
