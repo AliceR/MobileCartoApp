@@ -1,6 +1,8 @@
 package com.marialice.mapapp;
 
-
+/// I THINK THIS FILE IS NOT USED ANYMORE???
+/// 
+/*
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,10 +25,10 @@ public class CustomList extends ArrayAdapter<String> {
 	public View getView(int position, View view, ViewGroup parent) {
 		LayoutInflater inflater = context.getLayoutInflater();
 		View rowView = inflater.inflate(R.layout.list_item, null, true);
-		TextView txtTitle = (TextView) rowView.findViewById(R.id.poi);
+		TextView txtTitle = (TextView) rowView.findViewById(R.id.poi_item);
 		//ImageView imageView = (ImageView) rowView.findViewById(R.id.poi_icon);
 		txtTitle.setText(title[position]);
 		//imageView.setImageResource(R.drawable.poi_hidden);
 		return rowView;
 	}
-}
+}*/
