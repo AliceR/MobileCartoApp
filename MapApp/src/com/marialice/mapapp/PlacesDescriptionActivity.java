@@ -29,6 +29,7 @@ public class PlacesDescriptionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_places_description);
+		setupActionBar();
 
 		TextView textViewTitle = (TextView) findViewById(R.id.TextView1);
 
