@@ -21,17 +21,20 @@ import android.content.Intent;
 import android.app.Activity;
 
 public class PlacesActivity extends ListActivity {
-	// ListView list;
+
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
+	
+	ListView poiList;
+	TextView poiTV;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_places);
 		setupActionBar();
-		queryDataFromDatabase();
+		createPoiList();
 	}
 
 	private void setupActionBar() {
@@ -56,7 +59,7 @@ public class PlacesActivity extends ListActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void queryDataFromDatabase() {
+	public void createPoiList() {
 		try {
 			dbHelper.createDataBase();
 		} catch (IOException ioe) {
@@ -72,7 +75,7 @@ public class PlacesActivity extends ListActivity {
 			while (!dbCursor.isAfterLast()) {
 				String title = dbCursor.getString(titleindex);
 				String cat = dbCursor.getString(catindex);
-				list_values.add(cat+": "+title);
+				list_values.add(cat + ": " + title);
 				dbCursor.moveToNext();
 
 				// String title= dbCursor.getString(index);
@@ -83,14 +86,15 @@ public class PlacesActivity extends ListActivity {
 			}
 		}
 
-		// try to dynamically change the icon in the poilist
-		TextView poiTV = (TextView) findViewById(R.id.poilistitem);
-		//poiTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.poi_museum, 0, 0, 0);  // there is a bug here! :(
-		
-
 		// Binding resources Array to ListAdapter
 		this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
 				R.id.poilistitem, list_values));
+
+		// try to dynamically change the icon in the poilist
+		TextView poiTV = (TextView) findViewById(R.id.poilistitem);
+		// Drawable img = this.getResources().getDrawable(R.drawable.poi_museum);
+		poiTV.setCompoundDrawablesWithIntrinsicBounds(R.drawable.poi_museum, 0, 0, 0);
+		// there is a bug here! :(
 
 		ListView poiList = getListView();
 
