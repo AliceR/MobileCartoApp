@@ -20,14 +20,14 @@
         android:label="@string/app_name"
         android:theme="@style/CBtheme" >
         <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAqJCXIHonp4zqyFHRO5aTc2DxACZZTuBc" />
+            android:value="AIzaSyBZZm18IyzrBc2x079TJMWGcG-cicjhnZ4" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAfyXB5-zFNb2EyjABWj2NOTeH3deSSLJM" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
 
         <activity
             android:name="com.marialice.mapapp.MapActivity"
@@ -39,24 +39,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.marialice.mapapp.MenuActivity"
-            android:label="@string/title_activity_menu"
-            android:parentActivityName="com.marialice.mapapp.MapActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.marialice.mapapp.MapActivity" />
-        </activity>
-        <activity
             android:name="com.marialice.mapapp.AboutActivity"
             android:label="@string/title_activity_about" >
         </activity>
         <activity
             android:name="com.marialice.mapapp.PlacesActivity"
             android:label="@string/title_activity_places" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.marialice.mapapp.MapActivity" />
         </activity>
         <activity
             android:name="com.marialice.mapapp.PlacesDescriptionActivity"
             android:label="@string/title_activity_places_description" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.marialice.mapapp.PlacesActivity" />
         </activity>
         <activity
             android:name="com.marialice.mapapp.DatabaseHelper"
