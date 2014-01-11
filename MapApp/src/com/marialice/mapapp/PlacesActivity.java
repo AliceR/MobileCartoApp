@@ -25,7 +25,7 @@ public class PlacesActivity extends ListActivity {
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
-	
+
 	ListView poiList;
 	TextView poiTV;
 
@@ -87,20 +87,27 @@ public class PlacesActivity extends ListActivity {
 		// Binding resources Array to ListAdapter
 		this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
 				R.id.poilistitem, list_values));
+		
+		dynamicPoiImg();
+		clickOnListItem();
 
-		
-		/* dynamically change the icon in the poilist */
-		TextView poiTV = (TextView) findViewById(R.id.poilistitem);  //the textview does not exist at this point
-		
+	}
+
+	/* dynamically change the icon in the poilist */
+	public void dynamicPoiImg() {
+		this.onContentChanged();
+		TextView poiTV = (TextView) this.findViewById(R.id.poilistitem);
+		// the textview does not exist at this point
+
 		Drawable img = this.getResources().getDrawable(R.drawable.poi_museum);
-		if (poiTV != null){
+		if (poiTV != null) {
 			poiTV.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
-			//apparently it is null, the icon stays as it is defined statically.
+			// apparently it is null, the icon stays as it is defined in xml.
 		}
-		
+	}
 
+	public void clickOnListItem() {
 		ListView poiList = getListView();
-
 		// listening to single list item on click
 		poiList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
