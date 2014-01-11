@@ -1,40 +1,57 @@
 package com.marialice.mapapp;
 
+import android.os.Bundle;
+import android.app.Activity;
+import android.support.v4.app.NavUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ExpandableListView.OnGroupCollapseListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
 
-public class PlacesActivity extends ListActivity {
+public class PlacesActivity extends Activity {
 
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
 
-	ListView poiList;
-	TextView poiTV;
+	ExpandableListAdapter listAdapter;
+	ExpandableListView expListView;
+	List<String> listDataHeader;
+	HashMap<String, List<String>> listDataChild;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_places);
 		setupActionBar();
-		createPoiList();
+
+		// get the listview
+		expListView = (ExpandableListView) findViewById(R.id.lvExp);
+
+		// preparing list data
+		prepareListData();
+
+		listAdapter = new ExpandableListAdapter(this, listDataHeader,
+				listDataChild);
+
+		// setting list adapter
+		expListView.setAdapter(listAdapter);
 	}
 
 	private void setupActionBar() {
@@ -59,23 +76,42 @@ public class PlacesActivity extends ListActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void createPoiList() {
+	/*
+	 * Preparing the list data
+	 */
+	private void prepareListData() {
+
 		try {
 			dbHelper.createDataBase();
 		} catch (IOException ioe) {
 		}
-		List<String> list_values = new ArrayList<String>();
+
+		listDataHeader = new ArrayList<String>();
+		listDataChild = new HashMap<String, List<String>>();
+
+		// Adding child data
+		listDataHeader.add("Sightseeing");
+		listDataHeader.add("Museum, venue");
+		listDataHeader.add("Shopping");
+		listDataHeader.add("Eat, drink");
+		listDataHeader.add("Café, tea room");
+		listDataHeader.add("Bar, club");
+		listDataHeader.add("Hidden, chill out");
+
+		// Adding sightseeing data
+
+		List<String> sightseeing = new ArrayList<String>();
 		try {
 
 			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT title, category FROM cbpois;", null);
+			dbCursor = db.rawQuery(
+					"SELECT title FROM cbpois WHERE category = 'sightseeing';",
+					null);
 			dbCursor.moveToFirst();
 			int titleindex = dbCursor.getColumnIndex("title");
-			int catindex = dbCursor.getColumnIndex("category");
 			while (!dbCursor.isAfterLast()) {
 				String title = dbCursor.getString(titleindex);
-				String cat = dbCursor.getString(catindex);
-				list_values.add(cat + ": " + title);
+				sightseeing.add(title);
 				dbCursor.moveToNext();
 			}
 		} finally {
@@ -84,47 +120,163 @@ public class PlacesActivity extends ListActivity {
 			}
 		}
 
-		// Binding resources Array to ListAdapter
-		this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
-				R.id.poilistitem, list_values));
-		
-		dynamicPoiImg();
-		clickOnListItem();
+		// Adding museum data
+		List<String> museum = new ArrayList<String>();
+		try {
 
-	}
-
-	/* dynamically change the icon in the poilist */
-	public void dynamicPoiImg() {
-		this.onContentChanged();
-		TextView poiTV = (TextView) this.findViewById(R.id.poilistitem);
-		// the textview does not exist at this point
-
-		Drawable img = this.getResources().getDrawable(R.drawable.poi_museum);
-		if (poiTV != null) {
-			poiTV.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
-			// apparently it is null, the icon stays as it is defined in xml.
+			db = dbHelper.getDataBase();
+			dbCursor = db
+					.rawQuery(
+							"SELECT title FROM cbpois WHERE category = 'museum';",
+							null);
+			dbCursor.moveToFirst();
+			int titleindex = dbCursor.getColumnIndex("title");
+			while (!dbCursor.isAfterLast()) {
+				String title = dbCursor.getString(titleindex);
+				museum.add(title);
+				dbCursor.moveToNext();
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
 		}
-	}
 
-	public void clickOnListItem() {
-		ListView poiList = getListView();
-		// listening to single list item on click
-		poiList.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+		// Adding shopping data
+		List<String> shopping = new ArrayList<String>();
+		try {
 
-				// selected item
-				String poi_name = ((TextView) view).getText().toString();
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery(
+					"SELECT title FROM cbpois WHERE category = 'shopping';",
+					null);
+			dbCursor.moveToFirst();
+			int titleindex = dbCursor.getColumnIndex("title");
+			while (!dbCursor.isAfterLast()) {
+				String title = dbCursor.getString(titleindex);
+				shopping.add(title);
+				dbCursor.moveToNext();
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
 
-				// Launching new Activity on selecting single List Item
-				Intent i = new Intent(getApplicationContext(),
-						PlacesDescriptionActivity.class);
-				// sending data to new activity
-				i.putExtra("poi_name", poi_name);
-				startActivity(i);
+		// Adding eat data
+		List<String> eat = new ArrayList<String>();
+		try {
 
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery(
+					"SELECT title FROM cbpois WHERE category = 'eat';", null);
+			dbCursor.moveToFirst();
+			int titleindex = dbCursor.getColumnIndex("title");
+			while (!dbCursor.isAfterLast()) {
+				String title = dbCursor.getString(titleindex);
+				eat.add(title);
+				dbCursor.moveToNext();
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+
+		// Adding cafe data
+		List<String> cafe = new ArrayList<String>();
+		try {
+
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery(
+					"SELECT title FROM cbpois WHERE category = 'cafe';", null);
+			dbCursor.moveToFirst();
+			int titleindex = dbCursor.getColumnIndex("title");
+			while (!dbCursor.isAfterLast()) {
+				String title = dbCursor.getString(titleindex);
+				cafe.add(title);
+				dbCursor.moveToNext();
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+
+		// Adding bar data
+		List<String> bar = new ArrayList<String>();
+		try {
+
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery(
+					"SELECT title FROM cbpois WHERE category = 'bar';", null);
+			dbCursor.moveToFirst();
+			int titleindex = dbCursor.getColumnIndex("title");
+			while (!dbCursor.isAfterLast()) {
+				String title = dbCursor.getString(titleindex);
+				bar.add(title);
+				dbCursor.moveToNext();
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+
+		// Adding hidden data
+		List<String> hidden = new ArrayList<String>();
+		try {
+
+			db = dbHelper.getDataBase();
+			dbCursor = db
+					.rawQuery(
+							"SELECT title FROM cbpois WHERE category = 'hidden';",
+							null);
+			dbCursor.moveToFirst();
+			int titleindex = dbCursor.getColumnIndex("title");
+			while (!dbCursor.isAfterLast()) {
+				String title = dbCursor.getString(titleindex);
+				hidden.add(title);
+				dbCursor.moveToNext();
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+
+		listDataChild.put(listDataHeader.get(0), sightseeing); // Header, Child
+																// data
+		listDataChild.put(listDataHeader.get(1), museum);
+		listDataChild.put(listDataHeader.get(2), shopping);
+		listDataChild.put(listDataHeader.get(3), eat);
+		listDataChild.put(listDataHeader.get(4), cafe);
+		listDataChild.put(listDataHeader.get(5), bar);
+		listDataChild.put(listDataHeader.get(6), hidden);
+		
+	/*	 dynamically change the icon in the poilist 
+			TextView poiTV = (TextView) findViewById(R.id.poilistitem);  //the textview does not exist at this point
+			
+			Drawable img = this.getResources().getDrawable(R.drawable.poi_museum);
+			if (poiTV != null){
+				poiTV.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+				//apparently it is null, the icon stays as it is defined statically.
+			}*/
+
+		// Listview on child click listener
+		expListView.setOnChildClickListener(new OnChildClickListener() {
+
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
+				
+				Intent i = new Intent(getApplicationContext(), PlacesDescriptionActivity.class);
+				
+			    i.putExtra("listDataChild", listDataChild.get(listDataHeader.get(groupPosition))
+						.get(childPosition));
+			    startActivity(i);
+			    return false;
 			}
 		});
 	}
-
 }
