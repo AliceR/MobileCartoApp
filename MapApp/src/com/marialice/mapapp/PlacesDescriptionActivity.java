@@ -35,7 +35,7 @@ public class PlacesDescriptionActivity extends Activity {
 
 		Intent i = getIntent();
 		// getting attached intent data
-		String poi_name = i.getStringExtra("poi_name");
+		String poi_name = i.getStringExtra("listDataChild");
 		// displaying selected point name
 		textViewTitle.setText(poi_name);
 
