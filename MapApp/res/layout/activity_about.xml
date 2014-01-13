@@ -12,5 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/about_text" />
+    
+    <ImageView
+        android:id="@+id/use_it_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/use_it_europe_logo"
+        android:contentDescription="@string/use_it_logo" />
 
 </RelativeLayout>
