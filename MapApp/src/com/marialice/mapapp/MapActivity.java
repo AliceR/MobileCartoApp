@@ -57,7 +57,8 @@ public class MapActivity extends FragmentActivity implements
 		ConnectionCallbacks, OnConnectionFailedListener, LocationListener,
 		OnMyLocationButtonClickListener, OnInfoWindowClickListener {
 
-	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
+	//private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
+	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.h0a912jg/%d/%d/%d.png";
 	private GoogleMap mMap;
 	private LocationClient mLocationClient; // for location
 	private Marker mCernavez;
