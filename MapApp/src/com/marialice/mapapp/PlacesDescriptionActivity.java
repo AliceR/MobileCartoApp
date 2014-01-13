@@ -1,5 +1,11 @@
 package com.marialice.mapapp;
 
+import java.io.IOException;
+
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -42,8 +48,12 @@ public class PlacesDescriptionActivity extends Activity {
 		ImageView imgView1 = (ImageView) findViewById(R.id.imageView1);
 		imgView1.setImageBitmap(drawTextToBitmap(getApplicationContext(),
 				R.drawable.poi_shopping, "15"));
+		
 
+	/*	addDescriptionFromDatabase();
+*/
 	}
+	
 
 	private void setupActionBar() {
 		// Defines the action bar
@@ -98,5 +108,31 @@ public class PlacesDescriptionActivity extends Activity {
 
 		return bitmap;
 	}
+	
+	/*public void addDescriptionFromDatabase() {
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		try {
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT description FROM cbpois WHERE title = 'SECRET OF BUDVAR';", null);
+			dbCursor.moveToFirst();
+			int des = dbCursor.getColumnIndex("description");
+			while (!dbCursor.isAfterLast()) {
+
+				String description = dbCursor.getString(des);
+
+				TextView textViewDescription = (TextView) findViewById(R.id.TextView2);
+				textViewDescription.setText(description);
+				dbCursor.moveToNext();
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+	}
+*/
 
 }
