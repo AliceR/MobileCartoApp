@@ -79,7 +79,7 @@ public class MapActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
 		setUpMapIfNeeded();
-
+		setupActionBar();
 	}
 
 	@Override
@@ -105,6 +105,11 @@ public class MapActivity extends FragmentActivity implements
 		inflater.inflate(R.menu.map, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
+	
+	private void setupActionBar() {
+		// Show the Up button in the action bar.
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -113,8 +118,12 @@ public class MapActivity extends FragmentActivity implements
 		case R.id.action_search:
 			return true;
 		case R.id.goto_places:
-			Intent intent = new Intent(MapActivity.this, PlacesActivity.class);
-			startActivity(intent);
+			Intent placesintent = new Intent(MapActivity.this, PlacesActivity.class);
+			startActivity(placesintent);
+			return true;
+		case android.R.id.home:
+			Intent aboutintent = new Intent(MapActivity.this, AboutActivity.class);
+			startActivity(aboutintent);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

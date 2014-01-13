@@ -41,6 +41,9 @@
         <activity
             android:name="com.marialice.mapapp.AboutActivity"
             android:label="@string/title_activity_about" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.marialice.mapapp.MapActivity" />
         </activity>
         <activity
             android:name="com.marialice.mapapp.PlacesActivity"
