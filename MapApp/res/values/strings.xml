@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Budweis Map</string>
+    <string name="app_name">USE-IT Budweis</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
-    <string name="title_activity_menu">MenuActivity</string>
-    <string name="get_menu">Get Menu</string>
     <string name="about_us">About</string>
     <string name="places">Places</string>
     <string name="info">Info</string>
-    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_about">About this Map (App)</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_places">Places</string>
-    <string name="title_activity_places_description">Description</string>
-    <string name="title_activity_database_helper">DatabaseHelper</string>
+    <string name="title_activity_places_description">Details</string>
+    <string name="title_activity_database_helper">Database Helper</string>
     <string name="desc">Image - place description</string>
+    <string name="about_text">Use-IT Europe - Tourist info for young people. 
+        Nobody paid to be shown on this map! The choice of places was made by young locals.</string>
 
 </resources>
