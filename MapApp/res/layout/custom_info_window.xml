@@ -52,8 +52,9 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:textColor="#ff7f7f7f"
-            android:textSize="13dp"
-            android:text="Show more info" />
+            android:textSize="13sp"
+            android:text="@string/show_info"
+            android:onClick="show_info" />
     </LinearLayout>
 
     <ImageView
