@@ -3,15 +3,15 @@
 
     <!-- the theme applied to the application or activity -->
 
-    <style name="CBtheme" parent="@android:style/Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/CBactionbar</item>
+    <style name="theme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/actionbar</item>
         <item name="android:colorBackground">#00FF00</item>
     </style>
 
     
     <!--  custom style for the action bar -->
-    <style name="CBactionbar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/gray</item>
+    <style name="actionbar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/actionbar</item>
     </style>
 
 </resources>

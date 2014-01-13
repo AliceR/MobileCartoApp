@@ -57,7 +57,8 @@ public class MapActivity extends FragmentActivity implements
 		ConnectionCallbacks, OnConnectionFailedListener, LocationListener,
 		OnMyLocationButtonClickListener, OnInfoWindowClickListener {
 
-	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
+	//private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
+	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.h0a912jg/%d/%d/%d.png";
 	private GoogleMap mMap;
 	private LocationClient mLocationClient; // for location
 	private Marker mCernavez;
@@ -79,7 +80,6 @@ public class MapActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
 		setUpMapIfNeeded();
-
 	}
 
 	@Override
@@ -113,8 +113,8 @@ public class MapActivity extends FragmentActivity implements
 		case R.id.action_search:
 			return true;
 		case R.id.goto_places:
-			Intent intent = new Intent(MapActivity.this, PlacesActivity.class);
-			startActivity(intent);
+			Intent placesintent = new Intent(MapActivity.this, PlacesActivity.class);
+			startActivity(placesintent);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -584,6 +584,11 @@ public class MapActivity extends FragmentActivity implements
 	public void onInfoWindowClick(Marker arg0) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void openAboutInfo(View view) {
+		Intent aboutintent = new Intent(MapActivity.this, AboutActivity.class);
+		startActivity(aboutintent);
 	}
 
 }
