@@ -17,7 +17,8 @@
         android:layout_marginRight="8dp"
         android:layout_toLeftOf="@+id/zoom_city_center_button"
         android:onClick="zoomOverview"
-        android:background="@drawable/button_map_overview" />
+        android:background="@drawable/button_map_overview"
+        android:contentDescription="@string/hello_world" />
 
     <ImageButton
         android:id="@+id/zoom_city_center_button"
@@ -27,7 +28,8 @@
         android:layout_marginRight="58dp"
         android:layout_marginTop="11dp"
         android:onClick="zoomCityCenter"
-        android:src="@drawable/button_map_center" />
+        android:src="@drawable/button_map_center"
+        android:contentDescription="@string/hello_world" />
     
     <ImageButton
         android:id="@+id/about"
@@ -38,6 +40,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="31dp"
         android:onClick="openAboutInfo"
-        android:src="@drawable/ic_action_about" />
+        android:src="@drawable/ic_action_about"
+        style="?android:attr/borderlessButtonStyle"
+        android:contentDescription="@string/hello_world" />
 
 </RelativeLayout>
