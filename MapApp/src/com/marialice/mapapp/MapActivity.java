@@ -57,7 +57,8 @@ public class MapActivity extends FragmentActivity implements
 		ConnectionCallbacks, OnConnectionFailedListener, LocationListener,
 		OnMyLocationButtonClickListener, OnInfoWindowClickListener {
 
-	//private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
+	// private static final String MAPBOX_BASEMAP_URL_FORMAT =
+	// "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.h0a912jg/%d/%d/%d.png";
 	private GoogleMap mMap;
 	private LocationClient mLocationClient; // for location
@@ -115,7 +116,8 @@ public class MapActivity extends FragmentActivity implements
 			startActivity(aboutintent);
 			return true;
 		case R.id.goto_places:
-			Intent placesintent = new Intent(MapActivity.this, PlacesActivity.class);
+			Intent placesintent = new Intent(MapActivity.this,
+					PlacesActivity.class);
 			startActivity(placesintent);
 			return true;
 		default:
@@ -209,16 +211,18 @@ public class MapActivity extends FragmentActivity implements
 					this); // OnConnectionFailedListener
 		}
 	}
-	
-	//Zoom to city center button
-    public void zoomCityCenter(View view) {
-    	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.9744094, 14.4746094), 16));
-    }
-    
-  //Zoom to overview button
-    public void zoomOverview(View view) {
-    	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.9799567, 14.4759178), 14));
-    }
+
+	// Zoom to city center button
+	public void zoomCityCenter(View view) {
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				48.9744094, 14.4746094), 16));
+	}
+
+	// Zoom to overview button
+	public void zoomOverview(View view) {
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				48.9799567, 14.4759178), 14));
+	}
 
 	@Override
 	public void onLocationChanged(Location location) {
@@ -273,7 +277,7 @@ public class MapActivity extends FragmentActivity implements
 		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(tileProvider));
 
 		// call the functions that create the markers
-		
+
 		addMarkersToMap();
 		addPoisFromDatabase();
 	}
@@ -337,21 +341,21 @@ public class MapActivity extends FragmentActivity implements
 				int symbol = 0;
 
 				if (category.equals("bar")) {
-					symbol = R.drawable.poi_bar_shadow;
+					symbol = R.drawable.poi_bar;
 				} else if (category.equals("cafe")) {
-					symbol = R.drawable.poi_cafe_shadow;
+					symbol = R.drawable.poi_cafe;
 				} else if (category.equals("eat")) {
-					symbol = R.drawable.poi_eat_shadow;
-				} else if (category.equals("poi_hidden_shadow")) {
-					symbol = R.drawable.poi_hidden_shadow;
+					symbol = R.drawable.poi_eat;
+				} else if (category.equals("poi_hidden")) {
+					symbol = R.drawable.poi_hidden;
 				} else if (category.equals("museum")) {
-					symbol = R.drawable.poi_museum_shadow;
+					symbol = R.drawable.poi_museum;
 				} else if (category.equals("shopping")) {
-					symbol = R.drawable.poi_shopping_shadow;
+					symbol = R.drawable.poi_shopping;
 				} else if (category.equals("sightseeing")) {
-					symbol = R.drawable.poi_sightseeing_shadow;
+					symbol = R.drawable.poi_sightseeing;
 				} else {
-					symbol = R.drawable.poi_bar_shadow;
+					symbol = R.drawable.poi_shadow;
 				}
 
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
@@ -572,14 +576,16 @@ public class MapActivity extends FragmentActivity implements
 		mMap.addMarker(new MarkerOptions().icon(
 				BitmapDescriptorFactory.fromResource(R.drawable.poi_info))
 				.position(new LatLng(48.9760192, 14.4725292)));
-		
+
 		// Bus station
-		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory.fromResource(R.drawable.bus_station))
+		mMap.addMarker(new MarkerOptions()
+				.icon(BitmapDescriptorFactory
+						.fromResource(R.drawable.bus_station))
 				.position(new LatLng(48.9726139, 14.4873772)).rotation(345));
 		// Train station
-		mMap.addMarker(new MarkerOptions().icon(
-				BitmapDescriptorFactory.fromResource(R.drawable.train_station))
+		mMap.addMarker(new MarkerOptions()
+				.icon(BitmapDescriptorFactory
+						.fromResource(R.drawable.train_station))
 				.position(new LatLng(48.9744633, 14.4885883)).rotation(75));
 
 	}
@@ -589,5 +595,13 @@ public class MapActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
+<<<<<<< HEAD
+=======
+
+	public void openAboutInfo(View view) {
+		Intent aboutintent = new Intent(MapActivity.this, AboutActivity.class);
+		startActivity(aboutintent);
+	}
+>>>>>>> fdaf905d9ad15e5199966b96f86211f582174261
 
 }
