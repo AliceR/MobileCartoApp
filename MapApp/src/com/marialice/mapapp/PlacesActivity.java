@@ -1,18 +1,18 @@
 package com.marialice.mapapp;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.support.v4.app.NavUtils;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -68,17 +68,14 @@ public class PlacesActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	/*
-	 * Preparing the list data
-	 */
+	
+	// Preparing the list data
 	private void prepareListData() {
-
 		try {
 			dbHelper.createDataBase();
 		} catch (IOException ioe) {
 		}
-
+		
 		listDataHeader = new ArrayList<String>();
 		listDataChild = new HashMap<String, List<String>>();
 
@@ -92,10 +89,8 @@ public class PlacesActivity extends Activity {
 		listDataHeader.add("Hidden, chill out");
 
 		// Adding sightseeing data
-
 		List<String> sightseeing = new ArrayList<String>();
 		try {
-
 			db = dbHelper.getDataBase();
 			dbCursor = db.rawQuery(
 					"SELECT title FROM cbpois WHERE category = 'sightseeing';",
@@ -116,7 +111,6 @@ public class PlacesActivity extends Activity {
 		// Adding museum data
 		List<String> museum = new ArrayList<String>();
 		try {
-
 			db = dbHelper.getDataBase();
 			dbCursor = db
 					.rawQuery(
@@ -138,7 +132,6 @@ public class PlacesActivity extends Activity {
 		// Adding shopping data
 		List<String> shopping = new ArrayList<String>();
 		try {
-
 			db = dbHelper.getDataBase();
 			dbCursor = db.rawQuery(
 					"SELECT title FROM cbpois WHERE category = 'shopping';",
@@ -159,7 +152,6 @@ public class PlacesActivity extends Activity {
 		// Adding eat data
 		List<String> eat = new ArrayList<String>();
 		try {
-
 			db = dbHelper.getDataBase();
 			dbCursor = db.rawQuery(
 					"SELECT title FROM cbpois WHERE category = 'eat';", null);
@@ -179,7 +171,6 @@ public class PlacesActivity extends Activity {
 		// Adding cafe data
 		List<String> cafe = new ArrayList<String>();
 		try {
-
 			db = dbHelper.getDataBase();
 			dbCursor = db.rawQuery(
 					"SELECT title FROM cbpois WHERE category = 'cafe';", null);
@@ -199,7 +190,6 @@ public class PlacesActivity extends Activity {
 		// Adding bar data
 		List<String> bar = new ArrayList<String>();
 		try {
-
 			db = dbHelper.getDataBase();
 			dbCursor = db.rawQuery(
 					"SELECT title FROM cbpois WHERE category = 'bar';", null);
@@ -237,24 +227,15 @@ public class PlacesActivity extends Activity {
 				dbHelper.close();
 			}
 		}
-
-		listDataChild.put(listDataHeader.get(0), sightseeing); // Header, Child
-																// data
+		
+		// Header, Child data
+		listDataChild.put(listDataHeader.get(0), sightseeing); 
 		listDataChild.put(listDataHeader.get(1), museum);
 		listDataChild.put(listDataHeader.get(2), shopping);
 		listDataChild.put(listDataHeader.get(3), eat);
 		listDataChild.put(listDataHeader.get(4), cafe);
 		listDataChild.put(listDataHeader.get(5), bar);
 		listDataChild.put(listDataHeader.get(6), hidden);
-		
-	/*	 dynamically change the icon in the poilist 
-			TextView poiTV = (TextView) findViewById(R.id.poilistitem);  //the textview does not exist at this point
-			
-			Drawable img = this.getResources().getDrawable(R.drawable.poi_museum);
-			if (poiTV != null){
-				poiTV.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
-				//apparently it is null, the icon stays as it is defined statically.
-			}*/
 
 		// Listview on child click listener
 		expListView.setOnChildClickListener(new OnChildClickListener() {
