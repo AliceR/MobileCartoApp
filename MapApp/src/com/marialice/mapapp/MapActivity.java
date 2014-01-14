@@ -345,7 +345,7 @@ public class MapActivity extends FragmentActivity implements
 				} else if (category.equals("cafe")) {
 					symbol = R.drawable.poi_cafe;
 				} else if (category.equals("eat")) {
-					symbol = R.drawable.poi_eat;
+					symbol = R.drawable.poi_shadow;
 				} else if (category.equals("poi_hidden")) {
 					symbol = R.drawable.poi_hidden;
 				} else if (category.equals("museum")) {
@@ -355,7 +355,7 @@ public class MapActivity extends FragmentActivity implements
 				} else if (category.equals("sightseeing")) {
 					symbol = R.drawable.poi_sightseeing;
 				} else {
-					symbol = R.drawable.poi_shadow;
+					symbol = R.drawable.poi_bar;
 				}
 
 				poiMarker.add(mMap.addMarker(new MarkerOptions()
@@ -595,13 +595,5 @@ public class MapActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
-<<<<<<< HEAD
-=======
-
-	public void openAboutInfo(View view) {
-		Intent aboutintent = new Intent(MapActivity.this, AboutActivity.class);
-		startActivity(aboutintent);
-	}
->>>>>>> fdaf905d9ad15e5199966b96f86211f582174261
 
 }

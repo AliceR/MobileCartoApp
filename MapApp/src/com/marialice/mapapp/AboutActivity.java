@@ -15,7 +15,7 @@ public class AboutActivity extends Activity {
 	}
 
 	private void setupActionBar() {
-		// Show the Up button in the action bar.
+		// Show the Up button in the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 

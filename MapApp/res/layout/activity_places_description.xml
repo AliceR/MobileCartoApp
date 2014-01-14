@@ -5,17 +5,17 @@
     android:orientation="horizontal" >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/desc_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_toRightOf="@+id/TextView1"
+        android:layout_toRightOf="@+id/desc_title"
         android:contentDescription="@string/desc"
         android:paddingLeft="10dp"
         android:paddingTop="10dp" />
 
     <TextView
-        android:id="@+id/TextView1"
+        android:id="@+id/desc_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="50dp"
@@ -23,37 +23,37 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/TextView2"
+        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TextView1"
+        android:layout_below="@id/desc_title"
         android:paddingLeft="50dp"
         android:paddingTop="10dp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/smoking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imageView3"
+        android:layout_toLeftOf="@+id/sundays"
         android:contentDescription="@string/desc"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:src="@drawable/description_smoking" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/sundays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imageView4"
+        android:layout_toLeftOf="@+id/wifi"
         android:contentDescription="@string/desc"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:src="@drawable/description_sunday" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

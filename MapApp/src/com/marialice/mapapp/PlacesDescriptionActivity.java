@@ -24,33 +24,21 @@ public class PlacesDescriptionActivity extends Activity {
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
+	
+	TextView textViewTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_places_description);
 		setupActionBar();
+		createDetails();
+	//	addDescriptionFromDatabase();
 
-		TextView textViewTitle = (TextView) findViewById(R.id.TextView1);
-
-		Intent i = getIntent();
-		// getting attached intent data
-		String poi_name = i.getStringExtra("listDataChild");
-		// displaying selected point name
-		textViewTitle.setText(poi_name);
-
-		ImageView imgView1 = (ImageView) findViewById(R.id.imageView1);
-		imgView1.setImageBitmap(drawTextToBitmap(getApplicationContext(),
-				R.drawable.poi_shopping, "15"));
-		
-
-	/*	addDescriptionFromDatabase();
-*/
 	}
 	
-
 	private void setupActionBar() {
-		// Defines the action bar
+		// Show the Up button in the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
@@ -71,6 +59,21 @@ public class PlacesDescriptionActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void createDetails() {
+		TextView textViewTitle = (TextView) findViewById(R.id.desc_title);
+
+		Intent i = getIntent();
+		// getting attached intent data
+		String poi_name = i.getStringExtra("listDataChild");
+		// displaying selected point name
+		textViewTitle.setText(poi_name);
+
+		ImageView imgView1 = (ImageView) findViewById(R.id.desc_icon);
+		imgView1.setImageBitmap(drawTextToBitmap(getApplicationContext(),
+				R.drawable.poi_shopping, "15")); // MAKE DYNAMIC!
+	}
+	
+	
 	// draw text over the icons - pois numbers
 	private Bitmap drawTextToBitmap(Context gContext, int gResId, String gText) {
 		Resources resources = gContext.getResources();
