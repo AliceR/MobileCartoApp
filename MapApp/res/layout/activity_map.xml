@@ -31,7 +31,7 @@
         android:src="@drawable/button_map_center"
         android:contentDescription="@string/hello_world" />
     
-    <ImageButton
+<!--     <ImageButton
         android:id="@+id/about"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -42,6 +42,6 @@
         android:onClick="openAboutInfo"
         android:src="@drawable/ic_action_about"
         style="?android:attr/borderlessButtonStyle"
-        android:contentDescription="@string/hello_world" />
+        android:contentDescription="@string/hello_world" /> -->
 
 </RelativeLayout>

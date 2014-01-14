@@ -1,9 +1,8 @@
 package com.marialice.mapapp;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.view.Menu;
 import android.view.MenuItem;
 
 public class AboutActivity extends Activity {

@@ -110,7 +110,9 @@ public class MapActivity extends FragmentActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
-		case R.id.action_search:
+		case R.id.goto_about:
+			Intent aboutintent = new Intent(MapActivity.this, AboutActivity.class);
+			startActivity(aboutintent);
 			return true;
 		case R.id.goto_places:
 			Intent placesintent = new Intent(MapActivity.this, PlacesActivity.class);
@@ -375,6 +377,8 @@ public class MapActivity extends FragmentActivity implements
 		mCernavez = mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.cb_cerna_vez))
+				//.shadow(BitmapDescriptorFactory
+						//.fromResource(R.drawable.poi_shadow))
 				.position(new LatLng(48.9754689, 14.4761153)).anchor(0.5f, 1f)
 				.title("Èerná vìž").snippet("Black tower").rotation(10)
 				.infoWindowAnchor(0.0f, 0.0f));
@@ -584,11 +588,6 @@ public class MapActivity extends FragmentActivity implements
 	public void onInfoWindowClick(Marker arg0) {
 		// TODO Auto-generated method stub
 
-	}
-	
-	public void openAboutInfo(View view) {
-		Intent aboutintent = new Intent(MapActivity.this, AboutActivity.class);
-		startActivity(aboutintent);
 	}
 
 }
