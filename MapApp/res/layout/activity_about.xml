@@ -8,6 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AboutActivity" >
 
+    
     <TextView
         android:id="@+id/main_text"
         android:layout_width="wrap_content"
@@ -42,13 +43,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/writers_text"
-        android:text="@string/language_text" />
+        android:text="@string/language_text" />  
 
     <TextView
         android:id="@+id/graphic_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/language_text"
         android:text="@string/graphic_text" />
 
     <TextView
@@ -102,42 +102,41 @@
         android:layout_below="@id/contact_title"
         android:linksClickable="true" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/contact_mail"
-        android:orientation="vertical" >
+        android:layout_below="@id/contact_mail" >
 
         <ImageView
             android:id="@+id/use_it_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/use_it_logo"
-            android:src="@drawable/ic_launcher" />
-        <ImageView
-            android:id="@+id/useit_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/use_it_logo"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/juzit_logo" />
+
         <ImageView
             android:id="@+id/czechrep_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/use_it_logo"
             android:contentDescription="@string/use_it_logo"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/cz_logo" />
+
         <ImageView
             android:id="@+id/cb_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/czechrep_logo"
             android:contentDescription="@string/use_it_logo"
             android:src="@drawable/ic_launcher" />
+
         <ImageView
             android:id="@+id/ck_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cb_logo"
             android:contentDescription="@string/use_it_logo"
-            android:src="@drawable/ic_launcher" />
-    </LinearLayout>
+            android:src="@drawable/ck_logo" />
+    </RelativeLayout>
 
 </RelativeLayout>
