@@ -223,6 +223,12 @@ public class MapActivity extends FragmentActivity implements
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				48.9799567, 14.4759178), 14));
 	}
+	
+	// Zoom to selected poi from description
+	public void zoomFromDescription(Double lat, Double lon) {
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				lat, lon), 17));
+	}
 
 	@Override
 	public void onLocationChanged(Location location) {

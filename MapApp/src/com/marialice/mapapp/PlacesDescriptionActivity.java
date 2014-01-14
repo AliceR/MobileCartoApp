@@ -2,6 +2,10 @@ package com.marialice.mapapp;
 
 import java.io.IOException;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +23,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +31,9 @@ public class PlacesDescriptionActivity extends Activity {
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
+	
+	public Double poi_lat;
+	public Double poi_lon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +41,6 @@ public class PlacesDescriptionActivity extends Activity {
 		this.setContentView(R.layout.activity_places_description);
 		setupActionBar();
 		createDetails();
-		// addDescriptionFromDatabase();
 
 	}
 
@@ -116,7 +123,11 @@ public class PlacesDescriptionActivity extends Activity {
 					poi_icon.setImageBitmap(drawTextToBitmap(getApplicationContext(),
 							symbol, number));
 					
+					Double poi_lat = dbCursor.getDouble(lat);
+					Double poi_lon = dbCursor.getDouble(lon);
+					
 					return;
+					
 				} else {
 					textViewDesc.setText("not working");
 				}
@@ -162,4 +173,13 @@ public class PlacesDescriptionActivity extends Activity {
 		return bitmap;
 	}
 
+	public void gotomap(View view){
+		
+		Intent mapintent = new Intent(this, MapActivity.class);
+		mapintent.putExtra(null, poi_lat);
+		mapintent.putExtra(null,poi_lon);
+		startActivity(mapintent);
+		
+	}
+	
 }
