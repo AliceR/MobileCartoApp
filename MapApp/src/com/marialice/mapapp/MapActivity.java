@@ -112,7 +112,8 @@ public class MapActivity extends FragmentActivity implements
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.goto_about:
-			Intent aboutintent = new Intent(MapActivity.this, AboutActivity.class);
+			Intent aboutintent = new Intent(MapActivity.this,
+					AboutActivity.class);
 			startActivity(aboutintent);
 			return true;
 		case R.id.goto_places:
@@ -223,11 +224,11 @@ public class MapActivity extends FragmentActivity implements
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				48.9799567, 14.4759178), 14));
 	}
-	
+
 	// Zoom to selected poi from description
 	public void zoomFromDescription(Double lat, Double lon) {
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-				lat, lon), 17));
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon),
+				17));
 	}
 
 	@Override
@@ -351,7 +352,7 @@ public class MapActivity extends FragmentActivity implements
 				} else if (category.equals("cafe")) {
 					symbol = R.drawable.poi_cafe;
 				} else if (category.equals("eat")) {
-					symbol = R.drawable.poi_shadow;
+					symbol = R.drawable.poi_eat;
 				} else if (category.equals("poi_hidden")) {
 					symbol = R.drawable.poi_hidden;
 				} else if (category.equals("museum")) {
@@ -360,6 +361,24 @@ public class MapActivity extends FragmentActivity implements
 					symbol = R.drawable.poi_shopping;
 				} else if (category.equals("sightseeing")) {
 					symbol = R.drawable.poi_sightseeing;
+				} 
+				//points with two categories
+				else if (category.equals("museumsightseeing")) {
+					symbol = R.drawable.poi_museum_sightseeing;
+				} else if (category.equals("museumcafe")) {
+					symbol = R.drawable.poi_museum_cafe;
+				} else if (category.equals("shoppingeat")) {
+					symbol = R.drawable.poi_shopping_eat;
+				} else if (category.equals("hiddencafe")) {
+					symbol = R.drawable.poi_hidden_cafe;
+				} else if (category.equals("shoppingcafe")) {
+					symbol = R.drawable.poi_shopping_cafe;
+				} else if (category.equals("shoppingsightseeing")) {
+					symbol = R.drawable.poi_shopping_sightseeing;
+				} else if (category.equals("barcafe")) {
+					symbol = R.drawable.poi_bar_cafe;
+				} else if (category.equals("barsightseeing")) {
+					symbol = R.drawable.poi_bar_sightseeing;
 				} else {
 					symbol = R.drawable.poi_bar;
 				}
@@ -387,8 +406,8 @@ public class MapActivity extends FragmentActivity implements
 		mCernavez = mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.cb_cerna_vez))
-				//.shadow(BitmapDescriptorFactory
-						//.fromResource(R.drawable.poi_shadow))
+				// .shadow(BitmapDescriptorFactory
+				// .fromResource(R.drawable.poi_shadow))
 				.position(new LatLng(48.9754689, 14.4761153)).anchor(0.5f, 1f)
 				.title("Èerná vìž").snippet("Black tower").rotation(10)
 				.infoWindowAnchor(0.0f, 0.0f));
