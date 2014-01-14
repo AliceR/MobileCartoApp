@@ -14,8 +14,19 @@
     <string name="title_activity_database_helper">Database Helper</string>
     <string name="desc">Image - place description</string>
     <string name="use_it_logo">use it europe logo</string>
-    <string name="about_text">USE-IT Europe - Tourist info for young people. 
-        Nobody paid to be shown on this map! The choice of places was made by young locals.</string>
-    <string name="show_info">Show more info</string> 
-
+    <string name="about_text">USE-IT is non-commercial, no nonsense, up-to-date and free! We - young locals made the selection, prepared the maps and map applications for you, run infocentres and websites. And we can not wait to hear your feedback! If we made a mistake, please tell us. You can make next year\'s edition better!</string>
+    <string name="show_info">Show more info</string>
+    <string name="link_useit">&lt;a href="http://www.use-it.travel">www.use-it.travel&lt;/a></string>
+    <string name="link_cbuseit">&lt;a href="http://www.ceskebudejovice.use-it.travel">www.ceskebudejovice.use-it.travel&lt;/a></string>
+    <string name="link_fbuseit">&lt;a href="http://www.facebook.com/useit">www.facebook.com/USE-IT&lt;/a></string>
+    <string name="link_fbcbck">&lt;a href="http://www.facebook.com/useitcbck">www.facebook.com/useitCBCK&lt;/a></string>
+    <string name="contact_mail">&lt;a href="ceskebudejovice@use-it.travel">ceskebudejovice@use-it.travel&lt;/a></string>
+    <string name="link_title">External links:</string>
+    <string name="contact_title">Contact:</string>
+    <string name="edition_text"><b>USE-IT ČK&#38;ČB 2013, 1st edition</b>, published in December 2013 by &#169; Jůzit o.s.</string>
+    <string name="writers_text"><b>Writers collective:</b> Eva Křížová, Kamila Kačmáčková, Miroslav Řezníček, Katka Jedličková, Radka Záhrobovská, Týna Houdková, Magda Zronková, Marie Rychlá Novotná, Katka Tůmová and others</string>
+	<string name="developers_text"><b>Developers:</b> Alice Rühl, Mariana Danielová</string>
+    <string name="language_text"><b>Language correctors:</b> Amanda Place, Jennifer Baily</string>
+    <string name="graphic_text"><b>Graphic designer:</b>Julie Dürrová</string>
+    
 </resources>
