@@ -1,5 +1,7 @@
 package com.marialice.mapapp;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,8 +26,6 @@ public class PlacesDescriptionActivity extends Activity {
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
-	
-	TextView textViewTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,10 @@ public class PlacesDescriptionActivity extends Activity {
 		this.setContentView(R.layout.activity_places_description);
 		setupActionBar();
 		createDetails();
-	//	addDescriptionFromDatabase();
+		// addDescriptionFromDatabase();
 
 	}
-	
+
 	private void setupActionBar() {
 		// Show the Up button in the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,19 +61,75 @@ public class PlacesDescriptionActivity extends Activity {
 
 	public void createDetails() {
 		TextView textViewTitle = (TextView) findViewById(R.id.desc_title);
+		TextView textViewDesc = (TextView) findViewById(R.id.description);
+		ImageView poi_icon = (ImageView) findViewById(R.id.desc_icon);
 
 		Intent i = getIntent();
 		// getting attached intent data
-		String poi_name = i.getStringExtra("listDataChild");
+		String poi_namels = i.getStringExtra("listDataChild");
 		// displaying selected point name
-		textViewTitle.setText(poi_name);
+		textViewTitle.setText(poi_namels);
 
-		ImageView imgView1 = (ImageView) findViewById(R.id.desc_icon);
-		imgView1.setImageBitmap(drawTextToBitmap(getApplicationContext(),
-				R.drawable.poi_shopping, "15")); // MAKE DYNAMIC!
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		try {
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT * FROM cbpois;", null);
+
+			int lat = dbCursor.getColumnIndex("lat");
+			int lon = dbCursor.getColumnIndex("lon");
+			int id = dbCursor.getColumnIndex("id");
+			int cat = dbCursor.getColumnIndex("category");
+			int title = dbCursor.getColumnIndex("title");
+			int desc = dbCursor.getColumnIndex("description");
+
+			dbCursor.moveToFirst();
+			while (!dbCursor.isAfterLast()) {
+				String poi_namedb = dbCursor.getString(title);
+				String category = dbCursor.getString(cat);
+				String number = dbCursor.getString(id);
+				int symbol = 0;
+				
+				if (poi_namedb.equals(poi_namels)) {
+					String description = dbCursor.getString(desc);
+					textViewDesc.setText(description);
+					
+					if (category.equals("bar")) {
+						symbol = R.drawable.poi_bar;
+					} else if (category.equals("cafe")) {
+						symbol = R.drawable.poi_cafe;
+					} else if (category.equals("eat")) {
+						symbol = R.drawable.poi_shadow;
+					} else if (category.equals("poi_hidden")) {
+						symbol = R.drawable.poi_hidden;
+					} else if (category.equals("museum")) {
+						symbol = R.drawable.poi_museum;
+					} else if (category.equals("shopping")) {
+						symbol = R.drawable.poi_shopping;
+					} else if (category.equals("sightseeing")) {
+						symbol = R.drawable.poi_sightseeing;
+					} else {
+						symbol = R.drawable.poi_bar;
+					}
+					poi_icon.setImageBitmap(drawTextToBitmap(getApplicationContext(),
+							symbol, number));
+					
+					return;
+				} else {
+					textViewDesc.setText("not working");
+				}
+				dbCursor.moveToNext();
+			}
+
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
 	}
-	
-	
+
 	// draw text over the icons - pois numbers
 	private Bitmap drawTextToBitmap(Context gContext, int gResId, String gText) {
 		Resources resources = gContext.getResources();
@@ -105,31 +161,5 @@ public class PlacesDescriptionActivity extends Activity {
 
 		return bitmap;
 	}
-	
-	/*public void addDescriptionFromDatabase() {
-		try {
-			dbHelper.createDataBase();
-		} catch (IOException ioe) {
-		}
-		try {
-			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT description FROM cbpois WHERE title = 'SECRET OF BUDVAR';", null);
-			dbCursor.moveToFirst();
-			int des = dbCursor.getColumnIndex("description");
-			while (!dbCursor.isAfterLast()) {
-
-				String description = dbCursor.getString(des);
-
-				TextView textViewDescription = (TextView) findViewById(R.id.TextView2);
-				textViewDescription.setText(description);
-				dbCursor.moveToNext();
-			}
-		} finally {
-			if (db != null) {
-				dbHelper.close();
-			}
-		}
-	}
-*/
 
 }
