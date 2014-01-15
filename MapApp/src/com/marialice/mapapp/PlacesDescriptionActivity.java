@@ -2,10 +2,6 @@ package com.marialice.mapapp;
 
 import java.io.IOException;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
