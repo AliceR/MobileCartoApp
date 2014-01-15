@@ -65,9 +65,9 @@ public class MapActivity extends FragmentActivity implements
 	private Marker mCernavez;
 	private Marker mBazen;
 
-	public Double poi_lat;
-	public Double poi_lon;
-	//public Bundle bundle;
+	public Double poi_lat = 48.9744094;
+	public Double poi_lon = 14.4746094;
+	// public Bundle bundle;
 
 	// For getting the location
 	private static final LocationRequest REQUEST = LocationRequest.create()
@@ -130,70 +130,6 @@ public class MapActivity extends FragmentActivity implements
 		}
 	}
 
-	class CustomInfoWindowAdapter implements InfoWindowAdapter {
-		private final View mWindow;
-
-		CustomInfoWindowAdapter() {
-			mWindow = getLayoutInflater().inflate(R.layout.custom_info_window,
-					null);
-		}
-
-		@Override
-		public View getInfoWindow(Marker marker) {
-			render(marker, mWindow);
-			return mWindow;
-		}
-
-		// this is for the images in the info window
-		private void render(Marker marker, View view) {
-			int badge;
-			// Use the equals() method on a Marker to check for equals. Do not
-			// use ==.
-			if (marker.equals(mCernavez)) {
-				badge = R.drawable.cb_cerna_vez;
-			} else if (marker.equals(mBazen)) {
-				badge = R.drawable.cb_bazen;
-			} else {
-				// Passing 0 to setImageResource will clear the image view.
-				badge = 0;
-			}
-			((ImageView) view.findViewById(R.id.badge)).setImageResource(badge);
-
-			String title = marker.getTitle();
-			Typeface tf = Typeface.createFromAsset(getAssets(),
-					"fonts/DINNextRounded.otf");
-			TextView titleUi = ((TextView) view.findViewById(R.id.title));
-			titleUi.setTypeface(tf);
-			if (title != null) {
-				// Spannable string allows us to edit the formatting of the
-				// text.
-				SpannableString titleText = new SpannableString(title);
-				titleText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
-						titleText.length(), 0);
-				titleUi.setText(titleText);
-			} else {
-				titleUi.setText("");
-			}
-
-			String snippet = marker.getSnippet();
-			TextView snippetUi = ((TextView) view.findViewById(R.id.snippet));
-			if (snippet != null) {
-				SpannableString snippetText = new SpannableString(snippet);
-				snippetText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
-						snippet.length(), 0);
-				snippetUi.setText(snippetText);
-			} else {
-				snippetUi.setText("");
-			}
-		}
-
-		@Override
-		public View getInfoContents(Marker arg0) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	}
-
 	private void setUpMapIfNeeded() {
 		// Do a null check to confirm that we have not already instantiated the
 		// map.
@@ -210,69 +146,19 @@ public class MapActivity extends FragmentActivity implements
 		}
 	}
 
-	private void setUpLocationClientIfNeeded() {
-		if (mLocationClient == null) {
-			mLocationClient = new LocationClient(getApplicationContext(), this, // ConnectionCallbacks
-					this); // OnConnectionFailedListener
-		}
-	}
-
-	// Zoom to city center button
-	public void zoomCityCenter(View view) {
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-				48.9744094, 14.4746094), 16));
-	}
-
-	// Zoom to overview button
-	public void zoomOverview(View view) {
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-				48.9799567, 14.4759178), 14));
-	}
-
-	// Zoom to selected poi from description
-	public void zoomFromDescription(Double lat, Double lon) {
-
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon),
-				17));
-	}
-
-	@Override
-	public void onLocationChanged(Location location) {
-	}
-
-	@Override
-	public void onConnected(Bundle connectionHint) {
-		mLocationClient.requestLocationUpdates(REQUEST, this); // LocationListener
-	}
-
-	@Override
-	public void onDisconnected() {
-	}
-
-	@Override
-	public void onConnectionFailed(ConnectionResult result) {
-		// Do nothing
-	}
-
-	@Override
-	public boolean onMyLocationButtonClick() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	private void setUpMap() {
 		// declare some map properties
 		mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
 		mMap.setMyLocationEnabled(true);
 		mMap.getUiSettings().setZoomControlsEnabled(true);
 		mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
-		Double lat = getIntent().getDoubleExtra("poi_lat", 0);
-		Double lon = getIntent().getDoubleExtra("poi_lon", 0);
-		if (lat == 0) {
+		Double lat = getIntent().getDoubleExtra("poi_lat", poi_lat);
+		Double lon = getIntent().getDoubleExtra("poi_lon", poi_lon);
+		if (/*activity started from description, not android.intent.action.MAIN*/) {
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-					48.9744094, 14.4746094), 15));
+				48.9744094, 14.4746094), 15));
 		} else {
-			zoomFromDescription(lat,lon);
+			zoomFromDescription(lat, lon);
 		}
 
 		// create the tile overlay
@@ -298,6 +184,24 @@ public class MapActivity extends FragmentActivity implements
 
 		addMarkersToMap();
 		addPoisFromDatabase();
+	}
+
+	// Zoom to city center button
+	public void zoomCityCenter(View view) {
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				48.9744094, 14.4746094), 16));
+	}
+
+	// Zoom to overview button
+	public void zoomOverview(View view) {
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				48.9799567, 14.4759178), 14));
+	}
+
+	// Zoom to selected poi from description
+	public void zoomFromDescription(Double lat, Double lon) {
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon),
+				17));
 	}
 
 	// draw text over the icons - pois numbers
@@ -626,10 +530,105 @@ public class MapActivity extends FragmentActivity implements
 
 	}
 
+	class CustomInfoWindowAdapter implements InfoWindowAdapter {
+		private final View mWindow;
+
+		CustomInfoWindowAdapter() {
+			mWindow = getLayoutInflater().inflate(R.layout.custom_info_window,
+					null);
+		}
+
+		@Override
+		public View getInfoWindow(Marker marker) {
+			render(marker, mWindow);
+			return mWindow;
+		}
+
+		// this is for the images in the info window
+		private void render(Marker marker, View view) {
+			int badge;
+			// Use the equals() method on a Marker to check for equals. Do not
+			// use ==.
+			if (marker.equals(mCernavez)) {
+				badge = R.drawable.cb_cerna_vez;
+			} else if (marker.equals(mBazen)) {
+				badge = R.drawable.cb_bazen;
+			} else {
+				// Passing 0 to setImageResource will clear the image view.
+				badge = 0;
+			}
+			((ImageView) view.findViewById(R.id.badge)).setImageResource(badge);
+
+			String title = marker.getTitle();
+			Typeface tf = Typeface.createFromAsset(getAssets(),
+					"fonts/DINNextRounded.otf");
+			TextView titleUi = ((TextView) view.findViewById(R.id.title));
+			titleUi.setTypeface(tf);
+			if (title != null) {
+				// Spannable string allows us to edit the formatting of the
+				// text.
+				SpannableString titleText = new SpannableString(title);
+				titleText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
+						titleText.length(), 0);
+				titleUi.setText(titleText);
+			} else {
+				titleUi.setText("");
+			}
+
+			String snippet = marker.getSnippet();
+			TextView snippetUi = ((TextView) view.findViewById(R.id.snippet));
+			if (snippet != null) {
+				SpannableString snippetText = new SpannableString(snippet);
+				snippetText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
+						snippet.length(), 0);
+				snippetUi.setText(snippetText);
+			} else {
+				snippetUi.setText("");
+			}
+		}
+
+		@Override
+		public View getInfoContents(Marker arg0) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	}
+
 	@Override
 	public void onInfoWindowClick(Marker arg0) {
 		// TODO Auto-generated method stub
 
+	}
+
+	private void setUpLocationClientIfNeeded() {
+		if (mLocationClient == null) {
+			mLocationClient = new LocationClient(getApplicationContext(), this, // ConnectionCallbacks
+					this); // OnConnectionFailedListener
+		}
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+	}
+
+	@Override
+	public void onConnected(Bundle connectionHint) {
+		mLocationClient.requestLocationUpdates(REQUEST, this); // LocationListener
+	}
+
+	@Override
+	public void onDisconnected() {
+	}
+
+	@Override
+	public void onConnectionFailed(ConnectionResult result) {
+		// Do nothing
+	}
+
+	@Override
+	public boolean onMyLocationButtonClick() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
