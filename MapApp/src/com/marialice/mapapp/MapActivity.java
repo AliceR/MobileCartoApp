@@ -67,7 +67,7 @@ public class MapActivity extends FragmentActivity implements
 
 	public Double poi_lat;
 	public Double poi_lon;
-	public Bundle bundle;
+	//public Bundle bundle;
 
 	// For getting the location
 	private static final LocationRequest REQUEST = LocationRequest.create()
@@ -230,12 +230,7 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	// Zoom to selected poi from description
-	public void zoomFromDescription(Bundle bundle) {
-		Bundle bundlelat = getIntent().getBundleExtra("poi_lat");
-		Bundle bundlelon = getIntent().getBundleExtra("poi_lon");
-
-		Double lat = bundlelat.getDouble("poi_lat");
-		Double lon = bundlelon.getDouble("poi_lon");
+	public void zoomFromDescription(Double lat, Double lon) {
 
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon),
 				17));
@@ -271,11 +266,13 @@ public class MapActivity extends FragmentActivity implements
 		mMap.setMyLocationEnabled(true);
 		mMap.getUiSettings().setZoomControlsEnabled(true);
 		mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
-		if (bundle == null) {
+		Double lat = getIntent().getDoubleExtra("poi_lat", 0);
+		Double lon = getIntent().getDoubleExtra("poi_lon", 0);
+		if (lat == 0) {
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 					48.9744094, 14.4746094), 15));
 		} else {
-			zoomFromDescription(bundle);
+			zoomFromDescription(lat,lon);
 		}
 
 		// create the tile overlay

@@ -29,6 +29,7 @@ public class PlacesDescriptionActivity extends Activity {
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
 
+	Bundle bundle = new Bundle();
 	public Double poi_lat;
 	public Double poi_lon;
 
@@ -97,6 +98,8 @@ public class PlacesDescriptionActivity extends Activity {
 				
 				Double poi_lat = dbCursor.getDouble(lat);
 				Double poi_lon = dbCursor.getDouble(lon);
+				bundle.putDouble("poi_lat", poi_lat);
+				bundle.putDouble("poi_lon", poi_lon);
 
 				
 				int symbol = 0;
@@ -173,18 +176,19 @@ public class PlacesDescriptionActivity extends Activity {
 	}
 
 	public void gotomap(View view) {
-		if (poi_lat == null) {
+		if (bundle == null) {
 			Context context = getApplicationContext();
 			CharSequence text = "no lat lon values!";
 			int duration = Toast.LENGTH_SHORT;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
-		} else {
-			Bundle bundle = new Bundle();
-			Intent mapintent = new Intent(this, MapActivity.class);
-			bundle.putDouble("poi_lat", poi_lat);
-			bundle.putDouble("poi_lon", poi_lon);
-			mapintent.putExtra(null, bundle);
+		} else {		
+			Intent mapintent = new Intent(this, MapActivity.class);	
+			//mapintent.putExtra("bundlename", bundle);
+			
+			mapintent.putExtra("lat", bundle.getDouble("poi_lat"));
+			mapintent.putExtra("lon", bundle.getDouble("poi_lon"));
+			
 			startActivity(mapintent);
 		}
 	}
