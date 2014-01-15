@@ -22,12 +22,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlacesDescriptionActivity extends Activity {
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
-	
+
 	public Double poi_lat;
 	public Double poi_lon;
 
@@ -93,12 +94,17 @@ public class PlacesDescriptionActivity extends Activity {
 				String poi_namedb = dbCursor.getString(title);
 				String category = dbCursor.getString(cat);
 				String number = dbCursor.getString(id);
-				int symbol = 0;
 				
+				Double poi_lat = dbCursor.getDouble(lat);
+				Double poi_lon = dbCursor.getDouble(lon);
+
+				
+				int symbol = 0;
+
 				if (poi_namedb.equals(poi_namels)) {
 					String description = dbCursor.getString(desc);
 					textViewDesc.setText(description);
-					
+
 					if (category.equals("bar")) {
 						symbol = R.drawable.poi_bar;
 					} else if (category.equals("cafe")) {
@@ -116,14 +122,11 @@ public class PlacesDescriptionActivity extends Activity {
 					} else {
 						symbol = R.drawable.poi_bar;
 					}
-					poi_icon.setImageBitmap(drawTextToBitmap(getApplicationContext(),
-							symbol, number));
-					
-					Double poi_lat = dbCursor.getDouble(lat);
-					Double poi_lon = dbCursor.getDouble(lon);
+					poi_icon.setImageBitmap(drawTextToBitmap(
+							getApplicationContext(), symbol, number));
 					
 					return;
-					
+
 				} else {
 					textViewDesc.setText("not working");
 				}
@@ -161,21 +164,29 @@ public class PlacesDescriptionActivity extends Activity {
 
 		Rect bounds = new Rect();
 		paint.getTextBounds(gText, 0, gText.length(), bounds);
-		int x = (bitmap.getWidth() - bounds.width()) / 10 * 4;
-		int y = (bitmap.getHeight() + bounds.height()) / 4;
+		int x = (bitmap.getWidth() - bounds.width()) / 4;
+		int y = (bitmap.getHeight() + bounds.height()) / 6;
 
 		canvas.drawText(gText, x * scale, y * scale, paint);
 
 		return bitmap;
 	}
 
-	public void gotomap(View view){
-		
-		Intent mapintent = new Intent(this, MapActivity.class);
-		mapintent.putExtra(null, poi_lat);
-		mapintent.putExtra(null,poi_lon);
-		startActivity(mapintent);
-		
+	public void gotomap(View view) {
+		if (poi_lat == null) {
+			Context context = getApplicationContext();
+			CharSequence text = "no lat lon values!";
+			int duration = Toast.LENGTH_SHORT;
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
+		} else {
+			Bundle bundle = new Bundle();
+			Intent mapintent = new Intent(this, MapActivity.class);
+			bundle.putDouble("poi_lat", poi_lat);
+			bundle.putDouble("poi_lon", poi_lon);
+			mapintent.putExtra(null, bundle);
+			startActivity(mapintent);
+		}
 	}
-	
+
 }

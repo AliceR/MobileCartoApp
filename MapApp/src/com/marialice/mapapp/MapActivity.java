@@ -65,6 +65,10 @@ public class MapActivity extends FragmentActivity implements
 	private Marker mCernavez;
 	private Marker mBazen;
 
+	public Double poi_lat;
+	public Double poi_lon;
+	public Bundle bundle;
+
 	// For getting the location
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000) // 5 seconds
@@ -226,7 +230,13 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	// Zoom to selected poi from description
-	public void zoomFromDescription(Double lat, Double lon) {
+	public void zoomFromDescription(Bundle bundle) {
+		Bundle bundlelat = getIntent().getBundleExtra("poi_lat");
+		Bundle bundlelon = getIntent().getBundleExtra("poi_lon");
+
+		Double lat = bundlelat.getDouble("poi_lat");
+		Double lon = bundlelon.getDouble("poi_lon");
+
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon),
 				17));
 	}
@@ -261,8 +271,12 @@ public class MapActivity extends FragmentActivity implements
 		mMap.setMyLocationEnabled(true);
 		mMap.getUiSettings().setZoomControlsEnabled(true);
 		mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-				48.9744094, 14.4746094), 15));
+		if (bundle == null) {
+			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+					48.9744094, 14.4746094), 15));
+		} else {
+			zoomFromDescription(bundle);
+		}
 
 		// create the tile overlay
 		TileProvider tileProvider = new UrlTileProvider(256, 256) {
@@ -313,8 +327,8 @@ public class MapActivity extends FragmentActivity implements
 
 		Rect bounds = new Rect();
 		paint.getTextBounds(gText, 0, gText.length(), bounds);
-		int x = (bitmap.getWidth() - bounds.width()) / 10 * 4;
-		int y = (bitmap.getHeight() + bounds.height()) / 4;
+		int x = (bitmap.getWidth() - bounds.width()) / 4;
+		int y = (bitmap.getHeight() + bounds.height()) / 6;
 
 		canvas.drawText(gText, x * scale, y * scale, paint);
 
@@ -361,8 +375,8 @@ public class MapActivity extends FragmentActivity implements
 					symbol = R.drawable.poi_shopping;
 				} else if (category.equals("sightseeing")) {
 					symbol = R.drawable.poi_sightseeing;
-				} 
-				//points with two categories
+				}
+				// points with two categories
 				else if (category.equals("museumsightseeing")) {
 					symbol = R.drawable.poi_museum_sightseeing;
 				} else if (category.equals("museumcafe")) {
