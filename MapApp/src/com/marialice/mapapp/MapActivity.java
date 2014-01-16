@@ -253,16 +253,15 @@ public class MapActivity extends FragmentActivity implements
 				String category = dbCursor.getString(cat);
 
 				int symbol = 0;
-				
-				/* it would be better to use switch case instead of if else if
+
+				/*
+				 * it would be better to use switch case instead of if else if
 				 * 
-				 * switch (category){
-				 * case "bar": symbol = R.drawable.poi_bar;
-				 * case "cafe": symbol = R.drawable.poi_cafe;
-				 * }
+				 * switch (category){ case "bar": symbol = R.drawable.poi_bar;
+				 * case "cafe": symbol = R.drawable.poi_cafe; }
 				 * 
-				 * but i think switch can only deal with int, we are comparing strings.
-				 * 
+				 * but i think switch can only deal with int, we are comparing
+				 * strings.
 				 */
 				if (category.equals("bar")) {
 					symbol = R.drawable.poi_bar;
@@ -325,39 +324,39 @@ public class MapActivity extends FragmentActivity implements
 						.fromResource(R.drawable.cb_cerna_vez))
 				.position(new LatLng(48.9754689, 14.4761153)).anchor(0.5f, 1f)
 				.title("Èerná vìž").snippet("Black tower").rotation(10)
-				.infoWindowAnchor(0.0f, 0.0f));
+				.flat(true).infoWindowAnchor(0.0f, 0.0f));
 
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.cb_bila_vez))
 				.position(new LatLng(48.9756647, 14.4717539)).anchor(0.5f, 1f)
 				.title("Klášter dominikánù").snippet("Dominican monastery")
-				.rotation(0).infoWindowAnchor(0.5f, 0.5f));
+				.rotation(0).flat(true).infoWindowAnchor(0.5f, 0.5f));
 
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_kasna))
 				.position(new LatLng(48.9745117, 14.4743214))
 				.anchor(0.5f, 0.75f).rotation(4).title("Samsonova kašna")
-				.snippet("Samson fountain").infoWindowAnchor(0.5f, 0.5f));
+				.snippet("Samson fountain").flat(true).infoWindowAnchor(0.5f, 0.5f));
 
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_bazen))
 				.position(new LatLng(48.9744025, 14.4691572))
 				.anchor(0.5f, 0.75f).rotation(4).title("Plavecký bazén")
-				.snippet("Swiming pool").infoWindowAnchor(0.5f, 0.5f));
+				.snippet("Swiming pool").flat(true).infoWindowAnchor(0.5f, 0.5f));
 
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_kino))
 				.position(new LatLng(48.9716589, 14.4711061))
 				.anchor(0.5f, 0.75f).rotation(0).title("Kino")
-				.snippet("Cinema").infoWindowAnchor(0.5f, 0.5f));
+				.snippet("Cinema").flat(true).infoWindowAnchor(0.5f, 0.5f));
 
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.cb_zeleznapanna))
 				.position(new LatLng(48.9728661, 14.4725350))
 				.anchor(0.5f, 0.75f).rotation(355).title("Železná panna")
-				.snippet("Iron maiden").infoWindowAnchor(0.5f, 0.5f));
+				.snippet("Iron maiden").flat(true).infoWindowAnchor(0.5f, 0.5f));
 
 		// ATM poi
 		mMap.addMarker(new MarkerOptions().icon(
