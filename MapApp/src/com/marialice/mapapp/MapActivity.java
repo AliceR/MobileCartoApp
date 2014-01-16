@@ -2,7 +2,6 @@ package com.marialice.mapapp;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
@@ -28,10 +27,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.widget.ImageView;
-import android.text.SpannableString;
-import android.widget.TextView;
-import android.text.style.ForegroundColorSpan;
 
 import android.content.Context;
 import android.content.Intent;
@@ -62,8 +57,6 @@ public class MapActivity extends FragmentActivity implements
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.h0a912jg/%d/%d/%d.png";
 	private GoogleMap mMap;
 	private LocationClient mLocationClient; // for location
-	private Marker mCernavez;
-	private Marker mBazen;
 
 	// public Bundle bundle;
 
@@ -149,7 +142,6 @@ public class MapActivity extends FragmentActivity implements
 		mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
 		mMap.setMyLocationEnabled(true);
 		mMap.getUiSettings().setZoomControlsEnabled(true);
-		mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
 		Double default_lat = 48.9744094;
 		Double default_lon = 14.4746094;
 		Double lat = getIntent().getDoubleExtra("lat", default_lat);
@@ -318,11 +310,9 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	private void addMarkersToMap() {
-		mCernavez = mMap.addMarker(new MarkerOptions()
+		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.cb_cerna_vez))
-				// .shadow(BitmapDescriptorFactory
-				// .fromResource(R.drawable.poi_shadow))
 				.position(new LatLng(48.9754689, 14.4761153)).anchor(0.5f, 1f)
 				.title("Èerná vìž").snippet("Black tower").rotation(10)
 				.infoWindowAnchor(0.0f, 0.0f));
@@ -340,14 +330,11 @@ public class MapActivity extends FragmentActivity implements
 				.anchor(0.5f, 0.75f).rotation(4).title("Samsonova kašna")
 				.snippet("Samson fountain").infoWindowAnchor(0.5f, 0.5f));
 
-		mBazen = mMap
-				.addMarker(new MarkerOptions()
-						.icon(BitmapDescriptorFactory
-								.fromResource(R.drawable.cb_bazen))
-						.position(new LatLng(48.9744025, 14.4691572))
-						.anchor(0.5f, 0.75f).rotation(4)
-						.title("Plavecký bazén").snippet("Swiming pool")
-						.infoWindowAnchor(0.5f, 0.5f));
+		mMap.addMarker(new MarkerOptions()
+				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_bazen))
+				.position(new LatLng(48.9744025, 14.4691572))
+				.anchor(0.5f, 0.75f).rotation(4).title("Plavecký bazén")
+				.snippet("Swiming pool").infoWindowAnchor(0.5f, 0.5f));
 
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory.fromResource(R.drawable.cb_kino))
@@ -528,70 +515,6 @@ public class MapActivity extends FragmentActivity implements
 						.fromResource(R.drawable.train_station))
 				.position(new LatLng(48.9744633, 14.4885883)).rotation(75));
 
-	}
-
-	class CustomInfoWindowAdapter implements InfoWindowAdapter {
-		private final View mWindow;
-
-		CustomInfoWindowAdapter() {
-			mWindow = getLayoutInflater().inflate(R.layout.custom_info_window,
-					null);
-		}
-
-		@Override
-		public View getInfoWindow(Marker marker) {
-			render(marker, mWindow);
-			return mWindow;
-		}
-
-		// this is for the images in the info window
-		private void render(Marker marker, View view) {
-			int badge;
-			// Use the equals() method on a Marker to check for equals. Do not
-			// use ==.
-			if (marker.equals(mCernavez)) {
-				badge = R.drawable.cb_cerna_vez;
-			} else if (marker.equals(mBazen)) {
-				badge = R.drawable.cb_bazen;
-			} else {
-				// Passing 0 to setImageResource will clear the image view.
-				badge = 0;
-			}
-			((ImageView) view.findViewById(R.id.badge)).setImageResource(badge);
-
-			String title = marker.getTitle();
-			Typeface tf = Typeface.createFromAsset(getAssets(),
-					"fonts/DINNextRounded.otf");
-			TextView titleUi = ((TextView) view.findViewById(R.id.title));
-			titleUi.setTypeface(tf);
-			if (title != null) {
-				// Spannable string allows us to edit the formatting of the
-				// text.
-				SpannableString titleText = new SpannableString(title);
-				titleText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
-						titleText.length(), 0);
-				titleUi.setText(titleText);
-			} else {
-				titleUi.setText("");
-			}
-
-			String snippet = marker.getSnippet();
-			TextView snippetUi = ((TextView) view.findViewById(R.id.snippet));
-			if (snippet != null) {
-				SpannableString snippetText = new SpannableString(snippet);
-				snippetText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
-						snippet.length(), 0);
-				snippetUi.setText(snippetText);
-			} else {
-				snippetUi.setText("");
-			}
-		}
-
-		@Override
-		public View getInfoContents(Marker arg0) {
-			// TODO Auto-generated method stub
-			return null;
-		}
 	}
 
 	@Override
