@@ -46,12 +46,7 @@ public class DatabaseContent extends Activity{
 			int titleindex = dbCursor.getColumnIndex("title");
 			int descindex = dbCursor.getColumnIndex("description");
 			
-			while (!dbCursor.isAfterLast()) {
-				
-				
-				
-				
-			}
+			return;
 		} finally {
 			if (db != null) {
 				dbHelper.close();

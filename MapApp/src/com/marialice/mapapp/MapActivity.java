@@ -253,7 +253,17 @@ public class MapActivity extends FragmentActivity implements
 				String category = dbCursor.getString(cat);
 
 				int symbol = 0;
-
+				
+				/* it would be better to use switch case instead of if else if
+				 * 
+				 * switch (category){
+				 * case "bar": symbol = R.drawable.poi_bar;
+				 * case "cafe": symbol = R.drawable.poi_cafe;
+				 * }
+				 * 
+				 * but i think switch can only deal with int, we are comparing strings.
+				 * 
+				 */
 				if (category.equals("bar")) {
 					symbol = R.drawable.poi_bar;
 				} else if (category.equals("cafe")) {
