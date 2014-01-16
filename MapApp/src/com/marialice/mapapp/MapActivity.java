@@ -65,8 +65,6 @@ public class MapActivity extends FragmentActivity implements
 	private Marker mCernavez;
 	private Marker mBazen;
 
-	public Double poi_lat = 48.9744094;
-	public Double poi_lon = 14.4746094;
 	// public Bundle bundle;
 
 	// For getting the location
@@ -152,11 +150,13 @@ public class MapActivity extends FragmentActivity implements
 		mMap.setMyLocationEnabled(true);
 		mMap.getUiSettings().setZoomControlsEnabled(true);
 		mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
-		Double lat = getIntent().getDoubleExtra("poi_lat", poi_lat);
-		Double lon = getIntent().getDoubleExtra("poi_lon", poi_lon);
-		if (/*activity started from description, not android.intent.action.MAIN*/) {
+		Double default_lat = 48.9744094;
+		Double default_lon = 14.4746094;
+		Double lat = getIntent().getDoubleExtra("lat", default_lat);
+		Double lon = getIntent().getDoubleExtra("lon", default_lon);
+		if (lat.equals(default_lat)) {
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-				48.9744094, 14.4746094), 15));
+					default_lat, default_lon), 15));
 		} else {
 			zoomFromDescription(lat, lon);
 		}
@@ -201,7 +201,7 @@ public class MapActivity extends FragmentActivity implements
 	// Zoom to selected poi from description
 	public void zoomFromDescription(Double lat, Double lon) {
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon),
-				17));
+				18));
 	}
 
 	// draw text over the icons - pois numbers

@@ -28,8 +28,7 @@ public class PlacesDescriptionActivity extends Activity {
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
-
-	Bundle bundle = new Bundle();
+	
 	public Double poi_lat;
 	public Double poi_lon;
 
@@ -68,6 +67,7 @@ public class PlacesDescriptionActivity extends Activity {
 		TextView textViewTitle = (TextView) findViewById(R.id.desc_title);
 		TextView textViewDesc = (TextView) findViewById(R.id.description);
 		ImageView poi_icon = (ImageView) findViewById(R.id.desc_icon);
+		
 
 		Intent i = getIntent();
 		// getting attached intent data
@@ -96,11 +96,8 @@ public class PlacesDescriptionActivity extends Activity {
 				String category = dbCursor.getString(cat);
 				String number = dbCursor.getString(id);
 				
-				Double poi_lat = dbCursor.getDouble(lat);
-				Double poi_lon = dbCursor.getDouble(lon);
-				bundle.putDouble("poi_lat", poi_lat);
-				bundle.putDouble("poi_lon", poi_lon);
-
+				poi_lat = dbCursor.getDouble(lat);
+				poi_lon = dbCursor.getDouble(lon);
 				
 				int symbol = 0;
 
@@ -176,7 +173,7 @@ public class PlacesDescriptionActivity extends Activity {
 	}
 
 	public void gotomap(View view) {
-		if (bundle == null) {
+		if (poi_lat == null) {
 			Context context = getApplicationContext();
 			CharSequence text = "no lat lon values!";
 			int duration = Toast.LENGTH_SHORT;
@@ -184,11 +181,8 @@ public class PlacesDescriptionActivity extends Activity {
 			toast.show();
 		} else {		
 			Intent mapintent = new Intent(this, MapActivity.class);	
-			//mapintent.putExtra("bundlename", bundle);
-			
-			mapintent.putExtra("lat", bundle.getDouble("poi_lat"));
-			mapintent.putExtra("lon", bundle.getDouble("poi_lon"));
-			
+			mapintent.putExtra("lat", poi_lat);
+			mapintent.putExtra("lon", poi_lon);			
 			startActivity(mapintent);
 		}
 	}
