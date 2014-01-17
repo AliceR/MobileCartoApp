@@ -53,11 +53,6 @@ public class MapActivity extends FragmentActivity implements
 			.setFastestInterval(16) // 16ms = 60fps
 			.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-	// For the connection to the database
-	/*
-	 * SQLiteDatabase db = null; Cursor dbCursor; DatabaseHelper dbHelper = new
-	 * DatabaseHelper(this);
-	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -11,14 +11,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DatabaseContent extends Activity {
 
-//	public final List<String> listSightseeing = new ArrayList<String>();
-//	public final List<String> listMuseum = new ArrayList<String>();
-//	public final List<String> listShopping = new ArrayList<String>();
-//	public final List<String> listEat = new ArrayList<String>();
-//	public final List<String> listCafe = new ArrayList<String>();
-//	public final List<String> listBar = new ArrayList<String>();
-//	public final List<String> listHidden = new ArrayList<String>();
-
 	public List<Poi> queryDataFromDatabase(Context context) {
 		
 		SQLiteDatabase db = null;
