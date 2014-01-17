@@ -14,59 +14,59 @@ import android.widget.TextView;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-	private Context _context;
-	private List<String> _listDataHeader; // header titles
+	private Context context;
+	private List<String> listDataHeader; // header titles
 	// child data in format of header title, child title
-	private HashMap<String, List<String>> _listDataChild;
+	private HashMap<String, List<String>> listDataChild;
 
 	public ExpandableListAdapter(Context context, List<String> listDataHeader,
 			HashMap<String, List<String>> listChildData) {
-		this._context = context;
-		this._listDataHeader = listDataHeader;
-		this._listDataChild = listChildData;
+		this.context = context;
+		this.listDataHeader = listDataHeader;
+		this.listDataChild = listChildData;
 	}
 
 	@Override
 	public Object getChild(int groupPosition, int childPosititon) {
-		return this._listDataChild.get(this._listDataHeader.get(groupPosition))
+		return this.listDataChild.get(this.listDataHeader.get(groupPosition))
 				.get(childPosititon);
 	}
 
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
 		return childPosition;
-	} 
-	
+	}
+
 	@Override
 	public View getChildView(int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 
-		final String childText = (String) getChild(groupPosition, childPosition);
-		int id_res = 0;
+		String childText = (String) getChild(groupPosition, childPosition);
+		int childlistimage = 0;
 		long group_id = getGroupId(groupPosition);
-		
+
 		if (group_id == 0) {
-			id_res = R.drawable.poi_sightseeing;
+			childlistimage = R.drawable.poi_sightseeing;
 		} else if (group_id == 1) {
-			id_res = R.drawable.poi_museum;
+			childlistimage = R.drawable.poi_museum;
 		} else if (group_id == 2) {
-			id_res = R.drawable.poi_shopping;
+			childlistimage = R.drawable.poi_shopping;
 		} else if (group_id == 3) {
-			id_res = R.drawable.poi_eat;
+			childlistimage = R.drawable.poi_eat;
 		} else if (group_id == 4) {
-			id_res = R.drawable.poi_cafe;
+			childlistimage = R.drawable.poi_cafe;
 		} else if (group_id == 5) {
-			id_res = R.drawable.poi_bar;
+			childlistimage = R.drawable.poi_bar;
 		} else if (group_id == 6) {
-			id_res = R.drawable.poi_hidden;
+			childlistimage = R.drawable.poi_hidden;
 		}
 
 		if (convertView == null) {
-			LayoutInflater infalInflater = (LayoutInflater) this._context
+			LayoutInflater infalInflater = (LayoutInflater) this.context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = infalInflater.inflate(R.layout.list_item, null);
 			ViewHolderListitem holderImage = new ViewHolderListitem(convertView);
-			holderImage.imageview.setImageResource(id_res);
+			holderImage.childimageview.setImageResource(childlistimage);
 		}
 
 		TextView txtListChild = (TextView) convertView
@@ -75,23 +75,21 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		txtListChild.setText(childText);
 		return convertView;
 	}
-	
-	
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		return this._listDataChild.get(this._listDataHeader.get(groupPosition))
+		return this.listDataChild.get(this.listDataHeader.get(groupPosition))
 				.size();
 	}
 
 	@Override
 	public Object getGroup(int groupPosition) {
-		return this._listDataHeader.get(groupPosition);
+		return this.listDataHeader.get(groupPosition);
 	}
-	
+
 	@Override
 	public int getGroupCount() {
-		return this._listDataHeader.size();
+		return this.listDataHeader.size();
 	}
 
 	@Override
@@ -102,32 +100,34 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
-		
-		String headerTitle = (String) getGroup(groupPosition);
-		int id_res = 0;
 
-		if (headerTitle.equals("Sightseeing")) {
-			id_res = R.drawable.poi_sightseeing;
-		} else if (headerTitle.equals("Museum, venue")) {
-			id_res = R.drawable.poi_museum;
-		} else if (headerTitle.equals("Shopping")) {
-			id_res = R.drawable.poi_shopping;
-		} else if (headerTitle.equals("Eat, drink")) {
-			id_res = R.drawable.poi_eat;
-		} else if (headerTitle.equals("Café, tea room")) {
-			id_res = R.drawable.poi_cafe;
-		} else if (headerTitle.equals("Bar, club")) {
-			id_res = R.drawable.poi_bar;
-		} else if (headerTitle.equals("Hidden, chill out")) {
-			id_res = R.drawable.poi_hidden;
-		}
+		String headerTitle = (String) getGroup(groupPosition);
 		
+		int headerlistimage = 0;
+		long group_id = getGroupId(groupPosition);
+
+		if (group_id == 0) {
+			headerlistimage = R.drawable.poi_sightseeing;
+		} else if (group_id == 1) {
+			headerlistimage = R.drawable.poi_museum;
+		} else if (group_id == 2) {
+			headerlistimage = R.drawable.poi_shopping;
+		} else if (group_id == 3) {
+			headerlistimage = R.drawable.poi_eat;
+		} else if (group_id == 4) {
+			headerlistimage = R.drawable.poi_cafe;
+		} else if (group_id == 5) {
+			headerlistimage = R.drawable.poi_bar;
+		} else if (group_id == 6) {
+			headerlistimage = R.drawable.poi_hidden;
+		}
+
 		if (convertView == null) {
-			LayoutInflater infalInflater = (LayoutInflater) this._context
+			LayoutInflater infalInflater = (LayoutInflater) this.context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = infalInflater.inflate(R.layout.list_group, null);
 			ViewHolderHeader holder = new ViewHolderHeader(convertView);
-			holder.imageview.setImageResource(id_res);
+			holder.headerimageview.setImageResource(headerlistimage);
 		}
 
 		TextView lblListHeader = (TextView) convertView
@@ -137,19 +137,22 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 		return convertView;
 	}
-	
+
 	public class ViewHolderHeader {
-		public TextView text;
-		public ImageView imageview;
+		public TextView headertext;
+		public ImageView headerimageview;
+
 		public ViewHolderHeader(View v) {
-			this.imageview = (ImageView) v.findViewById(R.id.headerimage);
+			this.headerimageview = (ImageView) v.findViewById(R.id.headerimage);
 		}
 	}
+
 	public class ViewHolderListitem {
-		public TextView text;
-		public ImageView imageview;
+		public TextView childtext;
+		public ImageView childimageview;
+
 		public ViewHolderListitem(View v) {
-			this.imageview = (ImageView) v.findViewById(R.id.listimage);
+			this.childimageview = (ImageView) v.findViewById(R.id.listimage);
 		}
 	}
 
