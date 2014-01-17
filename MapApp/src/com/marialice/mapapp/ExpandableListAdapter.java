@@ -42,32 +42,32 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			boolean isLastChild, View convertView, ViewGroup parent) {
 
 		String childText = (String) getChild(groupPosition, childPosition);
-		int childlistimage = 0;
-		long group_id = getGroupId(groupPosition);
+//		int childlistimage = 0;
+//		long group_id = getGroupId(groupPosition);
 
-		if (group_id == 0) {
-			childlistimage = R.drawable.poi_sightseeing;
-		} else if (group_id == 1) {
-			childlistimage = R.drawable.poi_museum;
-		} else if (group_id == 2) {
-			childlistimage = R.drawable.poi_shopping;
-		} else if (group_id == 3) {
-			childlistimage = R.drawable.poi_eat;
-		} else if (group_id == 4) {
-			childlistimage = R.drawable.poi_cafe;
-		} else if (group_id == 5) {
-			childlistimage = R.drawable.poi_bar;
-		} else if (group_id == 6) {
-			childlistimage = R.drawable.poi_hidden;
-		}
-
-		if (convertView == null) {
-			LayoutInflater infalInflater = (LayoutInflater) this.context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = infalInflater.inflate(R.layout.list_item, null);
-			ViewHolderListitem holderImage = new ViewHolderListitem(convertView);
-			holderImage.childimageview.setImageResource(childlistimage);
-		}
+//		if (group_id == 0) {
+//			childlistimage = R.drawable.poi_sightseeing;
+//		} else if (group_id == 1) {
+//			childlistimage = R.drawable.poi_museum;
+//		} else if (group_id == 2) {
+//			childlistimage = R.drawable.poi_shopping;
+//		} else if (group_id == 3) {
+//			childlistimage = R.drawable.poi_eat;
+//		} else if (group_id == 4) {
+//			childlistimage = R.drawable.poi_cafe;
+//		} else if (group_id == 5) {
+//			childlistimage = R.drawable.poi_bar;
+//		} else if (group_id == 6) {
+//			childlistimage = R.drawable.poi_hidden;
+//		}
+//
+//		if (convertView == null) {
+//			LayoutInflater infalInflater = (LayoutInflater) this.context
+//					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//			convertView = infalInflater.inflate(R.layout.list_item, null);
+//			ViewHolderListitem holderImage = new ViewHolderListitem(convertView);
+//			holderImage.childimageview.setImageResource(childlistimage);
+//		}
 
 		TextView txtListChild = (TextView) convertView
 				.findViewById(R.id.PoiListItem);

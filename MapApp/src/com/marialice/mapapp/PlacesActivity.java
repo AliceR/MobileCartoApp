@@ -93,7 +93,10 @@ public class PlacesActivity extends Activity {
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
 			if (poi.getCategory().equals("sightseeing")) {
-				listSightseeing.add(poi.getTitle());
+				listSightseeing.add(poi.getNumber());
+				//listSightseeing.add(poi.getTitle());
+				//String[] listarray = listSightseeing.toArray(new String[listSightseeing.size()]);
+				//Log.v("Listenergebnis", listarray[i]);
 			} else if (poi.getCategory().equals("museum")) {
 				listMuseum.add(poi.getTitle());
 			} else if (poi.getCategory().equals("shopping")) {
@@ -127,6 +130,8 @@ public class PlacesActivity extends Activity {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
+				
+//				we need to transmit the id, not the title!
 
 				Intent listintent = new Intent(getApplicationContext(),
 						PlacesDescriptionActivity.class);

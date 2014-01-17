@@ -1,6 +1,7 @@
 package com.marialice.mapapp;
 
 import java.io.IOException;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,13 +17,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PlacesDescriptionActivity extends Activity{
-	SQLiteDatabase db = null;
-	Cursor dbCursor;
-	DatabaseHelper dbHelper = new DatabaseHelper(this);
-	
+public class PlacesDescriptionActivity extends Activity {
+
+	DatabaseContent dbclass = new DatabaseContent();
 	TextToBitmap drawtext = new TextToBitmap();
-	
+
 	public Double poi_lat;
 	public Double poi_lon;
 
@@ -60,77 +59,17 @@ public class PlacesDescriptionActivity extends Activity{
 	public void createDetails() {
 		TextView textViewTitle = (TextView) findViewById(R.id.desc_title);
 		TextView textViewDesc = (TextView) findViewById(R.id.description);
-		ImageView poi_icon = (ImageView) findViewById(R.id.desc_icon);
-		
+		ImageView imageViewIcon = (ImageView) findViewById(R.id.desc_icon);
 
-		Intent i = getIntent();
-		// getting attached intent data
-		String poi_namels = i.getStringExtra("listDataChild");
-		// displaying selected point name
-		textViewTitle.setText(poi_namels);
+		Intent listintent = getIntent();
+		String titlels = listintent.getStringExtra("listDataChild");
+		textViewTitle.setText(titlels);
 
-		try {
-			dbHelper.createDataBase();
-		} catch (IOException ioe) {
-		}
-		try {
-			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT * FROM cbpois;", null);
-
-			int lat = dbCursor.getColumnIndex("lat");
-			int lon = dbCursor.getColumnIndex("lon");
-			int id = dbCursor.getColumnIndex("id");
-			int cat = dbCursor.getColumnIndex("category");
-			int title = dbCursor.getColumnIndex("title");
-			int desc = dbCursor.getColumnIndex("description");
-
-			dbCursor.moveToFirst();
-			while (!dbCursor.isAfterLast()) {
-				String poi_namedb = dbCursor.getString(title);
-				String category = dbCursor.getString(cat);
-				String number = dbCursor.getString(id);
-				
-				poi_lat = dbCursor.getDouble(lat);
-				poi_lon = dbCursor.getDouble(lon);
-				
-				int symbol = 0;
-
-				if (poi_namedb.equals(poi_namels)) {
-					String description = dbCursor.getString(desc);
-					textViewDesc.setText(description);
-
-					if (category.equals("bar")) {
-						symbol = R.drawable.poi_bar;
-					} else if (category.equals("cafe")) {
-						symbol = R.drawable.poi_cafe;
-					} else if (category.equals("eat")) {
-						symbol = R.drawable.poi_shadow;
-					} else if (category.equals("poi_hidden")) {
-						symbol = R.drawable.poi_hidden;
-					} else if (category.equals("museum")) {
-						symbol = R.drawable.poi_museum;
-					} else if (category.equals("shopping")) {
-						symbol = R.drawable.poi_shopping;
-					} else if (category.equals("sightseeing")) {
-						symbol = R.drawable.poi_sightseeing;
-					} else {
-						symbol = R.drawable.poi_bar;
-					}
-					poi_icon.setImageBitmap(drawtext.drawTextToBitmap(
-							getApplicationContext(), symbol, number));
-					
-					return;
-
-				} else {
-					textViewDesc.setText("not working");
-				}
-				dbCursor.moveToNext();
-			}
-
-		} finally {
-			if (db != null) {
-				dbHelper.close();
-			}
+		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
+		for (int i = 0; i < dbpois.size(); i++) {
+			int x = 6; // needs to know the row, where to get the description from!
+			Poi poi = dbpois.get(x);
+			textViewDesc.setText(poi.getDescription());
 		}
 	}
 
@@ -141,10 +80,10 @@ public class PlacesDescriptionActivity extends Activity{
 			int duration = Toast.LENGTH_SHORT;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
-		} else {		
-			Intent mapintent = new Intent(this, MapActivity.class);	
+		} else {
+			Intent mapintent = new Intent(this, MapActivity.class);
 			mapintent.putExtra("lat", poi_lat);
-			mapintent.putExtra("lon", poi_lon);			
+			mapintent.putExtra("lon", poi_lon);
 			startActivity(mapintent);
 		}
 	}
