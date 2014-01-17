@@ -134,38 +134,6 @@ public class PlacesDescriptionActivity extends Activity{
 		}
 	}
 
-	/*// draw text over the icons - pois numbers
-	private Bitmap drawTextToBitmap(Context gContext, int gResId, String gText) {
-		Resources resources = gContext.getResources();
-		float scale = resources.getDisplayMetrics().density;
-		Bitmap bitmap = BitmapFactory.decodeResource(resources, gResId);
-
-		android.graphics.Bitmap.Config bitmapConfig = bitmap.getConfig();
-		if (bitmapConfig == null) {
-			bitmapConfig = android.graphics.Bitmap.Config.ARGB_8888;
-		}
-		bitmap = bitmap.copy(bitmapConfig, true);
-
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/DINNextRounded.otf");
-
-		Canvas canvas = new Canvas(bitmap);
-		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		paint.setColor(Color.WHITE);
-		paint.setTypeface(tf);
-		paint.setTextSize((int) (13 * scale));
-		// paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
-
-		Rect bounds = new Rect();
-		paint.getTextBounds(gText, 0, gText.length(), bounds);
-		int x = (bitmap.getWidth() - bounds.width()) / 4;
-		int y = (bitmap.getHeight() + bounds.height()) / 6;
-
-		canvas.drawText(gText, x * scale, y * scale, paint);
-
-		return bitmap;
-	}
-*/
 	public void gotomap(View view) {
 		if (poi_lat == null) {
 			Context context = getApplicationContext();

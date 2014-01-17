@@ -1,15 +1,11 @@
 package com.marialice.mapapp;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -41,13 +37,14 @@ public class MapActivity extends FragmentActivity implements
 		ConnectionCallbacks, OnConnectionFailedListener, LocationListener,
 		OnMyLocationButtonClickListener, OnInfoWindowClickListener {
 
-	// include our class TextToBitmap.java
+	// include our classes
 	TextToBitmap drawclass = new TextToBitmap();
-	
+	DatabaseContent dbclass = new DatabaseContent();
+
 	// private static final String MAPBOX_BASEMAP_URL_FORMAT =
 	// "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.h0a912jg/%d/%d/%d.png";
-	private GoogleMap mMap;
+	public GoogleMap mMap;
 	private LocationClient mLocationClient; // for location
 
 	// For getting the location
@@ -57,10 +54,10 @@ public class MapActivity extends FragmentActivity implements
 			.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
 	// For the connection to the database
-	SQLiteDatabase db = null;
-	Cursor dbCursor;
-	DatabaseHelper dbHelper = new DatabaseHelper(this);
-
+	/*
+	 * SQLiteDatabase db = null; Cursor dbCursor; DatabaseHelper dbHelper = new
+	 * DatabaseHelper(this);
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -165,7 +162,18 @@ public class MapActivity extends FragmentActivity implements
 		// call the functions that create the markers
 
 		addMarkersToMap();
-		addPoisFromDatabase();
+
+		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
+
+		for (int i = 0; i < dbpois.size(); i++) {
+			Poi poi = dbpois.get(i);
+			mMap.addMarker(new MarkerOptions()
+					.position(poi.getLatLng())
+					.title(poi.getTitle())
+					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
+							.drawTextToBitmap(getApplicationContext(),
+									poi.getSymbol(), poi.getNumber()))));
+		}
 	}
 
 	// Zoom to city center button
@@ -184,97 +192,6 @@ public class MapActivity extends FragmentActivity implements
 	public void zoomFromDescription(Double lat, Double lon) {
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon),
 				18));
-	}
-
-
-	// pois are requested from database, written in an arraylist and displayed
-	// on the map
-	private final List<Marker> poiMarker = new ArrayList<Marker>();
-
-	public void addPoisFromDatabase() {
-		try {
-			dbHelper.createDataBase();
-		} catch (IOException ioe) {
-		}
-		try {
-			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT * FROM cbpois;", null);
-			dbCursor.moveToFirst();
-
-			int lat = dbCursor.getColumnIndex("lat");
-			int lon = dbCursor.getColumnIndex("lon");
-			int id = dbCursor.getColumnIndex("id");
-			int cat = dbCursor.getColumnIndex("category");
-			int title = dbCursor.getColumnIndex("title");
-
-			while (!dbCursor.isAfterLast()) {
-
-				String category = dbCursor.getString(cat);
-
-				int symbol = 0;
-
-				/*
-				 * it would be better to use switch case instead of if else if
-				 * 
-				 * switch (category){ case "bar": symbol = R.drawable.poi_bar;
-				 * case "cafe": symbol = R.drawable.poi_cafe; }
-				 * 
-				 * but i think switch can only deal with int, we are comparing
-				 * strings.
-				 */
-				if (category.equals("bar")) {
-					symbol = R.drawable.poi_bar;
-				} else if (category.equals("cafe")) {
-					symbol = R.drawable.poi_cafe;
-				} else if (category.equals("eat")) {
-					symbol = R.drawable.poi_eat;
-				} else if (category.equals("poi_hidden")) {
-					symbol = R.drawable.poi_hidden;
-				} else if (category.equals("museum")) {
-					symbol = R.drawable.poi_museum;
-				} else if (category.equals("shopping")) {
-					symbol = R.drawable.poi_shopping;
-				} else if (category.equals("sightseeing")) {
-					symbol = R.drawable.poi_sightseeing;
-				}
-				// points with two categories
-				else if (category.equals("museumsightseeing")) {
-					symbol = R.drawable.poi_museum_sightseeing;
-				} else if (category.equals("museumcafe")) {
-					symbol = R.drawable.poi_museum_cafe;
-				} else if (category.equals("shoppingeat")) {
-					symbol = R.drawable.poi_shopping_eat;
-				} else if (category.equals("hiddencafe")) {
-					symbol = R.drawable.poi_hidden_cafe;
-				} else if (category.equals("shoppingcafe")) {
-					symbol = R.drawable.poi_shopping_cafe;
-				} else if (category.equals("shoppingsightseeing")) {
-					symbol = R.drawable.poi_shopping_sightseeing;
-				} else if (category.equals("barcafe")) {
-					symbol = R.drawable.poi_bar_cafe;
-				} else if (category.equals("barsightseeing")) {
-					symbol = R.drawable.poi_bar_sightseeing;
-				} else {
-					symbol = R.drawable.poi_bar;
-				}
-
-				poiMarker.add(mMap.addMarker(new MarkerOptions()
-						.position(
-								new LatLng(dbCursor.getDouble(lat), dbCursor
-										.getDouble(lon)))
-						.title(dbCursor.getString(title))
-						.anchor(0f, 1f)
-						.icon(BitmapDescriptorFactory
-								.fromBitmap(drawclass.drawTextToBitmap(
-										getApplicationContext(), symbol,
-										dbCursor.getString(id))))));
-				dbCursor.moveToNext();
-			}
-		} finally {
-			if (db != null) {
-				dbHelper.close();
-			}
-		}
 	}
 
 	private void addMarkersToMap() {
@@ -493,13 +410,15 @@ public class MapActivity extends FragmentActivity implements
 		// Bus station
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
-						.fromResource(R.drawable.bus_station)).flat(true).alpha(0.7f)
-				.position(new LatLng(48.9726139, 14.4873772)).rotation(345));
+						.fromResource(R.drawable.bus_station)).flat(true)
+				.alpha(0.7f).position(new LatLng(48.9726139, 14.4873772))
+				.rotation(345));
 		// Train station
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
-						.fromResource(R.drawable.train_station)).flat(true).alpha(0.7f)
-				.position(new LatLng(48.9744633, 14.4885883)).rotation(75));
+						.fromResource(R.drawable.train_station)).flat(true)
+				.alpha(0.7f).position(new LatLng(48.9744633, 14.4885883))
+				.rotation(75));
 
 	}
 
