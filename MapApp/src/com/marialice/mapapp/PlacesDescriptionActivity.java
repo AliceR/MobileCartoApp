@@ -5,16 +5,8 @@ import java.io.IOException;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -24,10 +16,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PlacesDescriptionActivity extends Activity {
+public class PlacesDescriptionActivity extends Activity{
 	SQLiteDatabase db = null;
 	Cursor dbCursor;
 	DatabaseHelper dbHelper = new DatabaseHelper(this);
+	
+	TextToBitmap drawtext = new TextToBitmap();
 	
 	public Double poi_lat;
 	public Double poi_lon;
@@ -122,7 +116,7 @@ public class PlacesDescriptionActivity extends Activity {
 					} else {
 						symbol = R.drawable.poi_bar;
 					}
-					poi_icon.setImageBitmap(drawTextToBitmap(
+					poi_icon.setImageBitmap(drawtext.drawTextToBitmap(
 							getApplicationContext(), symbol, number));
 					
 					return;
@@ -140,7 +134,7 @@ public class PlacesDescriptionActivity extends Activity {
 		}
 	}
 
-	// draw text over the icons - pois numbers
+	/*// draw text over the icons - pois numbers
 	private Bitmap drawTextToBitmap(Context gContext, int gResId, String gText) {
 		Resources resources = gContext.getResources();
 		float scale = resources.getDisplayMetrics().density;
@@ -171,7 +165,7 @@ public class PlacesDescriptionActivity extends Activity {
 
 		return bitmap;
 	}
-
+*/
 	public void gotomap(View view) {
 		if (poi_lat == null) {
 			Context context = getApplicationContext();

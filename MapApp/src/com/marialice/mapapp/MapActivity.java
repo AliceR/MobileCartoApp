@@ -1,16 +1,33 @@
 package com.marialice.mapapp;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
+import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
-
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -20,45 +37,18 @@ import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.android.gms.maps.model.TileProvider;
 import com.google.android.gms.maps.model.UrlTileProvider;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Typeface;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.location.Location;
-import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 public class MapActivity extends FragmentActivity implements
 		ConnectionCallbacks, OnConnectionFailedListener, LocationListener,
 		OnMyLocationButtonClickListener, OnInfoWindowClickListener {
 
+	// include our class TextToBitmap.java
+	TextToBitmap drawclass = new TextToBitmap();
+	
 	// private static final String MAPBOX_BASEMAP_URL_FORMAT =
 	// "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.h0a912jg/%d/%d/%d.png";
 	private GoogleMap mMap;
 	private LocationClient mLocationClient; // for location
-
-	// public Bundle bundle;
 
 	// For getting the location
 	private static final LocationRequest REQUEST = LocationRequest.create()
@@ -196,37 +186,6 @@ public class MapActivity extends FragmentActivity implements
 				18));
 	}
 
-	// draw text over the icons - pois numbers
-	private Bitmap drawTextToBitmap(Context gContext, int gResId, String gText) {
-		Resources resources = gContext.getResources();
-		float scale = resources.getDisplayMetrics().density;
-		Bitmap bitmap = BitmapFactory.decodeResource(resources, gResId);
-
-		android.graphics.Bitmap.Config bitmapConfig = bitmap.getConfig();
-		if (bitmapConfig == null) {
-			bitmapConfig = android.graphics.Bitmap.Config.ARGB_8888;
-		}
-		bitmap = bitmap.copy(bitmapConfig, true);
-
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/DINNextRounded.otf");
-
-		Canvas canvas = new Canvas(bitmap);
-		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		paint.setColor(Color.WHITE);
-		paint.setTypeface(tf);
-		paint.setTextSize((int) (13 * scale));
-		// paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
-
-		Rect bounds = new Rect();
-		paint.getTextBounds(gText, 0, gText.length(), bounds);
-		int x = (bitmap.getWidth() - bounds.width()) / 4;
-		int y = (bitmap.getHeight() + bounds.height()) / 6;
-
-		canvas.drawText(gText, x * scale, y * scale, paint);
-
-		return bitmap;
-	}
 
 	// pois are requested from database, written in an arraylist and displayed
 	// on the map
@@ -306,7 +265,7 @@ public class MapActivity extends FragmentActivity implements
 						.title(dbCursor.getString(title))
 						.anchor(0f, 1f)
 						.icon(BitmapDescriptorFactory
-								.fromBitmap(drawTextToBitmap(
+								.fromBitmap(drawclass.drawTextToBitmap(
 										getApplicationContext(), symbol,
 										dbCursor.getString(id))))));
 				dbCursor.moveToNext();
