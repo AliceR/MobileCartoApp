@@ -21,6 +21,15 @@
     
     <color name="actionbar">#8D7966</color>
     
+    <color name="sightseeing">#E83D90</color>
+    <color name="museum">#8E3C8F</color>
+    <color name="shopping">#139DEB</color>
+    <color name="eat">#F38119</color>
+    <color name="cafe">#A61533</color>
+    <color name="bar">#0D3891</color>
+    <color name="hidden">#149940</color>
+    
+    
 <!-- Scheme for CB goes here -->
 
 <!-- Scheme for CK goes here -->

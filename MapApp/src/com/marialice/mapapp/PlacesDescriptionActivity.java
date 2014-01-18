@@ -1,13 +1,10 @@
 package com.marialice.mapapp;
 
-import java.io.IOException;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -19,24 +16,19 @@ import android.widget.Toast;
 
 public class PlacesDescriptionActivity extends Activity {
 
+	// include our classes
 	DatabaseContent dbclass = new DatabaseContent();
-	TextToBitmap drawtext = new TextToBitmap();
-
-	public Double poi_lat;
-	public Double poi_lon;
+	TextToBitmap drawclass = new TextToBitmap();
+	
+	Double lat;
+	Double lon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_places_description);
-		setupActionBar();
-		createDetails();
-
-	}
-
-	private void setupActionBar() {
-		// Show the Up button in the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		createDetails();
 	}
 
 	@Override
@@ -64,17 +56,25 @@ public class PlacesDescriptionActivity extends Activity {
 		Intent listintent = getIntent();
 		String titlels = listintent.getStringExtra("listDataChild");
 		textViewTitle.setText(titlels);
+		
 
 		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
 		for (int i = 0; i < dbpois.size(); i++) {
-			int x = 6; // needs to know the row, where to get the description from!
-			Poi poi = dbpois.get(x);
-			textViewDesc.setText(poi.getDescription());
+			Poi poi = dbpois.get(i);
+			String titledb = poi.getTitle();
+			if (titledb.equals(titlels)) {
+				textViewDesc.setText(poi.getDescription());
+				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(
+						getApplicationContext(), poi.getSymbol(),
+						poi.getNumber()));
+				lat = poi.getLat();
+				lon = poi.getLon();
+			}
 		}
 	}
 
 	public void gotomap(View view) {
-		if (poi_lat == null) {
+		if (lat == null) {
 			Context context = getApplicationContext();
 			CharSequence text = "no lat lon values!";
 			int duration = Toast.LENGTH_SHORT;
@@ -82,8 +82,8 @@ public class PlacesDescriptionActivity extends Activity {
 			toast.show();
 		} else {
 			Intent mapintent = new Intent(this, MapActivity.class);
-			mapintent.putExtra("lat", poi_lat);
-			mapintent.putExtra("lon", poi_lon);
+			mapintent.putExtra("lat", lat);
+			mapintent.putExtra("lon", lon);
 			startActivity(mapintent);
 		}
 	}
