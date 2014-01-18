@@ -56,7 +56,6 @@ public class PlacesDescriptionActivity extends Activity {
 		Intent listintent = getIntent();
 		String titlels = listintent.getStringExtra("listDataChild");
 		textViewTitle.setText(titlels);
-		
 
 		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
 		for (int i = 0; i < dbpois.size(); i++) {

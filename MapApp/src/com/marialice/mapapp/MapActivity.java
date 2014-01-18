@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -114,7 +115,7 @@ public class MapActivity extends FragmentActivity implements
 			if (mMap != null) {
 				setUpMap();
 				mMap.setMyLocationEnabled(true);
-				mMap.setOnMyLocationButtonClickListener(this);
+				mMap.setOnMyLocationButtonClickListener(this); 
 			}
 		}
 	}
@@ -124,6 +125,8 @@ public class MapActivity extends FragmentActivity implements
 		mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
 		mMap.setMyLocationEnabled(true);
 		mMap.getUiSettings().setZoomControlsEnabled(true);
+		mMap.setOnInfoWindowClickListener(this);
+		
 		Double default_lat = 48.9744094;
 		Double default_lon = 14.4746094;
 		Double lat = getIntent().getDoubleExtra("lat", default_lat);
@@ -418,9 +421,12 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	@Override
-	public void onInfoWindowClick(Marker arg0) {
-		// TODO Auto-generated method stub
-
+	public void onInfoWindowClick(Marker marker) {
+		String title = marker.getTitle();
+		
+		Intent infowindowintent = new Intent (this, PlacesDescriptionActivity.class);
+		infowindowintent.putExtra("listDataChild", title);
+		startActivity(infowindowintent);
 	}
 
 	private void setUpLocationClientIfNeeded() {
