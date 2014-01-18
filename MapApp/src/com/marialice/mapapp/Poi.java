@@ -1,5 +1,7 @@
 package com.marialice.mapapp;
 
+import android.R;
+
 import com.google.android.gms.maps.model.LatLng;
 
 /* 
@@ -66,19 +68,19 @@ public class Poi {
 	public int getSymbol() {
 		int symbol = 0;
 		if (category.equals("bar")) {
-		     symbol = R.drawable.poi_bar;
+		     symbol = R.drawable.poi_bar_shadow;
 		    } else if (category.equals("cafe")) {
-		     symbol = R.drawable.poi_cafe;
+		     symbol = R.drawable.poi_cafe_shadow;
 		    } else if (category.equals("eat")) {
-		     symbol = R.drawable.poi_eat;
+		     symbol = R.drawable.poi_eat_shadow;
 		    } else if (category.equals("hidden")) {
-		     symbol = R.drawable.poi_hidden;
+		     symbol = R.drawable.poi_hidden_shadow;
 		    } else if (category.equals("museum")) {
-		     symbol = R.drawable.poi_museum;
+		     symbol = R.drawable.poi_museum_shadow;
 		    } else if (category.equals("shopping")) {
-		     symbol = R.drawable.poi_shopping;
+		     symbol = R.drawable.poi_shopping_shadow;
 		    } else if (category.equals("sightseeing")) {
-		     symbol = R.drawable.poi_sightseeing;
+		     symbol = R.drawable.poi_sightseeing_shadow;
 		    } else {
 		    	symbol = R.drawable.poi_action_bar3;
 		    }
