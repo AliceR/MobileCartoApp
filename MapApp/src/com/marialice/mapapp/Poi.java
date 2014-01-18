@@ -1,7 +1,5 @@
 package com.marialice.mapapp;
 
-import android.R;
-
 import com.google.android.gms.maps.model.LatLng;
 
 /* 
