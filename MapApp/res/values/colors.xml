@@ -21,14 +21,23 @@
     
     <color name="actionbar">#8D7966</color>
     
-<!-- colors of categories with 50 % transparecy -->
-    <color name="sightseeing">#80E83D90</color>
-    <color name="museum">#808E3C8F</color>
-    <color name="shopping">#80139DEB</color>
-    <color name="eat">#80F38119</color>
-    <color name="cafe">#80A61533</color>
-    <color name="bar">#800D3891</color>
-    <color name="hidden">#80149940</color>
+<!-- colors of categories with 30 % transparecy -->
+    <color name="sightseeingTr">#4DE83D90</color>
+    <color name="museumTr">#4D8E3C8F</color>
+    <color name="shoppingTr">#4D139DEB</color>
+    <color name="eatTr">#4DF38119</color>
+    <color name="cafeTr">#4DA61533</color>
+    <color name="barTr">#4D0D3891</color>
+    <color name="hiddenTr">#4D149940</color>
+    
+   <!--     colors of categories with 95 % transparecy -->
+    <color name="sightseeing">#F2E83D90</color>
+    <color name="museum">#F28E3C8F</color>
+    <color name="shopping">#F2139DEB</color>
+    <color name="eat">#F2F38119</color>
+    <color name="cafe">#F2A61533</color>
+    <color name="bar">#F20D3891</color>
+    <color name="hidden">#F2149940</color> 
     
     
 <!-- Scheme for CB goes here -->
