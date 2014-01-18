@@ -19,9 +19,9 @@ public class PlacesDescriptionActivity extends Activity {
 	// include our classes
 	DatabaseContent dbclass = new DatabaseContent();
 	TextToBitmap drawclass = new TextToBitmap();
-
-	public Double poi_lat;
-	public Double poi_lon;
+	
+	Double lat;
+	Double lon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class PlacesDescriptionActivity extends Activity {
 		Intent listintent = getIntent();
 		String titlels = listintent.getStringExtra("listDataChild");
 		textViewTitle.setText(titlels);
+		
 
 		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
 		for (int i = 0; i < dbpois.size(); i++) {
@@ -63,14 +64,17 @@ public class PlacesDescriptionActivity extends Activity {
 			String titledb = poi.getTitle();
 			if (titledb.equals(titlels)) {
 				textViewDesc.setText(poi.getDescription());
-				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(getApplicationContext(),
-								poi.getSymbol(), poi.getNumber()));
+				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(
+						getApplicationContext(), poi.getSymbol(),
+						poi.getNumber()));
+				lat = poi.getLat();
+				lon = poi.getLon();
 			}
 		}
 	}
 
 	public void gotomap(View view) {
-		if (poi_lat == null) {
+		if (lat == null) {
 			Context context = getApplicationContext();
 			CharSequence text = "no lat lon values!";
 			int duration = Toast.LENGTH_SHORT;
@@ -78,8 +82,8 @@ public class PlacesDescriptionActivity extends Activity {
 			toast.show();
 		} else {
 			Intent mapintent = new Intent(this, MapActivity.class);
-			mapintent.putExtra("lat", poi_lat);
-			mapintent.putExtra("lon", poi_lon);
+			mapintent.putExtra("lat", lat);
+			mapintent.putExtra("lon", lon);
 			startActivity(mapintent);
 		}
 	}
