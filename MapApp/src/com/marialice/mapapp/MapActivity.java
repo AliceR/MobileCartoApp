@@ -167,6 +167,7 @@ public class MapActivity extends FragmentActivity implements
 			mMap.addMarker(new MarkerOptions()
 					.position(poi.getLatLng())
 					.title(poi.getTitle())
+					.snippet(poi.getCategoryName())
 					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
 							.drawTextToBitmap(getApplicationContext(),
 									poi.getSymbol(), poi.getNumber()))));
