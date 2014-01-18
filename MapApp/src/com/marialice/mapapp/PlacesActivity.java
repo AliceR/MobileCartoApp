@@ -28,24 +28,32 @@ public class PlacesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_places);
-		setupActionBar();
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// get the listview
 		expListView = (ExpandableListView) findViewById(R.id.lvExp);
-
 		// preparing list data
 		prepareListData();
-
+		// create the expandable list in an extra class
 		listAdapter = new ExpandableListAdapter(this, listDataHeader,
 				listDataChild);
-
 		// setting list adapter
 		expListView.setAdapter(listAdapter);
-	}
-
-	private void setupActionBar() {
-		// Defines the action bar to go back/up
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		// defining what happens on click
+		expListView.setOnChildClickListener(new OnChildClickListener() {
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
+				// go to the place description activity
+				Intent listintent = new Intent(getApplicationContext(),
+						PlacesDescriptionActivity.class);
+				listintent.putExtra("listDataChild",
+						listDataChild.get(listDataHeader.get(groupPosition))
+								.get(childPosition));
+				startActivity(listintent);
+				return false;
+			}
+		});
 	}
 
 	@Override
@@ -65,13 +73,13 @@ public class PlacesActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	// Preparing the list data
+	// preparing the list data
 	private void prepareListData() {
 
 		listDataHeader = new ArrayList<String>();
 		listDataChild = new HashMap<String, List<String>>();
 
-		// Adding child data
+		// statically adding header data to the List
 		listDataHeader.add("Sightseeing");
 		listDataHeader.add("Museum, venue");
 		listDataHeader.add("Shopping");
@@ -80,6 +88,7 @@ public class PlacesActivity extends Activity {
 		listDataHeader.add("Bar, club");
 		listDataHeader.add("Hidden, chill out");
 
+		// creating lists for each category with all titles in that category
 		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
 
 		List<String> listSightseeing = new ArrayList<String>();
@@ -93,10 +102,7 @@ public class PlacesActivity extends Activity {
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
 			if (poi.getCategory().equals("sightseeing")) {
-				listSightseeing.add(poi.getNumber());
-				//listSightseeing.add(poi.getTitle());
-				//String[] listarray = listSightseeing.toArray(new String[listSightseeing.size()]);
-				//Log.v("Listenergebnis", listarray[i]);
+				listSightseeing.add(poi.getTitle());
 			} else if (poi.getCategory().equals("museum")) {
 				listMuseum.add(poi.getTitle());
 			} else if (poi.getCategory().equals("shopping")) {
@@ -110,12 +116,13 @@ public class PlacesActivity extends Activity {
 			} else if (poi.getCategory().equals("hidden")) {
 				listHidden.add(poi.getTitle());
 			} else {
-				Log.v("Mary says:","WTF! there is an poi without category! " +
-						"...what a terrible failure...");
+				Log.v("Mary says:", "WTF! there is an poi without category! "
+						+ "...what a terrible failure...");
 			}
 		}
 
-		// Header, Child data
+		// writing the lists with titles and their respective header in one
+		// HashMap
 		listDataChild.put(listDataHeader.get(0), listSightseeing);
 		listDataChild.put(listDataHeader.get(1), listMuseum);
 		listDataChild.put(listDataHeader.get(2), listShopping);
@@ -124,24 +131,10 @@ public class PlacesActivity extends Activity {
 		listDataChild.put(listDataHeader.get(5), listBar);
 		listDataChild.put(listDataHeader.get(6), listHidden);
 
-		// Listview on child click listener
-		expListView.setOnChildClickListener(new OnChildClickListener() {
+		// // ATTENTION!! listDataChild is not ordered as we expect!
+		// // we can not rely on the correct position of the item in the HashMap
+		// // which also correlates to the groupid, i guess... and makes trouble
+		// // in the sorting!
 
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v,
-					int groupPosition, int childPosition, long id) {
-				
-//				we need to transmit the id, not the title!
-
-				Intent listintent = new Intent(getApplicationContext(),
-						PlacesDescriptionActivity.class);
-
-				listintent.putExtra("listDataChild",
-						listDataChild.get(listDataHeader.get(groupPosition))
-								.get(childPosition));
-				startActivity(listintent);
-				return false;
-			}
-		});
 	}
 }

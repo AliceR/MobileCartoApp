@@ -14,9 +14,9 @@ import android.graphics.Typeface;
 public class TextToBitmap extends Activity {
 
 	// draw text over the icons - pois numbers
-	public Bitmap drawTextToBitmap(Context gContext, int gResId, String gText) {
+	public Bitmap drawTextToBitmap(Context context, int gResId, String gText) {
 
-		Resources resources = gContext.getResources();
+		Resources resources = context.getResources();
 		float scale = resources.getDisplayMetrics().density;
 		Bitmap bitmap = BitmapFactory.decodeResource(resources, gResId);
 
@@ -26,7 +26,7 @@ public class TextToBitmap extends Activity {
 		}
 		bitmap = bitmap.copy(bitmapConfig, true);
 
-		Typeface tf = Typeface.createFromAsset(gContext.getAssets(),
+		Typeface tf = Typeface.createFromAsset(context.getAssets(),
 				"fonts/DINNextRounded.otf");
 
 		Canvas canvas = new Canvas(bitmap);
