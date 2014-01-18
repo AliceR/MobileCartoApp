@@ -4,14 +4,16 @@
     android:gravity="center_vertical"
     android:orientation="horizontal" >
 
-<!--     <ImageView
+    <!--
+         <ImageView
         android:id="@+id/headerimage"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="27dp"
         android:contentDescription="@string/desc"
-        android:src="@drawable/ic_launcher" /> -->
+        android:src="@drawable/ic_launcher" />
+    -->
 
     <TextView
         android:id="@+id/ListHeader"
@@ -19,7 +21,9 @@
         android:layout_height="48dp"
         android:gravity="center_vertical"
         android:paddingLeft="62dp"
-        android:textSize="16sp" 
-        android:textColor="#FFFFFF"/>
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+    
+    <!-- android:textStyle="bold" -->
 
 </RelativeLayout>
