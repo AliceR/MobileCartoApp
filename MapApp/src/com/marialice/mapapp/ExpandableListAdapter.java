@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
@@ -43,7 +42,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			boolean isLastChild, View convertView, ViewGroup parent) {
 
 		String childText = (String) getChild(groupPosition, childPosition);
-		
+
 		int group_id = (int) getGroupId(groupPosition);
 		int color = 0;
 		switch (group_id) {
@@ -82,8 +81,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 				.findViewById(R.id.PoiListItem);
 		// txtListChild.setTypeface(tf, Typeface.BOLD);
 		txtListChild.setText(childText);
-		txtListChild.setBackgroundColor(context.getResources().getColor(
-				color));
+		txtListChild.setBackgroundColor(context.getResources().getColor(color));
 
 		return convertView;
 	}
@@ -116,7 +114,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 		String headerTitle = (String) getGroup(groupPosition);
 
-		int group_id = (int) getGroupId(groupPosition);					
+		int group_id = (int) getGroupId(groupPosition);
 		int color = 0;
 		switch (group_id) {
 		case 0:
@@ -153,23 +151,25 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 		TextView ListHeader = (TextView) convertView
 				.findViewById(R.id.ListHeader);
-		// ListHeader.setTypeface(tf, Typeface.BOLD); 
-		// for some reason this makes trouble...
+		// ListHeader.setTypeface(tf, Typeface.BOLD);
+		// for some reason this makes trouble... same problem as with drawables?
 		ListHeader.setText(headerTitle);
-		ListHeader.setBackgroundColor(context.getResources().getColor(
-				color));
+		ListHeader.setBackgroundColor(context.getResources().getColor(color));
 
 		return convertView;
 	}
 
-	public class ViewHolderListitem {
-		public TextView childtext;
-		public ImageView childimageview;
-
-		public ViewHolderListitem(View v) {
-			this.childimageview = (ImageView) v.findViewById(R.id.listimage);
-		}
-	}
+	/*
+	 * For some unknown reason the use of a drawable resource instead of
+	 * background color is instable... in case we find out, why, and how to
+	 * avoid the mistake, we might go back to using an image
+	 * 
+	 * public class ViewHolderListitem { public TextView childtext; public
+	 * ImageView childimageview;
+	 * 
+	 * public ViewHolderListitem(View v) { this.childimageview = (ImageView)
+	 * v.findViewById(R.id.listimage); } }
+	 */
 
 	@Override
 	public boolean hasStableIds() {
