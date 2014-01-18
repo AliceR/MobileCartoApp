@@ -16,8 +16,9 @@ import android.widget.Toast;
 
 public class PlacesDescriptionActivity extends Activity {
 
+	// include our classes
 	DatabaseContent dbclass = new DatabaseContent();
-	TextToBitmap drawtext = new TextToBitmap();
+	TextToBitmap drawclass = new TextToBitmap();
 
 	public Double poi_lat;
 	public Double poi_lon;
@@ -62,6 +63,8 @@ public class PlacesDescriptionActivity extends Activity {
 			String titledb = poi.getTitle();
 			if (titledb.equals(titlels)) {
 				textViewDesc.setText(poi.getDescription());
+				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(getApplicationContext(),
+								poi.getSymbol(), poi.getNumber()));
 			}
 		}
 	}
