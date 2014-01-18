@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
@@ -42,31 +43,47 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			boolean isLastChild, View convertView, ViewGroup parent) {
 
 		String childText = (String) getChild(groupPosition, childPosition);
-		/*
-		 * int childlistimage = 0; long group_id = getGroupId(groupPosition);
-		 * 
-		 * if (group_id == 0) { childlistimage = R.drawable.poi_sightseeing; }
-		 * else if (group_id == 1) { childlistimage = R.drawable.poi_museum; }
-		 * else if (group_id == 2) { childlistimage = R.drawable.poi_shopping; }
-		 * else if (group_id == 3) { childlistimage = R.drawable.poi_eat; }
-		 * else if (group_id == 4) { childlistimage = R.drawable.poi_cafe; } 
-		 * else if (group_id == 5) { childlistimage = R.drawable.poi_bar; } 
-		 * else if (group_id == 6) { childlistimage = R.drawable.poi_hidden; }
-		 */
-
+		
+		int group_id = (int) getGroupId(groupPosition);
+		int color = 0;
+		switch (group_id) {
+		case 0:
+			color = R.color.sightseeing;
+			break;
+		case 1:
+			color = R.color.museum;
+			break;
+		case 2:
+			color = R.color.shopping;
+			break;
+		case 3:
+			color = R.color.eat;
+			break;
+		case 4:
+			color = R.color.cafe;
+			break;
+		case 5:
+			color = R.color.bar;
+			break;
+		case 6:
+			color = R.color.hidden;
+			break;
+		default:
+			color = R.color.silver;
+			break;
+		}
 		if (convertView == null) {
 			LayoutInflater infalInflater = (LayoutInflater) this.context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = infalInflater.inflate(R.layout.list_item, null);
-			// ViewHolderListitem holderImage = new
-			// ViewHolderListitem(convertView);
-			// holderImage.childimageview.setImageResource(childlistimage);
 		}
 
 		TextView txtListChild = (TextView) convertView
 				.findViewById(R.id.PoiListItem);
 		// txtListChild.setTypeface(tf, Typeface.BOLD);
 		txtListChild.setText(childText);
+		txtListChild.setBackgroundColor(context.getResources().getColor(
+				color));
 
 		return convertView;
 	}
@@ -99,32 +116,32 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 		String headerTitle = (String) getGroup(groupPosition);
 
-		int group_id = (int) getGroupId(groupPosition); // we need the id wrt headerTitle 	
-		int headercolor = 0;
+		int group_id = (int) getGroupId(groupPosition);					
+		int color = 0;
 		switch (group_id) {
 		case 0:
-			headercolor = R.color.lime;
+			color = R.color.sightseeing;
 			break;
 		case 1:
-			headercolor = R.color.fuchsia;
+			color = R.color.museum;
 			break;
 		case 2:
-			headercolor = R.color.maroon;
+			color = R.color.shopping;
 			break;
 		case 3:
-			headercolor = R.color.teal;
+			color = R.color.eat;
 			break;
 		case 4:
-			headercolor = R.color.green;
+			color = R.color.cafe;
 			break;
 		case 5:
-			headercolor = R.color.navy;
+			color = R.color.bar;
 			break;
 		case 6:
-			headercolor = R.color.actionbar;
+			color = R.color.hidden;
 			break;
 		default:
-			headercolor = R.color.silver;
+			color = R.color.silver;
 			break;
 		}
 
@@ -136,21 +153,23 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 		TextView ListHeader = (TextView) convertView
 				.findViewById(R.id.ListHeader);
-		// ListHeader.setTypeface(tf, Typeface.BOLD);     // for some reason this makes trouble...
+		// ListHeader.setTypeface(tf, Typeface.BOLD); 
+		// for some reason this makes trouble...
 		ListHeader.setText(headerTitle);
 		ListHeader.setBackgroundColor(context.getResources().getColor(
-				headercolor));
+				color));
 
 		return convertView;
 	}
 
-	/*
-	 * public class ViewHolderListitem { public TextView childtext; public
-	 * ImageView childimageview;
-	 * 
-	 * public ViewHolderListitem(View v) { this.childimageview = (ImageView)
-	 * v.findViewById(R.id.listimage); } }
-	 */
+	public class ViewHolderListitem {
+		public TextView childtext;
+		public ImageView childimageview;
+
+		public ViewHolderListitem(View v) {
+			this.childimageview = (ImageView) v.findViewById(R.id.listimage);
+		}
+	}
 
 	@Override
 	public boolean hasStableIds() {
