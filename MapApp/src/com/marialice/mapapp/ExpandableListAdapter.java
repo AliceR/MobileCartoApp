@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
+	// include our classes
+	DatabaseContent dbclass = new DatabaseContent();
+
 	private Context context;
 	private List<String> listDataHeader;
 	private HashMap<String, List<String>> listDataChild;
@@ -83,6 +86,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		txtListChild.setText(childText);
 		txtListChild.setBackgroundColor(context.getResources().getColor(color));
 
+		List<Poi> dbpois = dbclass.queryDataFromDatabase(context);
+		TextView numberListChild = (TextView) convertView
+				.findViewById(R.id.PoiListNumber);
+		for (int i = 0; i < dbpois.size(); i++) {
+			Poi poi = dbpois.get(i);
+			String titledb = poi.getTitle();
+			String number = poi.getNumber();
+			if (titledb.equals(childText)) {
+				numberListChild.setText(number);
+				numberListChild.setBackgroundColor(context.getResources()
+						.getColor(color));
+			}
+		}
 		return convertView;
 	}
 

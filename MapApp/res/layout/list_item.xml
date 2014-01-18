@@ -4,7 +4,8 @@
     android:gravity="center_vertical"
     android:orientation="horizontal" >
 
-    <ImageView
+    <!--
+         <ImageView
         android:id="@+id/listimage"
         android:layout_width="32dp"
         android:layout_height="32dp"
@@ -13,11 +14,21 @@
         android:paddingLeft="12dp"
         android:contentDescription="@string/desc"
         android:src="@drawable/ic_launcher" />
+    -->
+
+    <TextView
+        android:id="@+id/PoiListNumber"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:id="@+id/PoiListItem"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
+        android:layout_toLeftOf="@id/PoiListNumber"
         android:gravity="center_vertical"
         android:paddingLeft="62dp"
         android:textSize="16sp" />
