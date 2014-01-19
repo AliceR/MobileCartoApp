@@ -114,7 +114,7 @@ public class MapActivity extends FragmentActivity implements
 			if (mMap != null) {
 				setUpMap();
 				mMap.setMyLocationEnabled(true);
-				mMap.setOnMyLocationButtonClickListener(this); 
+				mMap.setOnMyLocationButtonClickListener(this);
 			}
 		}
 	}
@@ -125,7 +125,7 @@ public class MapActivity extends FragmentActivity implements
 		mMap.setMyLocationEnabled(true);
 		mMap.getUiSettings().setZoomControlsEnabled(true);
 		mMap.setOnInfoWindowClickListener(this);
-		
+
 		Double default_lat = 48.9744094;
 		Double default_lon = 14.4746094;
 		Double lat = getIntent().getDoubleExtra("lat", default_lat);
@@ -423,10 +423,16 @@ public class MapActivity extends FragmentActivity implements
 	@Override
 	public void onInfoWindowClick(Marker marker) {
 		String title = marker.getTitle();
-		
-		Intent infowindowintent = new Intent (this, PlacesDescriptionActivity.class);
-		infowindowintent.putExtra("listDataChild", title);
-		startActivity(infowindowintent);
+
+		if (title.equals("Èerná vìž") | title.equals("Klášter dominikánù")
+				| title.equals("Samsonova kašna") | title.equals("Plavecký bazén")
+				| title.equals("Kino")| title.equals("Železná panna")) {
+		} else {
+			Intent infowindowintent = new Intent(this,
+					PlacesDescriptionActivity.class);
+			infowindowintent.putExtra("listDataChild", title);
+			startActivity(infowindowintent);
+		}
 	}
 
 	private void setUpLocationClientIfNeeded() {
