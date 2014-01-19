@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/goto_actlike"
+        android:id="@+id/goto_actlikelocal"
         android:icon="@drawable/action_bulb"
         android:showAsAction="always"
-        android:title="@string/places"
+        android:title="@string/hello_world"
         android:onClick="onOptionsItemSelected"/>
     <item
         android:id="@+id/goto_places"

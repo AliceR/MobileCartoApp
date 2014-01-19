@@ -88,6 +88,11 @@ public class MapActivity extends FragmentActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
+		case R.id.goto_actlikelocal:
+			Intent actlikelocalintent = new Intent(MapActivity.this,
+					ActLikeLocalActivity.class);
+			startActivity(actlikelocalintent);
+			return true;
 		case R.id.goto_about:
 			Intent aboutintent = new Intent(MapActivity.this,
 					AboutActivity.class);
