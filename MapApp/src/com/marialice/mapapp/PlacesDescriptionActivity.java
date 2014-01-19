@@ -19,7 +19,7 @@ public class PlacesDescriptionActivity extends Activity {
 	// include our classes
 	DatabaseContent dbclass = new DatabaseContent();
 	TextToBitmap drawclass = new TextToBitmap();
-	
+
 	Double lat;
 	Double lon;
 
@@ -52,6 +52,11 @@ public class PlacesDescriptionActivity extends Activity {
 		TextView textViewTitle = (TextView) findViewById(R.id.desc_title);
 		TextView textViewDesc = (TextView) findViewById(R.id.description);
 		ImageView imageViewIcon = (ImageView) findViewById(R.id.desc_icon);
+		ImageView imageViewWifi = (ImageView) findViewById(R.id.wifi);
+		ImageView imageViewTerrace = (ImageView) findViewById(R.id.terrace);
+		ImageView imageViewSundays = (ImageView) findViewById(R.id.sundays);
+		ImageView imageViewCalmPlace = (ImageView) findViewById(R.id.calmplace);
+		ImageView imageViewSmoking = (ImageView) findViewById(R.id.smoking);
 
 		Intent listintent = getIntent();
 		String titlels = listintent.getStringExtra("listDataChild");
@@ -68,6 +73,23 @@ public class PlacesDescriptionActivity extends Activity {
 						poi.getNumber()));
 				lat = poi.getLat();
 				lon = poi.getLon();
+
+				if (poi.getWifi() == true) {
+					imageViewWifi
+							.setImageResource(R.drawable.description_wifi);
+				} if (poi.getTerrace() == true) {
+					imageViewTerrace
+							.setImageResource(R.drawable.description_terrace);
+				} if (poi.getSundays() == true) {
+					imageViewSundays
+							.setImageResource(R.drawable.description_sunday);
+				} if (poi.getCalmplace() == true) {
+					imageViewCalmPlace
+							.setImageResource(R.drawable.description_calmplace);
+				} if (poi.getNonsmoking() == true) {
+					imageViewSmoking
+							.setImageResource(R.drawable.description_smoking);
+				}
 			}
 		}
 	}

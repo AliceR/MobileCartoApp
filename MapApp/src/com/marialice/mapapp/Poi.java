@@ -17,6 +17,13 @@ public class Poi {
 	private String category;
 	private String title;
 	private String description;
+	private Boolean wifi;
+	private Boolean sundays;
+	private Boolean terrace;
+	private Boolean calmplace;
+	private Boolean nonsmoking;
+	private Boolean touristclassic;
+	
 
 	public Double getLat() {
 		return lat;
@@ -121,4 +128,54 @@ public class Poi {
 
 		return categoryName;
 	}
+
+	public Boolean getWifi() {
+		return wifi;
+	}
+
+	public void setWifi(Boolean wifi) {
+		this.wifi = wifi;
+	}
+
+	public Boolean getSundays() {
+		return sundays;
+	}
+
+	public void setSundays(Boolean sundays) {
+		this.sundays = sundays;
+	}
+
+	public Boolean getTerrace() {
+		return terrace;
+	}
+
+	public void setTerrace(Boolean terrace) {
+		this.terrace = terrace;
+	}
+
+	public Boolean getCalmplace() {
+		return calmplace;
+	}
+
+	public void setCalmplace(Boolean calmplace) {
+		this.calmplace = calmplace;
+	}
+
+	public Boolean getNonsmoking() {
+		return nonsmoking;
+	}
+
+	public void setNonsmoking(Boolean nonsmoking) {
+		this.nonsmoking = nonsmoking;
+	}
+
+	public Boolean getTouristclassic() {
+		return touristclassic;
+	}
+
+	public void setTouristclassic(Boolean touristclassic) {
+		this.touristclassic = touristclassic;
+	}
+
+
 }

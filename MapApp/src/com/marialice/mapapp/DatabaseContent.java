@@ -34,6 +34,12 @@ public class DatabaseContent extends Activity {
 			int catindex = dbCursor.getColumnIndex("category");
 			int titleindex = dbCursor.getColumnIndex("title");
 			int descindex = dbCursor.getColumnIndex("description");
+			int wifiindex = dbCursor.getColumnIndex("wifi");
+			int terraceindex = dbCursor.getColumnIndex("terrace");
+			int sundaysindex = dbCursor.getColumnIndex("sundays");
+			int calmplaceindex = dbCursor.getColumnIndex("calmplace");
+			int nonsmokingindex = dbCursor.getColumnIndex("nonsmoking");
+			int touristclassicindex = dbCursor.getColumnIndex("touristclassic");
 
 			while (!dbCursor.isAfterLast()) {
 
@@ -43,6 +49,12 @@ public class DatabaseContent extends Activity {
 				String category = dbCursor.getString(catindex);
 				String title = dbCursor.getString(titleindex);
 				String description = dbCursor.getString(descindex);
+				Boolean wifi = dbCursor.getInt(wifiindex)>0;
+				Boolean terrace = dbCursor.getInt(terraceindex)>0;
+				Boolean sundays = dbCursor.getInt(sundaysindex)>0;
+				Boolean calmplace = dbCursor.getInt(calmplaceindex)>0;
+				Boolean nonsmoking = dbCursor.getInt(nonsmokingindex)>0;
+				Boolean touristclassic = dbCursor.getInt(touristclassicindex)>0;
 
 				Poi poi = new Poi();
 
@@ -52,6 +64,13 @@ public class DatabaseContent extends Activity {
 				poi.setCategory(category);
 				poi.setTitle(title);
 				poi.setDescription(description);
+				poi.setWifi(wifi);
+				poi.setTerrace(terrace);
+				poi.setSundays(sundays);
+				poi.setCalmplace(calmplace);
+				poi.setNonsmoking(nonsmoking);
+				poi.setTouristclassic(touristclassic);
+				
 				
 				dbpois.add(poi);
 
