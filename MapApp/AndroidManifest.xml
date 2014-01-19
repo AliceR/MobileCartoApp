@@ -63,6 +63,13 @@
             android:name="com.marialice.mapapp.DatabaseHelper"
             android:label="@string/title_activity_database_helper" >
         </activity>
+        <activity
+            android:name="com.marialice.mapapp.ActLikeLocalActivity"
+            android:label="@string/title_activity_act_like_local" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.marialice.mapapp.MapActivity" />
+        </activity>
     </application>
 
 </manifest>
