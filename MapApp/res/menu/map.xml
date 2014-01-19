@@ -8,7 +8,7 @@
         android:onClick="onOptionsItemSelected"/>
     <item
         android:id="@+id/goto_places"
-        android:icon="@drawable/poi_action_bar3"
+        android:icon="@drawable/action_list"
         android:showAsAction="always"
         android:title="@string/places"
         android:onClick="onOptionsItemSelected"/>
