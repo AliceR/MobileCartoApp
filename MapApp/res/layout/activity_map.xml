@@ -10,38 +10,25 @@
         class="com.google.android.gms.maps.SupportMapFragment" />
 
     <ImageButton
-        android:id="@+id/zoom_overview_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginRight="8dp"
-        android:layout_toLeftOf="@+id/zoom_city_center_button"
-        android:onClick="zoomOverview"
-        android:background="@drawable/button_map_overview"
-        android:contentDescription="@string/hello_world" />
-
-    <ImageButton
         android:id="@+id/zoom_city_center_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="58dp"
+        android:layout_marginRight="60dp"
         android:layout_marginTop="11dp"
-        android:onClick="zoomCityCenter"
-        android:src="@drawable/button_map_center"
-        android:contentDescription="@string/hello_world" />
-    
-<!--     <ImageButton
-        android:id="@+id/about"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignBottom="@id/map"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="31dp"
-        android:onClick="openAboutInfo"
-        android:src="@drawable/ic_action_about"
-        style="?android:attr/borderlessButtonStyle"
-        android:contentDescription="@string/hello_world" /> -->
+        android:background="@drawable/button_map_center"
+        android:contentDescription="@string/hello_world"
+        android:onClick="zoomCityCenter" />
+
+    <ImageButton
+        android:id="@+id/zoom_overview_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="11dp"
+        android:layout_toLeftOf="@+id/zoom_city_center_button"
+        android:background="@drawable/button_map_overview"
+        android:contentDescription="@string/hello_world"
+        android:onClick="zoomOverview" />
 
 </RelativeLayout>
