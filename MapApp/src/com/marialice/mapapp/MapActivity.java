@@ -1,17 +1,22 @@
 package com.marialice.mapapp;
+
 /* 
  * this is the main activity, the map view
  */
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -93,17 +98,15 @@ public class MapActivity extends FragmentActivity implements
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.goto_actlikelocal:
-			/*Intent actlikelocalintent = new Intent(MapActivity.this,
-					ActLikeLocalActivity.class);
-			startActivity(actlikelocalintent);*/
-			AlertDialog popup = new AlertDialog.Builder(this).create();
-			popup.setTitle("Act Like A Local!");
-			popup.setMessage(getResources().getString(R.string.actlikealocal_text1));
-	/* I would like to request for the 10 strings and randomly put them there  ^    */
-			/* and then there might be buttons < > , to let the user read the next hint */
-			/* maybe also something like 'hint 3/10' */
-			popup.show();
+			/*
+			 * Intent actlikelocalintent = new Intent(MapActivity.this,
+			 * ActLikeLocalActivity.class); startActivity(actlikelocalintent);
+			 */
+			Random randomi = new Random();
+			int i = randomi.nextInt((9 - 0) + 1) + 0;
+			createPopUp(i);
 			return true;
+
 		case R.id.goto_about:
 			Intent aboutintent = new Intent(MapActivity.this,
 					AboutActivity.class);
@@ -454,6 +457,65 @@ public class MapActivity extends FragmentActivity implements
 		}
 	}
 
+	private int createPopUp(final int i) {
+		// 1. Instantiate an AlertDialog.Builder with its constructor
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		// 2. Chain together various setter methods to set the dialog
+		// characteristics
+
+		List<String> hintlist = new ArrayList<String>();
+		String text1 = getResources().getString(R.string.actlikealocal_text1);
+		String text2 = getResources().getString(R.string.actlikealocal_text2);
+		String text3 = getResources().getString(R.string.actlikealocal_text3);
+		String text4 = getResources().getString(R.string.actlikealocal_text4);
+		String text5 = getResources().getString(R.string.actlikealocal_text5);
+		String text6 = getResources().getString(R.string.actlikealocal_text6);
+		String text7 = getResources().getString(R.string.actlikealocal_text7);
+		String text8 = getResources().getString(R.string.actlikealocal_text8);
+		String text9 = getResources().getString(R.string.actlikealocal_text9);
+		String text10 = getResources().getString(R.string.actlikealocal_text10);
+		hintlist.add(text1);
+		hintlist.add(text2);
+		hintlist.add(text3);
+		hintlist.add(text4);
+		hintlist.add(text5);
+		hintlist.add(text6);
+		hintlist.add(text7);
+		hintlist.add(text8);
+		hintlist.add(text9);
+		hintlist.add(text10);
+
+		Log.d("LOOOOOOK!!", hintlist.get(0) + hintlist.get(3));
+
+		if (i < hintlist.size()) {
+			String message = hintlist.get(i);
+
+			builder.setTitle(R.string.actlikealocal).setMessage(message);
+
+			builder.setNegativeButton(R.string.close,
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							// User clicked 'close' button
+						}
+					});
+			builder.setPositiveButton(R.string.next,
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							// User clicked 'Next' button
+							int j = i + 1;
+							createPopUp(j);
+						}
+					});
+			// 3. Get the AlertDialog from create()
+			AlertDialog popup = builder.create();
+
+			popup.show();
+		} else {
+			createPopUp(0);
+		}
+		return i;
+	}
+
 	// the following methods are used for retrieving device's location
 	private void setUpLocationClientIfNeeded() {
 		if (mLocationClient == null) {
@@ -462,23 +524,28 @@ public class MapActivity extends FragmentActivity implements
 					this);
 		}
 	}
+
 	@Override
 	public void onLocationChanged(Location location) {
 		// do nothing
 	}
+
 	@Override
 	public void onConnected(Bundle connectionHint) {
 		// LocationListener
-		mLocationClient.requestLocationUpdates(REQUEST, this); 
+		mLocationClient.requestLocationUpdates(REQUEST, this);
 	}
+
 	@Override
 	public void onDisconnected() {
 		// do nothing
 	}
+
 	@Override
 	public void onConnectionFailed(ConnectionResult result) {
 		// do nothing
 	}
+
 	@Override
 	public boolean onMyLocationButtonClick() {
 		return false;
