@@ -1,4 +1,6 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout 
+    android:id="@+id/description_legend"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -43,6 +45,7 @@
         android:layout_alignParentTop="true"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
+        android:visibility="gone"
         android:paddingTop="10dp" />
 
     <ImageView
@@ -53,6 +56,7 @@
         android:layout_below="@+id/wifi"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
+        android:visibility="gone"
         android:paddingTop="10dp" />
 
     <ImageView
@@ -63,6 +67,7 @@
         android:layout_below="@+id/terrace"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
+        android:visibility="gone"
         android:paddingTop="10dp" />
 
     <ImageView
@@ -73,6 +78,7 @@
         android:layout_below="@+id/sundays"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
+        android:visibility="gone"
         android:paddingTop="10dp" />
 
     <ImageView
@@ -83,6 +89,7 @@
         android:layout_below="@+id/calmplace"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
+        android:visibility="gone"
         android:paddingTop="10dp" />
 
     <Button

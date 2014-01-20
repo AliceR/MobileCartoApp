@@ -23,6 +23,12 @@
     <string name="graphic_text"><b>Graphic designer:</b> Julie Dürrová</string>
     <string name="hello_world">Hello world!</string>
     <string name="language_text"><b>Language correctors:</b> Amanda Place, Jennifer Baily</string>
+    <string name="legend_calmplace">calm place</string>
+    <string name="legend_nonsmoking">non-smoking</string>
+    <string name="legend_sundays">open also on Sunday</string>
+    <string name="legend_terrace">summer terrace</string>
+    <string name="legend_title">Legend</string>
+    <string name="legend_wifi">free wi-fi spot</string>
     <string name="link_cbuseit">&lt;a href="http://www.ceskebudejovice.use-it.travel">www.ceskebudejovice.use-it.travel&lt;/a></string>
     <string name="link_fbcbck">&lt;a href="http://www.facebook.com/useitcbck">www.facebook.com/useitCBCK&lt;/a></string>
     <string name="link_fbuseit">&lt;a href="http://www.facebook.com/useit">www.facebook.com/USE-IT&lt;/a></string>
@@ -37,8 +43,8 @@
     <string name="title_activity_places_description">Details</string>
     <string name="use_it_logo">use it europe logo</string>
     <string name="writers_text"><b>Writers collective:</b> Eva Křížová, Kamila Kačmáčková, Miroslav Řezníček, Katka Jedličková, Radka Záhrobovská, Týna Houdková, Magda Zronková, Marie Rychlá Novotná, Katka Tůmová and others</string>
-
     <string name="previous">Previous</string>
     <string name="close">Close</string>
     <string name="next">Next</string>
+
 </resources>
