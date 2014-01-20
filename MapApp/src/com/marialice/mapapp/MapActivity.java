@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Locale;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -92,9 +93,16 @@ public class MapActivity extends FragmentActivity implements
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.goto_actlikelocal:
-			Intent actlikelocalintent = new Intent(MapActivity.this,
+			/*Intent actlikelocalintent = new Intent(MapActivity.this,
 					ActLikeLocalActivity.class);
-			startActivity(actlikelocalintent);
+			startActivity(actlikelocalintent);*/
+			AlertDialog popup = new AlertDialog.Builder(this).create();
+			popup.setTitle("Act Like A Local!");
+			popup.setMessage(getResources().getString(R.string.actlikealocal_text1));
+	/* I would like to request for the 10 strings and randomly put them there  ^    */
+			/* and then there might be buttons < > , to let the user read the next hint */
+			/* maybe also something like 'hint 3/10' */
+			popup.show();
 			return true;
 		case R.id.goto_about:
 			Intent aboutintent = new Intent(MapActivity.this,
