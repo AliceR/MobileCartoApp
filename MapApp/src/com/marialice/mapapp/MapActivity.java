@@ -485,7 +485,15 @@ public class MapActivity extends FragmentActivity implements
 		if (i < hintlist.size()) {
 			String message = hintlist.get(i);
 			builder.setTitle(R.string.actlikealocal).setMessage(message);
-			builder.setNegativeButton(R.string.close,
+			final int h = i - 1;
+			builder.setNegativeButton(R.string.previous,
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							// User clicked 'previous' button
+							createPopUp(h);
+						}
+					});
+			builder.setNeutralButton(R.string.close,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							// User clicked 'close' button
