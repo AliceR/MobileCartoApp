@@ -100,7 +100,7 @@ public class MapActivity extends FragmentActivity implements
 			// start the pop up with a random hint
 			Random randomi = new Random();
 			int i = randomi.nextInt((9 - 0) + 1) + 0;
-						// nextInt((max - min) + 1) + min;
+			// nextInt((max - min) + 1) + min;
 			createPopUp(i);
 			return true;
 
@@ -455,7 +455,7 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	private int createPopUp(int i) {
-		
+
 		List<String> hintlist = new ArrayList<String>();
 		String text1 = getResources().getString(R.string.actlikealocal_text1);
 		String text2 = getResources().getString(R.string.actlikealocal_text2);
@@ -485,6 +485,14 @@ public class MapActivity extends FragmentActivity implements
 		if (i < hintlist.size()) {
 			String message = hintlist.get(i);
 			builder.setTitle(R.string.actlikealocal).setMessage(message);
+
+			builder.setNeutralButton(R.string.close,
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							// User clicked 'close' button
+						}
+					});
+
 			final int h = i - 1;
 			builder.setNegativeButton(R.string.previous,
 					new DialogInterface.OnClickListener() {
@@ -493,15 +501,9 @@ public class MapActivity extends FragmentActivity implements
 							createPopUp(h);
 						}
 					});
-			builder.setNeutralButton(R.string.close,
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							// User clicked 'close' button
-						}
-					});
 			final int j = i + 1;
 			builder.setPositiveButton(R.string.next,
-					new DialogInterface.OnClickListener() { 
+					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							// User clicked 'Next' button
 							createPopUp(j);
