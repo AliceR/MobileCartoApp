@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -479,7 +480,8 @@ public class MapActivity extends FragmentActivity implements
 		hintlist.add(text10);
 
 		// 1. Instantiate an AlertDialog.Builder with its constructor
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(
+				new ContextThemeWrapper(this, R.style.PopUpHint));
 		// 2. Chain together various setter methods to set the dialog
 		// characteristics
 		if (i < hintlist.size()) {

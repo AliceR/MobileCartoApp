@@ -1,4 +1,10 @@
 <resources>
+    
+    <!-- custom style for the pop up window -->
+    <style name="PopUpHint">
+        <item name="android:background">#FF00FF</item>
+        
+    </style>
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
