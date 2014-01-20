@@ -487,6 +487,7 @@ public class MapActivity extends FragmentActivity implements
 		if (i < hintlist.size()) {
 			String message = hintlist.get(i);
 			builder.setTitle(R.string.actlikealocal).setMessage(message);
+			builder.setIcon(R.drawable.action_bulb);
 
 			builder.setNeutralButton(R.string.close,
 					new DialogInterface.OnClickListener() {

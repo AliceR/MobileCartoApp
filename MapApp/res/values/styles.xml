@@ -1,10 +1,17 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     
     <!-- custom style for the pop up window -->
     <style name="PopUpHint">
-        <item name="android:background">#FF00FF</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@color/actionbar</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:drawableTop">@drawable/action_bulb</item>
+        <item name="android:textColorHighlight">#FF00FF</item>
         
     </style>
+    <!--  How to address the parts individually? eg. android:drawableTop for each button  -->
+    
+    
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
