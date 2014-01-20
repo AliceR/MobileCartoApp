@@ -27,9 +27,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/desc_title"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="60dp"
         android:gravity="fill_horizontal"
-        android:paddingLeft="50dp"
-        android:paddingRight="80dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:paddingTop="20dp"
         android:textSize="17sp" />
 
@@ -41,9 +43,9 @@
         android:layout_alignParentTop="true"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"/>
-    
-     <ImageView
+        android:paddingTop="10dp" />
+
+    <ImageView
         android:id="@+id/terrace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,7 +53,7 @@
         android:layout_below="@+id/wifi"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp" />
 
     <ImageView
         android:id="@+id/sundays"
@@ -61,9 +63,9 @@
         android:layout_below="@+id/terrace"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"/>
-    
-       <ImageView
+        android:paddingTop="10dp" />
+
+    <ImageView
         android:id="@+id/calmplace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,9 +73,9 @@
         android:layout_below="@+id/sundays"
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"/>
-       
-       <ImageView
+        android:paddingTop="10dp" />
+
+    <ImageView
         android:id="@+id/smoking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,7 +84,6 @@
         android:contentDescription="@string/desc"
         android:paddingRight="10dp"
         android:paddingTop="10dp" />
-    
 
     <Button
         android:layout_width="wrap_content"

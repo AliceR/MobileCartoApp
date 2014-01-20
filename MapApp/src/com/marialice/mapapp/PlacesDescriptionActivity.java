@@ -104,6 +104,9 @@ public class PlacesDescriptionActivity extends Activity {
 					imageViewSmoking
 							.setImageResource(R.drawable.description_smoking);
 				}
+				if (poi.getTouristclassic() == true) {
+					textViewDesc.setBackgroundResource(R.drawable.border_tc);
+				}
 			}
 		}
 	}
