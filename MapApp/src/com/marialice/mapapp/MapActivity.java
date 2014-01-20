@@ -457,7 +457,7 @@ public class MapActivity extends FragmentActivity implements
 		}
 	}
 
-	private int createPopUp(final int i) {
+	private int createPopUp(int i) {
 		// 1. Instantiate an AlertDialog.Builder with its constructor
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// 2. Chain together various setter methods to set the dialog
@@ -498,11 +498,11 @@ public class MapActivity extends FragmentActivity implements
 							// User clicked 'close' button
 						}
 					});
+			final int j = i + 1;
 			builder.setPositiveButton(R.string.next,
-					new DialogInterface.OnClickListener() {
+					new DialogInterface.OnClickListener() { 
 						public void onClick(DialogInterface dialog, int id) {
 							// User clicked 'Next' button
-							int j = i + 1;
 							createPopUp(j);
 						}
 					});
