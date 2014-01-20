@@ -1,5 +1,9 @@
 package com.marialice.mapapp;
 
+/* 
+ * this is a class to provide content of the db in a nice, practical format.
+ * we can use the poi List to access our data all over the app
+ */
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +16,11 @@ import android.database.sqlite.SQLiteDatabase;
 public class DatabaseContent extends Activity {
 
 	public List<Poi> queryDataFromDatabase(Context context) {
-		
+
 		SQLiteDatabase db = null;
 		Cursor dbCursor;
 		DatabaseHelper dbHelper = new DatabaseHelper(context);
-		
+
 		List<Poi> dbpois = new ArrayList<Poi>();
 
 		try {
@@ -49,12 +53,12 @@ public class DatabaseContent extends Activity {
 				String category = dbCursor.getString(catindex);
 				String title = dbCursor.getString(titleindex);
 				String description = dbCursor.getString(descindex);
-				Boolean wifi = dbCursor.getInt(wifiindex)>0;
-				Boolean terrace = dbCursor.getInt(terraceindex)>0;
-				Boolean sundays = dbCursor.getInt(sundaysindex)>0;
-				Boolean calmplace = dbCursor.getInt(calmplaceindex)>0;
-				Boolean nonsmoking = dbCursor.getInt(nonsmokingindex)>0;
-				Boolean touristclassic = dbCursor.getInt(touristclassicindex)>0;
+				Boolean wifi = dbCursor.getInt(wifiindex) > 0;
+				Boolean terrace = dbCursor.getInt(terraceindex) > 0;
+				Boolean sundays = dbCursor.getInt(sundaysindex) > 0;
+				Boolean calmplace = dbCursor.getInt(calmplaceindex) > 0;
+				Boolean nonsmoking = dbCursor.getInt(nonsmokingindex) > 0;
+				Boolean touristclassic = dbCursor.getInt(touristclassicindex) > 0;
 
 				Poi poi = new Poi();
 
@@ -70,13 +74,12 @@ public class DatabaseContent extends Activity {
 				poi.setCalmplace(calmplace);
 				poi.setNonsmoking(nonsmoking);
 				poi.setTouristclassic(touristclassic);
-				
-				
+
 				dbpois.add(poi);
 
 				dbCursor.moveToNext();
-				
-			}		
+
+			}
 		} finally {
 			if (db != null) {
 				dbHelper.close();

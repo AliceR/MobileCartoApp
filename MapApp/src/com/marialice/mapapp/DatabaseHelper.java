@@ -1,5 +1,7 @@
 package com.marialice.mapapp;
-
+/* 
+ * this is a database helper, written by Eva
+ */
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,8 +17,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static String DB_PATH;
 	private static String DB_PATH_PREFIX = "/data/data/";
 	private static String DB_PATH_SUFFIX = "/databases/";
-	// set the name of the database. the .db file has to be stored in the assets folder
-	private static String DB_NAME = "pois.db";  
+	// set the name of the database 
+	// (the .db file has to be stored in the assets folder)
+	private static String DB_NAME = "pois.db";
 	private SQLiteDatabase myDataBase;
 	private final Context myContext;
 

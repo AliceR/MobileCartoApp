@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="white">#FFFFFF</color>
-    <color name="yellow">#FFFF00</color>
-    <color name="fuchsia">#FF00FF</color>
-    <color name="red">#FF0000</color>
-    <color name="silver">#C0C0C0</color>
-    <color name="gray">#808080</color>
-    <color name="olive">#808000</color>
-    <color name="purple">#800080</color>
-    <color name="maroon">#800000</color>
-    <color name="aqua">#00FFFF</color>
-    <color name="lime">#00FF00</color>
-    <color name="teal">#008080</color>
-    <color name="green">#008000</color>
-    <color name="blue">#0000FF</color>
-    <color name="navy">#000080</color>
-    <color name="black">#000000</color>
     
+    <!-- colors for UI items -->
     
     <color name="actionbar">#8D7966</color>
+    <color name="white">#FFFFFF</color>
     
-<!-- colors of categories with 30 % transparecy -->
+    <!-- colors of categories with 30 % transparecy -->
+
     <color name="sightseeingTr">#4DE83D90</color>
     <color name="museumTr">#4D8E3C8F</color>
     <color name="shoppingTr">#4D139DEB</color>
@@ -30,7 +16,7 @@
     <color name="barTr">#4D0D3891</color>
     <color name="hiddenTr">#4D149940</color>
     
-   <!--     colors of categories with 95 % transparecy -->
+   <!-- colors of categories with 95 % transparecy -->
     <color name="sightseeing">#F2E83D90</color>
     <color name="museum">#F28E3C8F</color>
     <color name="shopping">#F2139DEB</color>
@@ -38,11 +24,5 @@
     <color name="cafe">#F2A61533</color>
     <color name="bar">#F20D3891</color>
     <color name="hidden">#F2149940</color> 
-    
-    
-<!-- Scheme for CB goes here -->
-
-<!-- Scheme for CK goes here -->
-
 
 </resources>

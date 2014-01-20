@@ -1,5 +1,7 @@
 package com.marialice.mapapp;
-
+/* 
+ * this creates the expandable list for the places activity
+ */
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,7 +14,7 @@ import android.widget.TextView;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-	// include our classes
+	// include our class
 	DatabaseContent dbclass = new DatabaseContent();
 
 	private Context context;
@@ -28,86 +30,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		this.listDataHeader = listDataHeader;
 		this.listDataChild = listChildData;
 	}
-
-	@Override
-	public Object getChild(int groupPosition, int childPosititon) {
-		return this.listDataChild.get(this.listDataHeader.get(groupPosition))
-				.get(childPosititon);
-	}
-
-	@Override
-	public long getChildId(int groupPosition, int childPosition) {
-		return childPosition;
-	}
-
-	@Override
-	public View getChildView(int groupPosition, final int childPosition,
-			boolean isLastChild, View convertView, ViewGroup parent) {
-
-		String childText = (String) getChild(groupPosition, childPosition);
-
-		int group_id = (int) getGroupId(groupPosition);
-		int color = 0;
-		switch (group_id) {
-		case 0:
-			color = R.color.sightseeingTr;
-			break;
-		case 1:
-			color = R.color.museumTr;
-			break;
-		case 2:
-			color = R.color.shoppingTr;
-			break;
-		case 3:
-			color = R.color.eatTr;
-			break;
-		case 4:
-			color = R.color.cafeTr;
-			break;
-		case 5:
-			color = R.color.barTr;
-			break;
-		case 6:
-			color = R.color.hiddenTr;
-			break;
-		default:
-			color = R.color.silver;
-			break;
-		}
-		if (convertView == null) {
-			LayoutInflater infalInflater = (LayoutInflater) this.context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = infalInflater.inflate(R.layout.list_item, null);
-		}
-
-		TextView txtListChild = (TextView) convertView
-				.findViewById(R.id.PoiListItem);
-		// txtListChild.setTypeface(tf, Typeface.BOLD);
-		txtListChild.setText(childText);
-		txtListChild.setBackgroundColor(context.getResources().getColor(color));
-
-		List<Poi> dbpois = dbclass.queryDataFromDatabase(context);
-		TextView numberListChild = (TextView) convertView
-				.findViewById(R.id.PoiListNumber);
-		for (int i = 0; i < dbpois.size(); i++) {
-			Poi poi = dbpois.get(i);
-			String titledb = poi.getTitle();
-			String number = poi.getNumber();
-			if (titledb.equals(childText)) {
-				numberListChild.setText(number);
-				numberListChild.setBackgroundColor(context.getResources()
-						.getColor(color));
-			}
-		}
-		return convertView;
-	}
-
-	@Override
-	public int getChildrenCount(int groupPosition) {
-		return this.listDataChild.get(this.listDataHeader.get(groupPosition))
-				.size();
-	}
-
+	
+	// the Group methods create the list headers
 	@Override
 	public Object getGroup(int groupPosition) {
 		String headerTitle = this.listDataHeader.get(groupPosition);
@@ -127,9 +51,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
-
+		// create the text string
 		String headerTitle = (String) getGroup(groupPosition);
 
+		// decide for a color according to the category
 		int group_id = (int) getGroupId(groupPosition);
 		int color = 0;
 		switch (group_id) {
@@ -155,7 +80,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			color = R.color.hidden;
 			break;
 		default:
-			color = R.color.silver;
+			color = R.color.white;
 			break;
 		}
 
@@ -167,8 +92,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 		TextView ListHeader = (TextView) convertView
 				.findViewById(R.id.ListHeader);
-		// ListHeader.setTypeface(tf, Typeface.BOLD);
-		// for some reason this makes trouble... same problem as with drawables?
+		// set text and color for the header list item
+		/* ListHeader.setTypeface(tf, Typeface.BOLD); */
+		/* for some reason this makes trouble... same problem as with drawables? */
 		ListHeader.setText(headerTitle);
 		ListHeader.setBackgroundColor(context.getResources().getColor(color));
 
@@ -178,14 +104,101 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	/*
 	 * For some unknown reason the use of a drawable resource instead of
 	 * background color is instable... in case we find out, why, and how to
-	 * avoid the mistake, we might go back to using an image
+	 * avoid the mistake, we might go back to using an image in the list
 	 * 
-	 * public class ViewHolderListitem { public TextView childtext; public
-	 * ImageView childimageview;
+	 * public class ViewHolderListitem { 
+	 * 		public TextView childtext;
+	 * 		public ImageView childimageview;
+	 *		public ViewHolderListitem(View v) { 
+	 *			this.childimageview = (ImageView)
+	 * 			v.findViewById(R.id.listimage); 
+	 * 		} 
+	 * }
 	 * 
-	 * public ViewHolderListitem(View v) { this.childimageview = (ImageView)
-	 * v.findViewById(R.id.listimage); } }
 	 */
+
+
+	// the Child methods create the list items below the headers
+	@Override
+	public Object getChild(int groupPosition, int childPosititon) {
+		return this.listDataChild.get(this.listDataHeader.get(groupPosition))
+				.get(childPosititon);
+	}
+
+	@Override
+	public long getChildId(int groupPosition, int childPosition) {
+		return childPosition;
+	}
+
+	@Override
+	public View getChildView(int groupPosition, final int childPosition,
+			boolean isLastChild, View convertView, ViewGroup parent) {
+		// create the text string
+		String childText = (String) getChild(groupPosition, childPosition);
+
+		// decide for a color according to the category
+		int group_id = (int) getGroupId(groupPosition);
+		int color = 0;
+		switch (group_id) {
+		case 0:
+			color = R.color.sightseeingTr;
+			break;
+		case 1:
+			color = R.color.museumTr;
+			break;
+		case 2:
+			color = R.color.shoppingTr;
+			break;
+		case 3:
+			color = R.color.eatTr;
+			break;
+		case 4:
+			color = R.color.cafeTr;
+			break;
+		case 5:
+			color = R.color.barTr;
+			break;
+		case 6:
+			color = R.color.hiddenTr;
+			break;
+		default:
+			color = R.color.white;
+			break;
+		}
+		if (convertView == null) {
+			LayoutInflater infalInflater = (LayoutInflater) this.context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = infalInflater.inflate(R.layout.list_item, null);
+		}
+
+		TextView txtListChild = (TextView) convertView
+				.findViewById(R.id.PoiListItem);
+		TextView numberListChild = (TextView) convertView
+				.findViewById(R.id.PoiListNumber);
+		// set text and color for the child list item
+		txtListChild.setText(childText);
+		txtListChild.setBackgroundColor(context.getResources().getColor(color));
+
+		// to retrieve the number according to the title
+		List<Poi> dbpois = dbclass.queryDataFromDatabase(context);	
+		for (int i = 0; i < dbpois.size(); i++) {
+			Poi poi = dbpois.get(i);
+			String titledb = poi.getTitle();
+			String number = poi.getNumber();
+			if (titledb.equals(childText)) {
+				numberListChild.setText(number);
+				numberListChild.setBackgroundColor(context.getResources()
+						.getColor(color));
+			}
+		}
+		return convertView;
+	}
+
+	@Override
+	public int getChildrenCount(int groupPosition) {
+		return this.listDataChild.get(this.listDataHeader.get(groupPosition))
+				.size();
+	}
 
 	@Override
 	public boolean hasStableIds() {

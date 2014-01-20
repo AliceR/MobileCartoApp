@@ -1,5 +1,7 @@
 package com.marialice.mapapp;
-
+/* 
+ * this is the activity for the list view of places
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +19,7 @@ import android.widget.ExpandableListView.OnChildClickListener;
 
 public class PlacesActivity extends Activity {
 
+	// include our class
 	DatabaseContent dbclass = new DatabaseContent();
 
 	ExpandableListAdapter listAdapter;

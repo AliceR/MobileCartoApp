@@ -1,5 +1,7 @@
 package com.marialice.mapapp;
-
+/* 
+ * this activity shows the 'hints' (act like a local)
+ */
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -12,10 +14,6 @@ public class ActLikeLocalActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_act_like_local);
-		setupActionBar();
-	}
-
-	private void setupActionBar() {
 		// Show the Up button in the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}

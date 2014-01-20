@@ -1,14 +1,13 @@
 package com.marialice.mapapp;
-
-import com.google.android.gms.maps.model.LatLng;
-
 /* 
  * This class creates the <Poi> object.
  * All fields from the database are introduces as variables
  * filled using the DatabaseContent class
  * or calculated in own methods.
  * 
- * */
+ */
+import com.google.android.gms.maps.model.LatLng;
+
 public class Poi {
 
 	private int id;

@@ -1,5 +1,7 @@
 package com.marialice.mapapp;
-
+/* 
+ * this is the main activity, the map view
+ */
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -44,10 +46,10 @@ public class MapActivity extends FragmentActivity implements
 	// private static final String MAPBOX_BASEMAP_URL_FORMAT =
 	// "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.h0a912jg/%d/%d/%d.png";
-	public GoogleMap mMap;
-	private LocationClient mLocationClient; // for location
+	private GoogleMap mMap;
 
-	// For getting the location
+	// For getting the location of the device
+	private LocationClient mLocationClient;
 	private static final LocationRequest REQUEST = LocationRequest.create()
 			.setInterval(5000) // 5 seconds
 			.setFastestInterval(16) // 16ms = 60fps
@@ -55,6 +57,7 @@ public class MapActivity extends FragmentActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		// on create, some methods are called
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
 		setUpMapIfNeeded();
@@ -109,8 +112,7 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	private void setUpMapIfNeeded() {
-		// Do a null check to confirm that we have not already instantiated the
-		// map.
+		// a null check to confirm that the map is not already instantiated
 		if (mMap == null) {
 			// Try to obtain the map from the SupportMapFragment.
 			mMap = ((SupportMapFragment) getSupportFragmentManager()
@@ -125,12 +127,13 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	private void setUpMap() {
-		// declare some map properties
+		// declare map properties
 		mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
-		mMap.setMyLocationEnabled(true);
-		mMap.getUiSettings().setZoomControlsEnabled(true);
+		mMap.setMyLocationEnabled(true); // the location button
+		mMap.getUiSettings().setZoomControlsEnabled(true); // the +/- buttons
 		mMap.setOnInfoWindowClickListener(this);
 
+		// the center coordinates and zoom level on the map
 		Double default_lat = 48.9744094;
 		Double default_lon = 14.4746094;
 		Double lat = getIntent().getDoubleExtra("lat", default_lat);
@@ -139,6 +142,7 @@ public class MapActivity extends FragmentActivity implements
 			mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 					default_lat, default_lon), 15));
 		} else {
+			// in case the coordinates come from the description button
 			zoomFromDescription(lat, lon);
 		}
 
@@ -157,12 +161,10 @@ public class MapActivity extends FragmentActivity implements
 				return url;
 			}
 		};
-
 		// add the tile overlay to the map
 		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(tileProvider));
 
-		// call the functions that create the markers
-
+		// call the methods that create the markers
 		addMarkersToMap();
 
 		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
@@ -197,6 +199,7 @@ public class MapActivity extends FragmentActivity implements
 				18));
 	}
 
+	// the method creates static markers, that are added to the map
 	private void addMarkersToMap() {
 		mMap.addMarker(new MarkerOptions()
 				.icon(BitmapDescriptorFactory
@@ -425,14 +428,17 @@ public class MapActivity extends FragmentActivity implements
 
 	}
 
+	// this is what happens when an info window is clicked
 	@Override
 	public void onInfoWindowClick(Marker marker) {
 		String title = marker.getTitle();
-
 		if (title.equals("Èerná vìž") | title.equals("Klášter dominikánù")
-				| title.equals("Samsonova kašna") | title.equals("Plavecký bazén")
-				| title.equals("Kino")| title.equals("Železná panna")) {
+				| title.equals("Samsonova kašna")
+				| title.equals("Plavecký bazén") | title.equals("Kino")
+				| title.equals("Železná panna")) {
+			// do nothing
 		} else {
+			// start the description with extras in the intent
 			Intent infowindowintent = new Intent(this,
 					PlacesDescriptionActivity.class);
 			infowindowintent.putExtra("listDataChild", title);
@@ -440,34 +446,33 @@ public class MapActivity extends FragmentActivity implements
 		}
 	}
 
+	// the following methods are used for retrieving device's location
 	private void setUpLocationClientIfNeeded() {
 		if (mLocationClient == null) {
-			mLocationClient = new LocationClient(getApplicationContext(), this, // ConnectionCallbacks
-					this); // OnConnectionFailedListener
+			// OnConnectionFailedListener
+			mLocationClient = new LocationClient(getApplicationContext(), this,
+					this);
 		}
 	}
-
 	@Override
 	public void onLocationChanged(Location location) {
+		// do nothing
 	}
-
 	@Override
 	public void onConnected(Bundle connectionHint) {
-		mLocationClient.requestLocationUpdates(REQUEST, this); // LocationListener
+		// LocationListener
+		mLocationClient.requestLocationUpdates(REQUEST, this); 
 	}
-
 	@Override
 	public void onDisconnected() {
+		// do nothing
 	}
-
 	@Override
 	public void onConnectionFailed(ConnectionResult result) {
-		// Do nothing
+		// do nothing
 	}
-
 	@Override
 	public boolean onMyLocationButtonClick() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
