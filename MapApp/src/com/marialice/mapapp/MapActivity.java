@@ -16,7 +16,6 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -98,12 +97,10 @@ public class MapActivity extends FragmentActivity implements
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.goto_actlikelocal:
-			/*
-			 * Intent actlikelocalintent = new Intent(MapActivity.this,
-			 * ActLikeLocalActivity.class); startActivity(actlikelocalintent);
-			 */
+			// start the pop up with a random hint
 			Random randomi = new Random();
 			int i = randomi.nextInt((9 - 0) + 1) + 0;
+						// nextInt((max - min) + 1) + min;
 			createPopUp(i);
 			return true;
 
@@ -458,11 +455,7 @@ public class MapActivity extends FragmentActivity implements
 	}
 
 	private int createPopUp(int i) {
-		// 1. Instantiate an AlertDialog.Builder with its constructor
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		// 2. Chain together various setter methods to set the dialog
-		// characteristics
-
+		
 		List<String> hintlist = new ArrayList<String>();
 		String text1 = getResources().getString(R.string.actlikealocal_text1);
 		String text2 = getResources().getString(R.string.actlikealocal_text2);
@@ -485,13 +478,13 @@ public class MapActivity extends FragmentActivity implements
 		hintlist.add(text9);
 		hintlist.add(text10);
 
-		Log.d("LOOOOOOK!!", hintlist.get(0) + hintlist.get(3));
-
+		// 1. Instantiate an AlertDialog.Builder with its constructor
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		// 2. Chain together various setter methods to set the dialog
+		// characteristics
 		if (i < hintlist.size()) {
 			String message = hintlist.get(i);
-
 			builder.setTitle(R.string.actlikealocal).setMessage(message);
-
 			builder.setNegativeButton(R.string.close,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
@@ -508,9 +501,9 @@ public class MapActivity extends FragmentActivity implements
 					});
 			// 3. Get the AlertDialog from create()
 			AlertDialog popup = builder.create();
-
 			popup.show();
 		} else {
+			// start with the first hint after last is displayed
 			createPopUp(0);
 		}
 		return i;
