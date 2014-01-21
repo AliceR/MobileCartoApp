@@ -2,15 +2,21 @@
     android:id="@+id/custom_toast_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#D1D1D1"
+    android:background="@drawable/rounded_borders"
     android:orientation="horizontal"
     android:padding="8dp" >
 
-  
+    <TextView
+        android:id="@+id/legend_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/legend_title" />
+
     <TextView
         android:id="@+id/legend_wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_title"
         android:drawableLeft="@drawable/description_wifi"
         android:drawablePadding="20dp"
         android:text="@string/legend_wifi" />
@@ -22,7 +28,7 @@
         android:layout_below="@+id/legend_wifi"
         android:drawableLeft="@drawable/description_terrace"
         android:drawablePadding="20dp"
-        android:text="@string/legend_terrace"/>
+        android:text="@string/legend_terrace" />
 
     <TextView
         android:id="@+id/legend_sundays"
@@ -31,7 +37,7 @@
         android:layout_below="@+id/legend_terrace"
         android:drawableLeft="@drawable/description_sunday"
         android:drawablePadding="15dp"
-        android:text="@string/legend_sundays"/>
+        android:text="@string/legend_sundays" />
 
     <TextView
         android:id="@+id/legend_calmplace"
@@ -40,7 +46,7 @@
         android:layout_below="@+id/legend_sundays"
         android:drawableLeft="@drawable/description_calmplace"
         android:drawablePadding="20dp"
-        android:text="@string/legend_calmplace"/>
+        android:text="@string/legend_calmplace" />
 
     <TextView
         android:id="@+id/legend_nonsmoking"

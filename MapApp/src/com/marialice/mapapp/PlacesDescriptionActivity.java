@@ -37,7 +37,7 @@ public class PlacesDescriptionActivity extends Activity {
 		this.setContentView(R.layout.activity_places_description);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		createDetails();
-		OnLongClickListener();
+
 	}
 
 	@Override
@@ -94,47 +94,54 @@ public class PlacesDescriptionActivity extends Activity {
 				if (poi.getWifi() == true) {
 					imageViewWifi.setImageResource(R.drawable.description_wifi);
 					imageViewWifi.setVisibility(View.VISIBLE);
-					
+					OnLongClickListener();
 				}
 				if (poi.getTerrace() == true) {
 					imageViewTerrace
 							.setImageResource(R.drawable.description_terrace);
 					imageViewTerrace.setVisibility(View.VISIBLE);
+					OnLongClickListener();
 				}
 				if (poi.getSundays() == true) {
 					imageViewSundays
 							.setImageResource(R.drawable.description_sunday);
 					imageViewSundays.setVisibility(View.VISIBLE);
+					OnLongClickListener();
 				}
 				if (poi.getCalmplace() == true) {
 					imageViewCalmPlace
 							.setImageResource(R.drawable.description_calmplace);
 					imageViewCalmPlace.setVisibility(View.VISIBLE);
+					OnLongClickListener();
 				}
 				if (poi.getNonsmoking() == true) {
 					imageViewSmoking
 							.setImageResource(R.drawable.description_smoking);
 					imageViewSmoking.setVisibility(View.VISIBLE);
+					OnLongClickListener();
 				}
 				if (poi.getTouristclassic() == true) {
 					textViewDesc.setBackgroundResource(R.drawable.border_tc);
+					OnLongClickListener();
 				}
 			}
 		}
 	}
 
+	//on long click listener
 	private void OnLongClickListener() {
 		ViewGroup showLegend = (ViewGroup) findViewById(R.id.description_legend);
 		showLegend.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
 			public boolean onLongClick(View view) {
-				
+
 				LayoutInflater inflater = getLayoutInflater();
 				// Inflate the Layout
-				View layout = inflater.inflate(R.layout.custom_toast_description,
+				View layout = inflater.inflate(
+						R.layout.custom_toast_description,
 						(ViewGroup) findViewById(R.id.custom_toast_layout));
-				Toast toast = new Toast(getApplicationContext());					
+				Toast toast = new Toast(getApplicationContext());
 				toast.setDuration(Toast.LENGTH_LONG);
 				toast.setGravity(Gravity.TOP | Gravity.RIGHT, 10, 300);
 				toast.setView(layout);
