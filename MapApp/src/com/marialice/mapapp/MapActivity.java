@@ -49,7 +49,8 @@ import com.google.android.gms.maps.model.UrlTileProvider;
 
 public class MapActivity extends FragmentActivity implements
 		ConnectionCallbacks, OnConnectionFailedListener, LocationListener,
-		OnMyLocationButtonClickListener, OnInfoWindowClickListener, OnMapLongClickListener {
+		OnMyLocationButtonClickListener, OnInfoWindowClickListener,
+		OnMapLongClickListener {
 
 	// include our classes
 	TextToBitmap drawclass = new TextToBitmap();
@@ -147,7 +148,7 @@ public class MapActivity extends FragmentActivity implements
 		mMap.setMyLocationEnabled(true); // the location button
 		mMap.getUiSettings().setZoomControlsEnabled(true); // the +/- buttons
 		mMap.setOnInfoWindowClickListener(this);
-        mMap.setOnMapLongClickListener(this);
+		mMap.setOnMapLongClickListener(this);
 
 		// the center coordinates and zoom level on the map
 		Double default_lat = 48.9744094;
@@ -486,72 +487,83 @@ public class MapActivity extends FragmentActivity implements
 		hintlist.add(text9);
 		hintlist.add(text10);
 
-		// 1. Instantiate an AlertDialog.Builder with its constructor
+		// Instantiate an AlertDialog.Builder with its constructor
 		AlertDialog.Builder builder = new AlertDialog.Builder(
 				new ContextThemeWrapper(this, R.style.PopUpHint));
-		// 2. Chain together various setter methods to set the dialog
-		// characteristics
-		final int count = hintlist.size();	
-		if (i < count && i>=0) {
-			String message = hintlist.get(i);
-			int hintnumber = i+1;
-			builder.setTitle(R.string.actlikealocal).setMessage(message+" (Hint "+ hintnumber +"/10)");
-			builder.setIcon(R.drawable.action_bulb);
 
-			builder.setNeutralButton(R.string.close,
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							// User clicked 'close' button
-						}
-					});
-			
+		// Get the layout inflater
+		// LayoutInflater popuplayout = this.getLayoutInflater();
+
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		// builder.setView(popuplayout.inflate(R.layout.popupwindow, null));
+
+		// Chain together various setter methods to set the dialog
+		// characteristics
+		final int count = hintlist.size();
+		if (i < count && i >= 0) {
+			String message = hintlist.get(i);
+			int hintnumber = i + 1;
+			builder.setTitle(R.string.actlikealocal)
+					.setMessage(message + " (Hint " + hintnumber + "/10)")
+					.setIcon(R.drawable.action_bulb)
+					.setNeutralButton(R.string.close,
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									// User clicked 'close' button
+								}
+							});
+
 			final int h = i - 1;
 			builder.setNegativeButton(R.string.previous,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							// User clicked 'previous' button
-							if (h>=0){
+							if (h >= 0) {
 								createPopUp(h);
 							} else {
-								int g=count-1;
-								// start with the last hint after first is displayed
+								int g = count - 1;
+								// start with the last hint after first is
+								// displayed
 								createPopUp(g);
 							}
 						}
 					});
-			
+
 			final int j = i + 1;
 			builder.setPositiveButton(R.string.next,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							// User clicked 'Next' button
-							if (j<count){
+							if (j < count) {
 								createPopUp(j);
 							} else {
-								// start with the first hint after last is displayed
+								// start with the first hint after last is
+								// displayed
 								createPopUp(0);
 							}
 						}
 					});
-			
-			// 3. Get the AlertDialog from create()
+
+			// Get the AlertDialog from create()
 			AlertDialog popup = builder.create();
 			popup.show();
-			
-		} else{
+
+		} else {
 			// for debugging only. the user should never get this toast :)
 			Context context = getApplicationContext();
 			CharSequence text = "something is wrong...";
 			int duration = Toast.LENGTH_SHORT;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
-		} 
+		}
 		return i;
 	}
 
 	// on long click listener
 	@Override
-    public void onMapLongClick(LatLng point) {
+	public void onMapLongClick(LatLng point) {
 
 		LayoutInflater inflater = getLayoutInflater();
 		// Inflate the Layout
