@@ -1,17 +1,30 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    
+
     <!-- custom style for the pop up window -->
-    <style name="PopUpHint">
-        <item name="android:windowIsFloating">true</item>
+    <style name="PopUpHint" parent="android:Theme.Light">
+
+        <!-- most of the specified attributes don't have any effect. why? how does it work? -->
+        <!-- <item name="android:windowIsFloating">true</item> -->
         <item name="android:windowBackground">@color/actionbar</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-        <item name="android:drawableTop">@drawable/action_bulb</item>
         <item name="android:textColorHighlight">#FF00FF</item>
         
+        <!-- this only makes it ugly, the backgound goes over the window border 
+        <item name="android:background">@color/actionbar</item> -->
+
+        <!-- color only for title: -->
+        <item name="android:textColor">@color/cafe</item>
+        
+        <!-- shadow effect around ALL text, even buttons -->
+        <item name="android:shadowColor">#F38119</item>
+        <item name="android:shadowRadius">5</item>
     </style>
-    <!--  How to address the parts individually? eg. android:drawableTop for each button  -->
-    
-    
+
+    <!--
+          How to address the parts individually? eg. android:drawableTop for each button  
+    	<item name="android:drawableTop">@drawable/action_bulb</item>
+    -->
+
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -28,6 +41,7 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:alertDialogStyle">@style/PopUpHint</item>
     </style>
 
 </resources>
