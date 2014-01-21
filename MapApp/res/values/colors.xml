@@ -7,7 +7,6 @@
     <color name="white">#FFFFFF</color>
     
     <!-- colors of categories with 30 % transparecy -->
-
     <color name="sightseeingTr">#4DE83D90</color>
     <color name="museumTr">#4D8E3C8F</color>
     <color name="shoppingTr">#4D139DEB</color>
