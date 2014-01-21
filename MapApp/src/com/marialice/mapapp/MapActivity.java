@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
@@ -490,9 +491,11 @@ public class MapActivity extends FragmentActivity implements
 				new ContextThemeWrapper(this, R.style.PopUpHint));
 		// 2. Chain together various setter methods to set the dialog
 		// characteristics
-		if (i < hintlist.size()) {
+		final int count = hintlist.size();	
+		if (i < count && i>=0) {
 			String message = hintlist.get(i);
-			builder.setTitle(R.string.actlikealocal).setMessage(message);
+			int hintnumber = i+1;
+			builder.setTitle(R.string.actlikealocal).setMessage(message+" (Hint "+ hintnumber +"/10)");
 			builder.setIcon(R.drawable.action_bulb);
 
 			builder.setNeutralButton(R.string.close,
@@ -501,30 +504,48 @@ public class MapActivity extends FragmentActivity implements
 							// User clicked 'close' button
 						}
 					});
-
+			
 			final int h = i - 1;
 			builder.setNegativeButton(R.string.previous,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							// User clicked 'previous' button
-							createPopUp(h);
+							if (h>=0){
+								createPopUp(h);
+							} else {
+								int g=count-1;
+								// start with the last hint after first is displayed
+								createPopUp(g);
+							}
 						}
 					});
+			
 			final int j = i + 1;
 			builder.setPositiveButton(R.string.next,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							// User clicked 'Next' button
-							createPopUp(j);
+							if (j<count){
+								createPopUp(j);
+							} else {
+								// start with the first hint after last is displayed
+								createPopUp(0);
+							}
 						}
 					});
+			
 			// 3. Get the AlertDialog from create()
 			AlertDialog popup = builder.create();
 			popup.show();
-		} else {
-			// start with the first hint after last is displayed
-			createPopUp(0);
-		}
+			
+		} else{
+			// for debugging only. the user should never get this toast :)
+			Context context = getApplicationContext();
+			CharSequence text = "something is wrong...";
+			int duration = Toast.LENGTH_SHORT;
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
+		} 
 		return i;
 	}
 
