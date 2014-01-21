@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@drawable/rounded_borders"
     android:orientation="horizontal"
-    android:padding="8dp" >
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/legend_title"

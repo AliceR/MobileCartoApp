@@ -16,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -94,61 +93,67 @@ public class PlacesDescriptionActivity extends Activity {
 				if (poi.getWifi() == true) {
 					imageViewWifi.setImageResource(R.drawable.description_wifi);
 					imageViewWifi.setVisibility(View.VISIBLE);
-					OnLongClickListener();
+					//OnLongClickListener();
 				}
 				if (poi.getTerrace() == true) {
 					imageViewTerrace
 							.setImageResource(R.drawable.description_terrace);
 					imageViewTerrace.setVisibility(View.VISIBLE);
-					OnLongClickListener();
+					// OnLongClickListener();
 				}
 				if (poi.getSundays() == true) {
 					imageViewSundays
 							.setImageResource(R.drawable.description_sunday);
 					imageViewSundays.setVisibility(View.VISIBLE);
-					OnLongClickListener();
+					// OnLongClickListener();
 				}
 				if (poi.getCalmplace() == true) {
 					imageViewCalmPlace
 							.setImageResource(R.drawable.description_calmplace);
 					imageViewCalmPlace.setVisibility(View.VISIBLE);
-					OnLongClickListener();
+					// OnLongClickListener();
 				}
 				if (poi.getNonsmoking() == true) {
 					imageViewSmoking
 							.setImageResource(R.drawable.description_smoking);
 					imageViewSmoking.setVisibility(View.VISIBLE);
-					OnLongClickListener();
+					// OnLongClickListener();
 				}
 				if (poi.getTouristclassic() == true) {
 					textViewDesc.setBackgroundResource(R.drawable.border_tc);
-					OnLongClickListener();
+					// OnLongClickListener();
 				}
 			}
 		}
 	}
 
-	//on long click listener
-	private void OnLongClickListener() {
-		ViewGroup showLegend = (ViewGroup) findViewById(R.id.description_legend);
-		showLegend.setOnLongClickListener(new OnLongClickListener() {
+/*	
+	  // on long click listener private void OnLongClickListener() { ViewGroup
+	  showLegend = (ViewGroup) findViewById(R.id.description_legend);
+	  showLegend.setOnLongClickListener(new OnLongClickListener() {
+	  
+	  @Override public boolean onLongClick(View view) {
+	  
+	  LayoutInflater inflater = getLayoutInflater(); // Inflate the Layout View
+	  layout = inflater.inflate( R.layout.custom_toast_description, (ViewGroup)
+	  findViewById(R.id.custom_toast_layout)); Toast toast = new
+	  Toast(getApplicationContext()); toast.setDuration(Toast.LENGTH_LONG);
+	  toast.setGravity(Gravity.TOP | Gravity.RIGHT, 10, 300);
+	 toast.setView(layout); toast.show(); return true; } }); }*/
+	 
 
-			@Override
-			public boolean onLongClick(View view) {
+	// on click listener
+	public void showLegend(View view) {
+		LayoutInflater inflater = getLayoutInflater(); // Inflate the Layout
+		View layout = inflater.inflate(R.layout.custom_toast_description,
+				(ViewGroup) findViewById(R.id.custom_toast_layout));
+		
+		Toast toast = new Toast(getApplicationContext());
+		toast.setDuration(Toast.LENGTH_LONG);
+		toast.setGravity(Gravity.TOP | Gravity.RIGHT, 10, 300);
+		toast.setView(layout);
+		toast.show();
 
-				LayoutInflater inflater = getLayoutInflater();
-				// Inflate the Layout
-				View layout = inflater.inflate(
-						R.layout.custom_toast_description,
-						(ViewGroup) findViewById(R.id.custom_toast_layout));
-				Toast toast = new Toast(getApplicationContext());
-				toast.setDuration(Toast.LENGTH_LONG);
-				toast.setGravity(Gravity.TOP | Gravity.RIGHT, 10, 300);
-				toast.setView(layout);
-				toast.show();
-				return true;
-			}
-		});
 	}
 
 	// this method is called when the button is clicked
