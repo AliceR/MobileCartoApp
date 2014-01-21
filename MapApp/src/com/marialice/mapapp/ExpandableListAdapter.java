@@ -141,25 +141,25 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		int color = 0;
 		switch (group_id) {
 		case 0:
-			color = R.color.sightseeingTr;
+			color = R.color.sightseeing30;
 			break;
 		case 1:
-			color = R.color.museumTr;
+			color = R.color.museum30;
 			break;
 		case 2:
-			color = R.color.shoppingTr;
+			color = R.color.shopping30;
 			break;
 		case 3:
-			color = R.color.eatTr;
+			color = R.color.eat30;
 			break;
 		case 4:
-			color = R.color.cafeTr;
+			color = R.color.cafe30;
 			break;
 		case 5:
-			color = R.color.barTr;
+			color = R.color.bar30;
 			break;
 		case 6:
-			color = R.color.hiddenTr;
+			color = R.color.hidden30;
 			break;
 		default:
 			color = R.color.white;
