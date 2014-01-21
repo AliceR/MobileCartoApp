@@ -506,7 +506,7 @@ public class MapActivity extends FragmentActivity implements
 			int hintnumber = i + 1;
 			builder.setTitle(R.string.actlikealocal)
 					.setMessage(message + " (Hint " + hintnumber + "/10)")
-					.setIcon(R.drawable.action_bulb)
+					.setIcon(R.drawable.action_bulb_blue)
 					.setNeutralButton(R.string.close,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
