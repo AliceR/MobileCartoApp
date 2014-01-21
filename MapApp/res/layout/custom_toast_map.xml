@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_toast_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/rounded_borders"
+    android:orientation="horizontal"
+    android:padding="8dp" >
+
+    <TextView
+        android:id="@+id/legend_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/poi_info"
+        android:drawablePadding="16dp"
+        android:text="@string/legend_info" />
+
+    <TextView
+        android:id="@+id/legend_hostel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_info"
+        android:drawableLeft="@drawable/poi_hostel"
+        android:drawablePadding="20dp"
+        android:text="@string/legend_hostel" />
+
+    <TextView
+        android:id="@+id/legend_hungrywindow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_hostel"
+        android:drawableLeft="@drawable/poi_hungry_window"
+        android:drawablePadding="18dp"
+        android:text="@string/legend_hungrywindow" />
+
+    <TextView
+        android:id="@+id/legend_grocery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_hungrywindow"
+        android:drawableLeft="@drawable/poi_grocery"
+        android:drawablePadding="15dp"
+        android:text="@string/legend_grocery" />
+
+    <TextView
+        android:id="@+id/legend_shoppingcentre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_grocery"
+        android:drawableLeft="@drawable/poi_shopping_centre"
+        android:drawablePadding="14dp"
+        android:text="@string/legend_shoppingcentre" />
+
+    <TextView
+        android:id="@+id/legend_pharmacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_shoppingcentre"
+        android:drawableLeft="@drawable/poi_pharmacy"
+        android:drawablePadding="20dp"
+        android:text="@string/legend_pharmacy" />
+
+    <TextView
+        android:id="@+id/legend_hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_pharmacy"
+        android:drawableLeft="@drawable/poi_hospital"
+        android:drawablePadding="20dp"
+        android:text="@string/legend_hospital" />
+
+    <TextView
+        android:id="@+id/legend_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_hospital"
+        android:drawableLeft="@drawable/poi_post"
+        android:drawablePadding="19dp"
+        android:text="@string/legend_post" />
+
+    <TextView
+        android:id="@+id/legend_atm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_post"
+        android:drawableLeft="@drawable/poi_atm"
+        android:drawablePadding="17dp"
+        android:text="@string/legend_atm" />
+
+    <TextView
+        android:id="@+id/legend_sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legend_atm"
+        android:drawableLeft="@drawable/poi_sport"
+        android:drawablePadding="19dp"
+        android:text="@string/legend_sport" />
+
+</RelativeLayout>

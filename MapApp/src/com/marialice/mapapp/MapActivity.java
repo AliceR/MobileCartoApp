@@ -17,10 +17,14 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
@@ -31,6 +35,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -43,7 +48,7 @@ import com.google.android.gms.maps.model.UrlTileProvider;
 
 public class MapActivity extends FragmentActivity implements
 		ConnectionCallbacks, OnConnectionFailedListener, LocationListener,
-		OnMyLocationButtonClickListener, OnInfoWindowClickListener {
+		OnMyLocationButtonClickListener, OnInfoWindowClickListener, OnMapLongClickListener {
 
 	// include our classes
 	TextToBitmap drawclass = new TextToBitmap();
@@ -141,6 +146,7 @@ public class MapActivity extends FragmentActivity implements
 		mMap.setMyLocationEnabled(true); // the location button
 		mMap.getUiSettings().setZoomControlsEnabled(true); // the +/- buttons
 		mMap.setOnInfoWindowClickListener(this);
+        mMap.setOnMapLongClickListener(this);
 
 		// the center coordinates and zoom level on the map
 		Double default_lat = 48.9744094;
@@ -520,6 +526,21 @@ public class MapActivity extends FragmentActivity implements
 			createPopUp(0);
 		}
 		return i;
+	}
+
+	// on long click listener
+	@Override
+    public void onMapLongClick(LatLng point) {
+
+		LayoutInflater inflater = getLayoutInflater();
+		// Inflate the Layout
+		View layout = inflater.inflate(R.layout.custom_toast_map,
+				(ViewGroup) findViewById(R.id.custom_toast_layout));
+		Toast toast = new Toast(getApplicationContext());
+		toast.setDuration(Toast.LENGTH_LONG);
+		toast.setGravity(Gravity.LEFT | Gravity.BOTTOM, 20, 20);
+		toast.setView(layout);
+		toast.show();
 	}
 
 	// the following methods are used for retrieving device's location
