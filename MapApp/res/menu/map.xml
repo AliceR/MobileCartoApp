@@ -3,21 +3,30 @@
     <item
         android:id="@+id/goto_actlikelocal"
         android:icon="@drawable/action_bulb"
+        android:onClick="onOptionsItemSelected"
         android:showAsAction="always"
-        android:title="@string/hello_world"
-        android:onClick="onOptionsItemSelected"/>
+        android:title="@string/hello_world"/>
     <item
         android:id="@+id/goto_places"
         android:icon="@drawable/action_list2"
+        android:onClick="onOptionsItemSelected"
         android:showAsAction="always"
-        android:title="@string/places"
-        android:onClick="onOptionsItemSelected"/>
-    
+        android:title="@string/places"/>
     <item
-        android:id="@+id/goto_about"
-        android:icon="@drawable/ic_action_about"
+        android:id="@+id/goto_overflow"
+        android:icon="@drawable/ic_action_overflow"
         android:showAsAction="always"
-        android:title="@string/hello_world"
-        android:onClick="onOptionsItemSelected"/>
+        android:title="@string/hello_world">
+        <menu>
+            <item
+                android:id="@+id/goto_about"
+                android:onClick="onOptionsItemSelected"
+                android:title="@string/about_us"/>
+            <item
+                android:id="@+id/goto_legend"
+                android:onClick="onOptionsItemSelected"
+                android:title="@string/legend_title"/>
+        </menu>
+    </item>
 
 </menu>
