@@ -2,7 +2,7 @@
     android:id="@+id/custom_toast_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/rounded_borders"
+    android:background="@drawable/legend_rounded_borders"
     android:orientation="horizontal"
     android:padding="8dp">
 

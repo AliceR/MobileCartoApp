@@ -5,6 +5,7 @@
 
     <color name="actionbar">#494344</color>
     <color name="white">#FFFFFF</color>
+    <color name="grey">#F2D1D1D1</color>
 
     <!-- colors of categories with 30 % transparecy -->
     <color name="sightseeing30">#4DE83D90</color>
@@ -14,6 +15,15 @@
     <color name="cafe30">#4DA61533</color>
     <color name="bar30">#4D0D3891</color>
     <color name="hidden30">#4D149940</color>
+    
+    <!-- colors of categories with 65 % transparecy -->
+    <color name="sightseeing65">#A6E83D90</color>
+    <color name="museum65">#A68E3C8F</color>
+    <color name="shopping65">#A6139DEB</color>
+    <color name="eat65">#A6F38119</color>
+    <color name="cafe65">#A6A61533</color>
+    <color name="bar65">#A60D3891</color>
+    <color name="hidden65">#A6149940</color>
 
     <!-- colors of categories with 95 % transparecy -->
     <color name="sightseeing95">#F2E83D90</color>

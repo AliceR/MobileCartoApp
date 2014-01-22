@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +66,7 @@ public class PlacesDescriptionActivity extends Activity {
 		ImageView imageViewSundays = (ImageView) findViewById(R.id.sundays);
 		ImageView imageViewCalmPlace = (ImageView) findViewById(R.id.calmplace);
 		ImageView imageViewSmoking = (ImageView) findViewById(R.id.smoking);
+		Button buttonShowMap = (Button) findViewById(R.id.ShowMap);
 
 		Intent listintent = getIntent();
 		String titlels = listintent.getStringExtra("listDataChild");
@@ -93,7 +95,7 @@ public class PlacesDescriptionActivity extends Activity {
 				if (poi.getWifi() == true) {
 					imageViewWifi.setImageResource(R.drawable.description_wifi);
 					imageViewWifi.setVisibility(View.VISIBLE);
-					//OnLongClickListener();
+					// OnLongClickListener();
 				}
 				if (poi.getTerrace() == true) {
 					imageViewTerrace
@@ -123,31 +125,57 @@ public class PlacesDescriptionActivity extends Activity {
 					textViewDesc.setBackgroundResource(R.drawable.border_tc);
 					// OnLongClickListener();
 				}
+
+				// show map button
+				if (poi.getCategory().equals("sightseeing")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_sightseeing);
+				} else if (poi.getCategory().equals("museum")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_museum);
+				} else if (poi.getCategory().equals("shopping")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_shopping);
+				} else if (poi.getCategory().equals("eat")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_eat);
+				} else if (poi.getCategory().equals("cafe")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_cafe);
+				} else if (poi.getCategory().equals("bar")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_bar);
+				} else if (poi.getCategory().equals("hidden")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_hidden);
+				} else {
+					buttonShowMap.setBackgroundColor(R.color.grey);
+				}
 			}
 		}
 	}
 
-/*	
-	  // on long click listener private void OnLongClickListener() { ViewGroup
-	  showLegend = (ViewGroup) findViewById(R.id.description_legend);
-	  showLegend.setOnLongClickListener(new OnLongClickListener() {
-	  
-	  @Override public boolean onLongClick(View view) {
-	  
-	  LayoutInflater inflater = getLayoutInflater(); // Inflate the Layout View
-	  layout = inflater.inflate( R.layout.custom_toast_description, (ViewGroup)
-	  findViewById(R.id.custom_toast_layout)); Toast toast = new
-	  Toast(getApplicationContext()); toast.setDuration(Toast.LENGTH_LONG);
-	  toast.setGravity(Gravity.TOP | Gravity.RIGHT, 10, 300);
-	 toast.setView(layout); toast.show(); return true; } }); }*/
-	 
+	/*
+	 * // on long click listener private void OnLongClickListener() { ViewGroup
+	 * showLegend = (ViewGroup) findViewById(R.id.description_legend);
+	 * showLegend.setOnLongClickListener(new OnLongClickListener() {
+	 * 
+	 * @Override public boolean onLongClick(View view) {
+	 * 
+	 * LayoutInflater inflater = getLayoutInflater(); // Inflate the Layout View
+	 * layout = inflater.inflate( R.layout.custom_toast_description, (ViewGroup)
+	 * findViewById(R.id.custom_toast_layout)); Toast toast = new
+	 * Toast(getApplicationContext()); toast.setDuration(Toast.LENGTH_LONG);
+	 * toast.setGravity(Gravity.TOP | Gravity.RIGHT, 10, 300);
+	 * toast.setView(layout); toast.show(); return true; } }); }
+	 */
 
 	// on click listener
 	public void showLegend(View view) {
 		LayoutInflater inflater = getLayoutInflater(); // Inflate the Layout
 		View layout = inflater.inflate(R.layout.custom_toast_description,
 				(ViewGroup) findViewById(R.id.custom_toast_layout));
-		
+
 		Toast toast = new Toast(getApplicationContext());
 		toast.setDuration(Toast.LENGTH_LONG);
 		toast.setGravity(Gravity.TOP | Gravity.RIGHT, 10, 300);
