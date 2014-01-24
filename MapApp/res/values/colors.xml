@@ -6,6 +6,9 @@
     <color name="actionbar">#494344</color>
     <color name="white">#FFFFFF</color>
     <color name="grey">#F2D1D1D1</color>
+    
+    <color name="grey_dark65">#A64A4A4A</color>
+    <color name="grey_dark">#4A4A4A</color>
 
     <!-- colors of categories with 30 % transparecy -->
     <color name="sightseeing30">#4DE83D90</color>

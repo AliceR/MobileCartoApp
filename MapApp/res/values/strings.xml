@@ -64,5 +64,7 @@
     <string name="previous">Previous</string>
     <string name="close">Close</string>
     <string name="next">Next</string>
+    <string name="title_activity_legend">LegendActivity</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
