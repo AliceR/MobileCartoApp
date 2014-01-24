@@ -11,7 +11,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -110,34 +109,37 @@ public class PlacesActivity extends Activity {
 					| poi.getCategory().equals("shoppingsightseeing")
 					| poi.getCategory().equals("barsightseeing")) {
 				listSightseeing.add(poi.getTitle());
-			} else if (poi.getCategory().equals("museum")
+			}
+			if (poi.getCategory().equals("museum")
 					| poi.getCategory().equals("museumsightseeing")
 					| poi.getCategory().equals("museumcafe")) {
 				listMuseum.add(poi.getTitle());
-			} else if (poi.getCategory().equals("shopping")
+			}
+			if (poi.getCategory().equals("shopping")
 					| poi.getCategory().equals("shoppingsightseeing")
 					| poi.getCategory().equals("shoppingeat")
 					| poi.getCategory().equals("shoppingcafe")) {
 				listShopping.add(poi.getTitle());
-			} else if (poi.getCategory().equals("eat")
+			}
+			if (poi.getCategory().equals("eat")
 					| poi.getCategory().equals("shoppingeat")) {
 				listEat.add(poi.getTitle());
-			} else if (poi.getCategory().equals("cafe")
+			}
+			if (poi.getCategory().equals("cafe")
 					| poi.getCategory().equals("museumcafe")
 					| poi.getCategory().equals("shoppingcafe")
 					| poi.getCategory().equals("hiddencafe")
 					| poi.getCategory().equals("barcafe")) {
 				listCafe.add(poi.getTitle());
-			} else if (poi.getCategory().equals("bar")
+			}
+			if (poi.getCategory().equals("bar")
 					| poi.getCategory().equals("barcafe")
 					| poi.getCategory().equals("barsightseeing")) {
 				listBar.add(poi.getTitle());
-			} else if (poi.getCategory().equals("hidden")
+			}
+			if (poi.getCategory().equals("hidden")
 					| poi.getCategory().equals("hiddencafe")) {
 				listHidden.add(poi.getTitle());
-			} else {
-				Log.v("Mary says:", "WTF! there is an poi without category! "
-						+ "...what a terrible failure...");
 			}
 		}
 
