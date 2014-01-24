@@ -148,6 +148,30 @@ public class PlacesDescriptionActivity extends Activity {
 				} else if (poi.getCategory().equals("hidden")) {
 					buttonShowMap
 							.setBackgroundResource(R.drawable.button_show_map_hidden);
+				} else if (poi.getCategory().equals("museumsightseeing")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_museumsightseeing);
+				} else if (poi.getCategory().equals("museumcafe")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_museumcafe);
+				} else if (poi.getCategory().equals("shoppingeat")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_shoppingeat);
+				} else if (poi.getCategory().equals("hiddencafe")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_hiddencafe);
+				} else if (poi.getCategory().equals("shoppingcafe")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_shoppingcafe);
+				} else if (poi.getCategory().equals("shoppingsightseeing")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_shoppingsightseeing);
+				} else if (poi.getCategory().equals("barcafe")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_barcafe);
+				} else if (poi.getCategory().equals("barsightseeing")) {
+					buttonShowMap
+							.setBackgroundResource(R.drawable.button_show_map_barsightseeing);
 				} else {
 					buttonShowMap.setBackgroundColor(R.color.grey);
 				}

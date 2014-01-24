@@ -1,4 +1,5 @@
 package com.marialice.mapapp;
+
 /* 
  * this is the activity for the list view of places
  */
@@ -104,19 +105,35 @@ public class PlacesActivity extends Activity {
 
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
-			if (poi.getCategory().equals("sightseeing")) {
+			if (poi.getCategory().equals("sightseeing")
+					| poi.getCategory().equals("museumsightseeing")
+					| poi.getCategory().equals("shoppingsightseeing")
+					| poi.getCategory().equals("barsightseeing")) {
 				listSightseeing.add(poi.getTitle());
-			} else if (poi.getCategory().equals("museum")) {
+			} else if (poi.getCategory().equals("museum")
+					| poi.getCategory().equals("museumsightseeing")
+					| poi.getCategory().equals("museumcafe")) {
 				listMuseum.add(poi.getTitle());
-			} else if (poi.getCategory().equals("shopping")) {
+			} else if (poi.getCategory().equals("shopping")
+					| poi.getCategory().equals("shoppingsightseeing")
+					| poi.getCategory().equals("shoppingeat")
+					| poi.getCategory().equals("shoppingcafe")) {
 				listShopping.add(poi.getTitle());
-			} else if (poi.getCategory().equals("eat")) {
+			} else if (poi.getCategory().equals("eat")
+					| poi.getCategory().equals("shoppingeat")) {
 				listEat.add(poi.getTitle());
-			} else if (poi.getCategory().equals("cafe")) {
+			} else if (poi.getCategory().equals("cafe")
+					| poi.getCategory().equals("museumcafe")
+					| poi.getCategory().equals("shoppingcafe")
+					| poi.getCategory().equals("hiddencafe")
+					| poi.getCategory().equals("barcafe")) {
 				listCafe.add(poi.getTitle());
-			} else if (poi.getCategory().equals("bar")) {
+			} else if (poi.getCategory().equals("bar")
+					| poi.getCategory().equals("barcafe")
+					| poi.getCategory().equals("barsightseeing")) {
 				listBar.add(poi.getTitle());
-			} else if (poi.getCategory().equals("hidden")) {
+			} else if (poi.getCategory().equals("hidden")
+					| poi.getCategory().equals("hiddencafe")) {
 				listHidden.add(poi.getTitle());
 			} else {
 				Log.v("Mary says:", "WTF! there is an poi without category! "

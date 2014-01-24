@@ -98,6 +98,22 @@ public class Poi {
 			symbol = R.drawable.poi_shopping_shadow;
 		} else if (category.equals("sightseeing")) {
 			symbol = R.drawable.poi_sightseeing_shadow;
+		} else if (category.equals("museumsightseeing")) {
+			symbol = R.drawable.poi_museum_sightseeing_shadow;
+		} else if (category.equals("museumcafe")) {
+			symbol = R.drawable.poi_museum_cafe_shadow;		
+		} else if (category.equals("shoppingeat")) {
+			symbol = R.drawable.poi_shopping_eat_shadow;
+		} else if (category.equals("hiddencafe")) {
+			symbol = R.drawable.poi_hidden_cafe_shadow;
+		} else if (category.equals("shoppingcafe")) {
+			symbol = R.drawable.poi_shopping_cafe_shadow;
+		} else if (category.equals("shoppingsightseeing")) {
+			symbol = R.drawable.poi_shopping_sightseeing_shadow;
+		} else if (category.equals("barcafe")) {
+			symbol = R.drawable.poi_bar_cafe_shadow;
+		} else if (category.equals("barsightseeing")) {
+			symbol = R.drawable.poi_bar_sightseeing_shadow;
 		} else {
 			symbol = R.drawable.poi_action_bar3;
 		}
@@ -121,6 +137,22 @@ public class Poi {
 			categoryName = "shopping";
 		} else if (category.equals("sightseeing")) {
 			categoryName = "sightseeing";
+		} else if (category.equals("museumsightseeing")) {
+			categoryName = "museum, venue + sightseeing";
+		} else if (category.equals("museumcafe")) {
+			categoryName = "museum, venue + café, tea room";			
+		} else if (category.equals("shoppingeat")) {
+			categoryName = "shopping + eat, drink";
+		} else if (category.equals("hiddencafe")) {
+			categoryName = "hidden, chill out + café, tea room";
+		} else if (category.equals("shoppingcafe")) {
+			categoryName = "shopping + café, tea room";
+		} else if (category.equals("shoppingsightseeing")) {
+			categoryName = "shopping + sightseeing";
+		} else if (category.equals("barcafe")) {
+			categoryName = "bar, club + café, tea room";
+		} else if (category.equals("barsightseeing")) {
+			categoryName = "bar, club + sightseeing";
 		} else {
 			categoryName = "no category";
 		}
