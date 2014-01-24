@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@drawable/legend_rounded_borders"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp" >
 
     <TextView
         android:id="@+id/legend_title"
@@ -19,6 +19,7 @@
         android:layout_below="@+id/legend_title"
         android:drawableLeft="@drawable/description_wifi"
         android:drawablePadding="20dp"
+        android:gravity="center_vertical"
         android:text="@string/legend_wifi" />
 
     <TextView
@@ -28,6 +29,7 @@
         android:layout_below="@+id/legend_wifi"
         android:drawableLeft="@drawable/description_terrace"
         android:drawablePadding="20dp"
+        android:gravity="center_vertical"
         android:text="@string/legend_terrace" />
 
     <TextView
@@ -37,6 +39,7 @@
         android:layout_below="@+id/legend_terrace"
         android:drawableLeft="@drawable/description_sunday"
         android:drawablePadding="15dp"
+        android:gravity="center_vertical"
         android:text="@string/legend_sundays" />
 
     <TextView
@@ -46,6 +49,7 @@
         android:layout_below="@+id/legend_sundays"
         android:drawableLeft="@drawable/description_calmplace"
         android:drawablePadding="20dp"
+        android:gravity="center_vertical"
         android:text="@string/legend_calmplace" />
 
     <TextView
@@ -55,6 +59,7 @@
         android:layout_below="@+id/legend_calmplace"
         android:drawableLeft="@drawable/description_smoking"
         android:drawablePadding="20dp"
+        android:gravity="center_vertical"
         android:text="@string/legend_nonsmoking" />
 
 </RelativeLayout>
