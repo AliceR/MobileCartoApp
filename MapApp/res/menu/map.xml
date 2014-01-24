@@ -26,6 +26,10 @@
                 android:id="@+id/goto_legend"
                 android:onClick="onOptionsItemSelected"
                 android:title="@string/legend_title"/>
+            <item
+                android:id="@+id/goto_howtouse"
+                android:onClick="onOptionsItemSelected"
+                android:title="@string/howtouse_title"/>
         </menu>
     </item>
 
