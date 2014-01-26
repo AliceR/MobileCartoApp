@@ -1,10 +1,8 @@
 package com.marialice.mapapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 
 public class LegendActivity extends Activity {
 
@@ -21,9 +19,9 @@ public class LegendActivity extends Activity {
 		return true;
 	}
 
-	public void buttonClose(View view) {
+/*	public void buttonClose(View view) {
 		Intent mapintent = new Intent(this, MapActivity.class);
 		startActivity(mapintent);
-	}
+	}*/
 
 }

@@ -31,7 +31,7 @@
             <TextView
                 android:id="@+id/legend_info"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:drawableLeft="@drawable/poi_info"
                 android:drawablePadding="16dp"
                 android:gravity="center_vertical"
@@ -42,7 +42,7 @@
             <TextView
                 android:id="@+id/legend_hostel"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_info"
                 android:drawableLeft="@drawable/poi_hostel"
                 android:drawablePadding="20dp"
@@ -53,7 +53,7 @@
             <TextView
                 android:id="@+id/legend_hungrywindow"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_hostel"
                 android:drawableLeft="@drawable/poi_hungry_window"
                 android:drawablePadding="18dp"
@@ -64,7 +64,7 @@
             <TextView
                 android:id="@+id/legend_grocery"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_hungrywindow"
                 android:drawableLeft="@drawable/poi_grocery"
                 android:drawablePadding="15dp"
@@ -75,7 +75,7 @@
             <TextView
                 android:id="@+id/legend_shoppingcentre"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_grocery"
                 android:drawableLeft="@drawable/poi_shopping_centre"
                 android:drawablePadding="14dp"
@@ -86,7 +86,7 @@
             <TextView
                 android:id="@+id/legend_pharmacy"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_shoppingcentre"
                 android:drawableLeft="@drawable/poi_pharmacy"
                 android:drawablePadding="20dp"
@@ -97,7 +97,7 @@
             <TextView
                 android:id="@+id/legend_hospital"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_pharmacy"
                 android:drawableLeft="@drawable/poi_hospital"
                 android:drawablePadding="20dp"
@@ -108,7 +108,7 @@
             <TextView
                 android:id="@+id/legend_post"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_hospital"
                 android:drawableLeft="@drawable/poi_post"
                 android:drawablePadding="19dp"
@@ -119,7 +119,7 @@
             <TextView
                 android:id="@+id/legend_atm"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_post"
                 android:drawableLeft="@drawable/poi_atm"
                 android:drawablePadding="17dp"
@@ -130,7 +130,7 @@
             <TextView
                 android:id="@+id/legend_sport"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_atm"
                 android:drawableLeft="@drawable/poi_sport"
                 android:drawablePadding="19dp"
@@ -149,7 +149,7 @@
             <TextView
                 android:id="@+id/legend_sightseeing"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:drawableLeft="@drawable/poi_sightseeing"
                 android:drawablePadding="16dp"
                 android:gravity="center_vertical"
@@ -159,7 +159,7 @@
             <TextView
                 android:id="@+id/legend_museum"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_sightseeing"
                 android:drawableLeft="@drawable/poi_museum"
                 android:drawablePadding="16dp"
@@ -170,7 +170,7 @@
             <TextView
                 android:id="@+id/legend_shopping"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_museum"
                 android:drawableLeft="@drawable/poi_shopping"
                 android:drawablePadding="16dp"
@@ -181,7 +181,7 @@
             <TextView
                 android:id="@+id/legend_eat"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_shopping"
                 android:drawableLeft="@drawable/poi_eat"
                 android:drawablePadding="16dp"
@@ -192,7 +192,7 @@
             <TextView
                 android:id="@+id/legend_cafe"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_eat"
                 android:drawableLeft="@drawable/poi_cafe"
                 android:drawablePadding="16dp"
@@ -203,7 +203,7 @@
             <TextView
                 android:id="@+id/legend_bar"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_cafe"
                 android:drawableLeft="@drawable/poi_bar"
                 android:drawablePadding="16dp"
@@ -214,7 +214,7 @@
             <TextView
                 android:id="@+id/legend_hidden"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:layout_below="@+id/legend_bar"
                 android:drawableLeft="@drawable/poi_hidden"
                 android:drawablePadding="16dp"
@@ -223,7 +223,7 @@
                 android:textColor="#000000" />
         </RelativeLayout>
 
-        <Button
+<!--         <Button
             android:id="@+id/button_close"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -232,7 +232,7 @@
             android:background="@drawable/ic_action_remove"
             android:onClick="buttonClose"
             android:paddingLeft="-10dp"
-            android:paddingRight="-10dp" />
+            android:paddingRight="-10dp" /> -->
 
     </RelativeLayout>
 

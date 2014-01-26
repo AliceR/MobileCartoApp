@@ -565,27 +565,23 @@ public class MapActivity extends FragmentActivity implements
 		return i;
 	}
 
-/*	// show main legend from menu
-	private void showLegend() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this,
-				android.R.style.Theme_Translucent_NoTitleBar);
-
-		LayoutInflater inflater = (LayoutInflater) MapActivity.this
-				.getSystemService(LAYOUT_INFLATER_SERVICE);
-		View layout = inflater.inflate(R.layout.custom_toast_mainlegend,
-				(ViewGroup) findViewById(R.id.custom_toast_layout));
-
-		builder.setView(layout);
-
-		builder.setNeutralButton(R.string.close,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						// User clicked 'close' button
-					}
-				});
-		AlertDialog popup = builder.create();
-		popup.show();
-	}*/
+	/*
+	 * // show main legend from menu private void showLegend() {
+	 * AlertDialog.Builder builder = new AlertDialog.Builder(this,
+	 * android.R.style.Theme_Translucent_NoTitleBar);
+	 * 
+	 * LayoutInflater inflater = (LayoutInflater) MapActivity.this
+	 * .getSystemService(LAYOUT_INFLATER_SERVICE); View layout =
+	 * inflater.inflate(R.layout.custom_toast_mainlegend, (ViewGroup)
+	 * findViewById(R.id.custom_toast_layout));
+	 * 
+	 * builder.setView(layout);
+	 * 
+	 * builder.setNeutralButton(R.string.close, new
+	 * DialogInterface.OnClickListener() { public void onClick(DialogInterface
+	 * dialog, int id) { // User clicked 'close' button } }); AlertDialog popup
+	 * = builder.create(); popup.show(); }
+	 */
 
 	// on long click listener
 	@Override
