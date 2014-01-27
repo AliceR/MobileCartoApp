@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
 
     <string name="about_text">USE-IT is non-commercial, no nonsense, up-to-date and free! We - young locals made the selection, prepared the maps and map applications for you, run infocentres and websites. And we can not wait to hear your feedback! If we made a mistake, please tell us. You can make next year\'s edition better!</string>
     <string name="about_us">About</string>
