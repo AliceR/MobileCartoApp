@@ -56,8 +56,6 @@ public class MapActivity extends FragmentActivity implements
 	TextToBitmap drawclass = new TextToBitmap();
 	DatabaseContent dbclass = new DatabaseContent();
 
-	// private static final String MAPBOX_BASEMAP_URL_FORMAT =
-	// "http://api.tiles.mapbox.com/v3/maridani.go26lm2h/%d/%d/%d.png";
 	private static final String MAPBOX_BASEMAP_URL_FORMAT = "http://api.tiles.mapbox.com/v3/maridani.h0a912jg/%d/%d/%d.png";
 	private GoogleMap mMap;
 
@@ -185,9 +183,10 @@ public class MapActivity extends FragmentActivity implements
 		// add the tile overlay to the map
 		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(tileProvider));
 
-		// call the methods that create the markers
+		// call the method that creates the static markers
 		addMarkersToMap();
 
+		// create the markers from database
 		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
 
 		for (int i = 0; i < dbpois.size(); i++) {
@@ -467,6 +466,7 @@ public class MapActivity extends FragmentActivity implements
 		}
 	}
 
+	// this method creates the pop up info when clicking the bulb icon
 	private int createPopUp(int i) {
 
 		List<String> hintlist = new ArrayList<String>();
@@ -494,13 +494,6 @@ public class MapActivity extends FragmentActivity implements
 		// Instantiate an AlertDialog.Builder with its constructor
 		AlertDialog.Builder builder = new AlertDialog.Builder(
 				new ContextThemeWrapper(this, R.style.PopUpHint));
-
-		// Get the layout inflater
-		// LayoutInflater popuplayout = this.getLayoutInflater();
-
-		// Inflate and set the layout for the dialog
-		// Pass null as the parent view because its going in the dialog layout
-		// builder.setView(popuplayout.inflate(R.layout.popupwindow, null));
 
 		// Chain together various setter methods to set the dialog
 		// characteristics
@@ -564,24 +557,6 @@ public class MapActivity extends FragmentActivity implements
 		}
 		return i;
 	}
-
-	/*
-	 * // show main legend from menu private void showLegend() {
-	 * AlertDialog.Builder builder = new AlertDialog.Builder(this,
-	 * android.R.style.Theme_Translucent_NoTitleBar);
-	 * 
-	 * LayoutInflater inflater = (LayoutInflater) MapActivity.this
-	 * .getSystemService(LAYOUT_INFLATER_SERVICE); View layout =
-	 * inflater.inflate(R.layout.custom_toast_mainlegend, (ViewGroup)
-	 * findViewById(R.id.custom_toast_layout));
-	 * 
-	 * builder.setView(layout);
-	 * 
-	 * builder.setNeutralButton(R.string.close, new
-	 * DialogInterface.OnClickListener() { public void onClick(DialogInterface
-	 * dialog, int id) { // User clicked 'close' button } }); AlertDialog popup
-	 * = builder.create(); popup.show(); }
-	 */
 
 	// on long click listener
 	@Override

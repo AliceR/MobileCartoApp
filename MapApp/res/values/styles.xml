@@ -1,37 +1,11 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- custom style for the pop up window -->
-    <style name="PopUpHint" parent="android:Theme.Holo.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
-        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
-        <item name="android:windowTitleStyle">@style/DialogWindowTitle</item>
-        <!-- most of the specified attributes don't have any effect. why? how does it work? -->
-        <!-- <item name="android:windowIsFloating">true</item> -->
-        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-        <item name="android:divider">@null</item>
-        <!--
-        this only makes it ugly, the backgound goes over the window border 
-        <item name="android:background">@color/actionbar</item>
-        -->
-
-
-        <!-- color only for title: -->
+    <style name="PopUpHint" parent="android:Theme.Holo.Light.Dialog">
+        
     </style>
 
-    <style name="DialogWindowTitle">
-        <item name="android:background">@color/white</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:scrollHorizontally">true</item>
-        <item name="android:textAppearance">@style/DialogWindowTitleAppearance</item>
-        <item name="android:textColor">@color/eat</item>
-    </style>
-
-    <style name="DialogWindowTitleAppearance" parent="@android:style/TextAppearance.Holo.DialogWindowTitle">
-        <item name="android:textColor">#00ff00</item>
-    </style>
-
+    
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
