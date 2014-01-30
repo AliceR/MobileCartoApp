@@ -99,8 +99,8 @@
 
         <RelativeLayout
             android:layout_below="@+id/description"
-            android:layout_marginBottom="70dp"
             android:layout_marginRight="80dp"
+            android:paddingBottom="70dp"
             android:layout_marginTop="60dp" 
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
