@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/link_useit"
             android:linksClickable="true" />
-        
+
         <TextView
             android:id="@+id/link_cbuseit"
             android:layout_width="wrap_content"
@@ -129,24 +129,24 @@
                 android:src="@drawable/juzit_logo" />
 
             <ImageView
-                android:id="@+id/czechrep_logo"
+                android:id="@+id/cb_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/use_it_logo"
                 android:contentDescription="@string/use_it_logo"
                 android:paddingLeft="10dp"
-                android:src="@drawable/cz_logo" />
+                android:src="@drawable/cb_logo" />
 
             <ImageView
-                android:id="@+id/cb_logo"
+                android:id="@+id/czechrep_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/czechrep_logo"
+                android:layout_toRightOf="@+id/cb_logo"
                 android:contentDescription="@string/use_it_logo"
                 android:paddingLeft="10dp"
-                android:src="@drawable/cb_logo" />
+                android:src="@drawable/cz_logo" />
         </RelativeLayout>
     </RelativeLayout>
 
