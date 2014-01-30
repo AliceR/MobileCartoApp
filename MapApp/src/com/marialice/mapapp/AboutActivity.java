@@ -1,4 +1,5 @@
 package com.marialice.mapapp;
+
 /* 
  * this activity shows info about us, about use-it, about the app
  */
@@ -48,6 +49,11 @@ public class AboutActivity extends Activity {
 				.setMovementMethod(LinkMovementMethod.getInstance());
 		((TextView) findViewById(R.id.link_fbcbck)).setText(Html
 				.fromHtml(getResources().getString(R.string.link_fbcbck)));
+
+		((TextView) findViewById(R.id.link_detail))
+				.setMovementMethod(LinkMovementMethod.getInstance());
+		((TextView) findViewById(R.id.link_detail)).setText(Html
+				.fromHtml(getResources().getString(R.string.link_detail)));
 	}
 
 	@Override

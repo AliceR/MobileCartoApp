@@ -17,14 +17,13 @@
     <string name="actlikealocal_text9"><b>Get to know local characters</b> and ask locals for more detailed stories about: Láďa Kajbar who would never remove his radio from his ear, Bohuna who might invite you home or Bába Igelitka (Hag the Plastig Bag) with her eccentric make-up.</string>
     <string name="actlikealocal_text10">If you happen to be abstinent, <b>order “točený Římov”</b> - Římov from the tap. Although it sounds like fancy local beer brand, do not shout at the waiter, if you receive a glass of tap water. What else do you expect for 10 CZK? Římov is - wittily - a reservoir of drinking water nearby.</string>
     <string name="app_name">USE-IT Budějovice</string>
-    <string name="contact_mail">&lt;a href="ceskebudejovice@use-it.travel">ceskebudejovice@use-it.travel&lt;/a></string>
+    <string name="contact_mail">&lt;a href="budejovice.krumlov@use-it.cz">budejovice.krumlov@use-it.cz&lt;/a></string>
     <string name="contact_title">Contact:</string>
     <string name="desc">Image - place description</string>
     <string name="developers_text"><b>Developers:</b> Alice Rühl, Mariana Danielová</string>
     <string name="edition_text"><b>USE-IT ČK&#38;ČB 2013, 1st edition</b>, published in December 2013 by &#169; Jůzit o.s.</string>
     <string name="graphic_text"><b>Graphic designer:</b> Julie Dürrová</string>
     <string name="hello_world">Hello world!</string>
-    <string name="howtouse_title">How to use this app</string>
     <string name="language_text"><b>Language correctors:</b> Amanda Place, Jennifer Baily</string>
     <string name="legend_atm">cash machine</string>
     <string name="legend_bar">bar, club</string>
@@ -49,7 +48,8 @@
     <string name="legend_terrace">summer terrace</string>
     <string name="legend_title">Legend</string>
     <string name="legend_wifi">free wi-fi spot</string>
-    <string name="link_cbuseit">&lt;a href="http://www.ceskebudejovice.use-it.travel">www.ceskebudejovice.use-it.travel&lt;/a></string>
+    <string name="link_cbuseit">&lt;a href="http://www.use-it.cz/getmap?lang=en&#38;city=cb_krumlov">www.use-it.cz/getmap&lt;/a></string>
+    <string name="link_detail">&lt;a href="http://www.use-it.travel/cities/detail/ceske-budejovice/">www.use-it.travel/cities/detail/ceske-budejovice&lt;/a></string>
     <string name="link_fbcbck">&lt;a href="http://www.facebook.com/useitcbck">www.facebook.com/useitCBCK&lt;/a></string>
     <string name="link_fbuseit">&lt;a href="http://www.facebook.com/useit">www.facebook.com/USE-IT&lt;/a></string>
     <string name="link_title">External links:</string>
@@ -57,7 +57,6 @@
     <string name="places">Places</string>
     <string name="show_on_map">Show on Map</string>
     <string name="title_activity_about">About this Map (App)</string>
-    <string name="title_activity_act_like_local">Act like a local</string>
     <string name="title_activity_database_helper">Database Helper</string>
     <string name="title_activity_places">List of Places</string>
     <string name="title_activity_places_description">Details</string>

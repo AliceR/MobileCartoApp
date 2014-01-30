@@ -71,10 +71,17 @@
             android:linksClickable="true" />
 
         <TextView
-            android:id="@+id/link_cbuseit"
+            android:id="@+id/link_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/link_useit"
+            android:linksClickable="true" />
+        
+        <TextView
+            android:id="@+id/link_cbuseit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/link_detail"
             android:linksClickable="true" />
 
         <TextView
