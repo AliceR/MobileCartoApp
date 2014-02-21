@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -81,7 +82,7 @@ public class PlacesDescriptionActivity extends Activity {
 			if (titledb.equals(titlels)) {
 
 				// creates the description based on title comparison
-				textViewDesc.setText(poi.getDescription());
+				textViewDesc.setText(Html.fromHtml(poi.getDescription()));
 				// creates the icon in the TextToBitmap class using symbol and
 				// number
 				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(
