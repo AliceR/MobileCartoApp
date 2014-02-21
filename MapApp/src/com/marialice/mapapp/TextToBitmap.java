@@ -37,16 +37,17 @@ public class TextToBitmap extends Activity {
 		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		paint.setColor(Color.WHITE);
 		paint.setTypeface(tf);
-		paint.setTextSize((int) (13 * scale));
+		paint.setTextSize((int) (13*scale));
 		// paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
 
 		// here the values are set for the position of the text
 		Rect bounds = new Rect();
 		paint.getTextBounds(gText, 0, gText.length(), bounds);
-		int x = (bitmap.getWidth() - bounds.width()) / 4;
-		int y = (bitmap.getHeight() + bounds.height()) / 6;
+			
+		int x = (int) (9f * context.getResources().getDisplayMetrics().density + 0.5f);
+		int y = (int) (15f * context.getResources().getDisplayMetrics().density + 0.5f);
 
-		canvas.drawText(gText, x * scale, y * scale, paint);
+		canvas.drawText(gText, x , y , paint);
 
 		// the complete bitmap (image + text) is returned
 		return bitmap;
