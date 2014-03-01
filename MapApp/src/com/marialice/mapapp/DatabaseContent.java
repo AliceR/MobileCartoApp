@@ -29,7 +29,7 @@ public class DatabaseContent extends Activity {
 		}
 		try {
 			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT * FROM cbpois;", null);
+			dbCursor = db.rawQuery("SELECT * FROM pois;", null);
 			dbCursor.moveToFirst();
 
 			int idindex = dbCursor.getColumnIndex("id");
@@ -102,7 +102,7 @@ public class DatabaseContent extends Activity {
 		}
 		try {
 			db = dbHelper.getDataBase();
-			dbCursor = db.rawQuery("SELECT * FROM cbhints;", null);
+			dbCursor = db.rawQuery("SELECT * FROM hints;", null);
 			dbCursor.moveToFirst();
 
 			int idindex = dbCursor.getColumnIndex("id");
