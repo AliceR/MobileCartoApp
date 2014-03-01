@@ -74,7 +74,7 @@ public class PlacesDescriptionActivity extends Activity {
 		// creates the title according to the intent extra
 		textViewTitle.setText(titlels);
 
-		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
+		List<Poi> dbpois = dbclass.queryPoisFromDatabase(this);
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
 			String titledb = poi.getTitle();

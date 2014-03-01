@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.marialice.mapapp"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="4"
+    android:versionName="1.1.2" >
 
+    <uses-permission
+        android:name="com.marialice.mapapp.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -25,9 +28,6 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBZZm18IyzrBc2x079TJMWGcG-cicjhnZ4" />
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAfyXB5-zFNb2EyjABWj2NOTeH3deSSLJM" />
 
         <activity
             android:name="com.marialice.mapapp.MapActivity"
@@ -64,16 +64,9 @@
             android:label="@string/title_activity_database_helper" >
         </activity>
         <activity
-            android:name="com.marialice.mapapp.ActLikeLocalActivity"
-            android:label="@string/title_activity_act_like_local" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.marialice.mapapp.MapActivity" />
-        </activity>
-        <activity
             android:name="com.marialice.mapapp.LegendActivity"
             android:label="@string/title_activity_legend"
-        	android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
     </application>
 

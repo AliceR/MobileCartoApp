@@ -15,7 +15,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DatabaseContent extends Activity {
 
-	public List<Poi> queryDataFromDatabase(Context context) {
+	public List<Poi> queryPoisFromDatabase(Context context) {
 
 		SQLiteDatabase db = null;
 		Cursor dbCursor;
@@ -87,4 +87,48 @@ public class DatabaseContent extends Activity {
 		}
 		return dbpois;
 	}
+	
+	public List<Hint> queryHintsFromDatabase(Context context) {
+
+		SQLiteDatabase db = null;
+		Cursor dbCursor;
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+
+		List<Hint> dbhints = new ArrayList<Hint>();
+
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		try {
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT * FROM cbhints;", null);
+			dbCursor.moveToFirst();
+
+			int idindex = dbCursor.getColumnIndex("id");
+			int hinttextindex = dbCursor.getColumnIndex("hint");
+
+			while (!dbCursor.isAfterLast()) {
+
+				int id = dbCursor.getInt(idindex);
+				String hinttext = dbCursor.getString(hinttextindex);
+
+				Hint hint = new Hint();
+
+				hint.setId(id);
+				hint.setHinttext(hinttext);
+
+				dbhints.add(hint);
+
+				dbCursor.moveToNext();
+
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+		return dbhints;
+	}
+	
 }

@@ -180,7 +180,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		txtListChild.setBackgroundColor(context.getResources().getColor(color));
 
 		// to retrieve the number according to the title
-		List<Poi> dbpois = dbclass.queryDataFromDatabase(context);	
+		List<Poi> dbpois = dbclass.queryPoisFromDatabase(context);	
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
 			String titledb = poi.getTitle();

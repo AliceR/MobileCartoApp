@@ -92,7 +92,7 @@ public class PlacesActivity extends Activity {
 		listDataHeader.add("Hidden, chill out");
 
 		// creating lists for each category with all titles in that category
-		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
+		List<Poi> dbpois = dbclass.queryPoisFromDatabase(this);
 
 		List<String> listSightseeing = new ArrayList<String>();
 		List<String> listMuseum = new ArrayList<String>();

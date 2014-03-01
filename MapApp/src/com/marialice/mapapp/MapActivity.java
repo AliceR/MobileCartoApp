@@ -5,7 +5,6 @@ package com.marialice.mapapp;
  */
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -17,6 +16,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.Html;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -105,8 +105,9 @@ public class MapActivity extends FragmentActivity implements
 		case R.id.goto_actlikelocal:
 			// start the pop up with a random hint
 			Random randomi = new Random();
-			int i = randomi.nextInt((9 - 0) + 1) + 0;
-			// nextInt((max - min) + 1) + min;
+			int max = dbclass.queryHintsFromDatabase(this).size() - 1;
+			int min = 0;
+			int i = randomi.nextInt((max - min) + 1) + min;
 			createPopUp(i);
 			return true;
 		case R.id.goto_legend:
@@ -187,7 +188,7 @@ public class MapActivity extends FragmentActivity implements
 		addMarkersToMap();
 
 		// create the markers from database
-		List<Poi> dbpois = dbclass.queryDataFromDatabase(this);
+		List<Poi> dbpois = dbclass.queryPoisFromDatabase(this);
 
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
@@ -468,28 +469,8 @@ public class MapActivity extends FragmentActivity implements
 
 	// this method creates the pop up info when clicking the bulb icon
 	private int createPopUp(int i) {
-
-		List<String> hintlist = new ArrayList<String>();
-		String text1 = getResources().getString(R.string.actlikealocal_text1);
-		String text2 = getResources().getString(R.string.actlikealocal_text2);
-		String text3 = getResources().getString(R.string.actlikealocal_text3);
-		String text4 = getResources().getString(R.string.actlikealocal_text4);
-		String text5 = getResources().getString(R.string.actlikealocal_text5);
-		String text6 = getResources().getString(R.string.actlikealocal_text6);
-		String text7 = getResources().getString(R.string.actlikealocal_text7);
-		String text8 = getResources().getString(R.string.actlikealocal_text8);
-		String text9 = getResources().getString(R.string.actlikealocal_text9);
-		String text10 = getResources().getString(R.string.actlikealocal_text10);
-		hintlist.add(text1);
-		hintlist.add(text2);
-		hintlist.add(text3);
-		hintlist.add(text4);
-		hintlist.add(text5);
-		hintlist.add(text6);
-		hintlist.add(text7);
-		hintlist.add(text8);
-		hintlist.add(text9);
-		hintlist.add(text10);
+		
+		List<Hint> hintlist = dbclass.queryHintsFromDatabase(this);
 
 		// Instantiate an AlertDialog.Builder with its constructor
 		AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -499,10 +480,11 @@ public class MapActivity extends FragmentActivity implements
 		// characteristics
 		final int count = hintlist.size();
 		if (i < count && i >= 0) {
-			String message = hintlist.get(i);
+			Hint hint = hintlist.get(i);
+			String message = hint.getHinttext();
 			int hintnumber = i + 1;
 			builder.setTitle(R.string.actlikealocal)
-					.setMessage(message + " (Hint " + hintnumber + "/10)")
+					.setMessage(Html.fromHtml("<p align='justify'>" + message + "</p> (Hint " + hintnumber + "/10)"))
 					.setIcon(R.drawable.action_bulb_blue)
 					.setNeutralButton(R.string.close,
 							new DialogInterface.OnClickListener() {
