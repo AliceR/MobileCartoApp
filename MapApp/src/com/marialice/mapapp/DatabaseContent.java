@@ -2,7 +2,7 @@ package com.marialice.mapapp;
 
 /* 
  * this is a class to provide content of the db in a nice, practical format.
- * we can use the poi List to access our data all over the app
+ * we can use the Lists to access our data all over the app
  */
 import java.io.IOException;
 import java.util.ArrayList;
@@ -86,6 +86,71 @@ public class DatabaseContent extends Activity {
 			}
 		}
 		return dbpois;
+	}
+	
+	public List<StaticMarker> queryMarkersFromDatabase(Context context) {
+
+		SQLiteDatabase db = null;
+		Cursor dbCursor;
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+
+		List<StaticMarker> dbmarkers = new ArrayList<StaticMarker>();
+
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		try {
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT * FROM markers;", null);
+			dbCursor.moveToFirst();
+
+			int idindex = dbCursor.getColumnIndex("id");
+			int latindex = dbCursor.getColumnIndex("lat");
+			int lonindex = dbCursor.getColumnIndex("lon");
+			int titleindex = dbCursor.getColumnIndex("title");
+			int descindex = dbCursor.getColumnIndex("description");
+			int categoryindex = dbCursor.getColumnIndex("category");
+			int rotationindex = dbCursor.getColumnIndex("rotation");
+			int anchorindex = dbCursor.getColumnIndex("anchor");
+			int infowinanchorindex = dbCursor.getColumnIndex("infowinanchor");
+			
+
+			while (!dbCursor.isAfterLast()) {
+
+				int id = dbCursor.getInt(idindex);
+				Double lat = dbCursor.getDouble(latindex);
+				Double lon = dbCursor.getDouble(lonindex);
+				String title = dbCursor.getString(titleindex);
+				String description = dbCursor.getString(descindex);
+				String category = dbCursor.getString(categoryindex);
+				int rotation = dbCursor.getInt(rotationindex);
+				String anchor = dbCursor.getString(anchorindex);
+				String infowinanchor = dbCursor.getString(infowinanchorindex);
+
+				StaticMarker marker = new StaticMarker();
+
+				marker.setId(id);
+				marker.setLat(lat);
+				marker.setLon(lon);
+				marker.setTitle(title);
+				marker.setDescription(description);
+				marker.setCategory(category);
+				marker.setRotation(rotation);
+				marker.setAnchor(anchor);
+				marker.setInfowinanchor(infowinanchor);
+
+				dbmarkers.add(marker);
+
+				dbCursor.moveToNext();
+
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+		return dbmarkers;
 	}
 	
 	public List<Hint> queryHintsFromDatabase(Context context) {
