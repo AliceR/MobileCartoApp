@@ -6,16 +6,6 @@
     <string name="about_text">USE-IT is non-commercial, no nonsense, up-to-date and free! We - young locals made the selection, prepared the maps and map applications for you, run infocentres and websites. And we can not wait to hear your feedback! If we made a mistake, please tell us. You can make next year\'s edition better!</string>
     <string name="about_us">About</string>
     <string name="actlikealocal">Act like a local</string>
-    <string name="actlikealocal_text1"><b>Use the right shortcut!</b> To say every time the full name of České Budějovice is a bit of pain, but be cautious… The only correct possibility is “Budějce” [Boodieitse]. Forget “Budějice” and don’t try to upset us with “Budějky” - only lousy Praguers would say that!</string>
-    <string name="actlikealocal_text2">Another Budweiser beer brand? Are you sure? Seriously, we do not know and do not care. <b>Stay calm and ignore the American Budweiser.</b></string>
-    <string name="actlikealocal_text3"><b>We like our peace,</b> so don’t be surprised of the empty streets and early closing times, especially on evenings and weekends. Saturday is better, but on Sunday to fit in, you gotta stay home and go to bed with chickens. Or complain about others being lazy and unsociable. Or head out for Český Krumlov…</string>
-    <string name="actlikealocal_text4">Celebrate the coming month of May! <b>This year, 2014, Majáles breaks out 12th and lasts until 16th May. If you have a chance to be there, don’t dare to miss it.</b> It is a student carnival and the biggest Southern Bohemian non-commercial festival. Wish for good weather, enjoy concerts, join the parade, vote for the king of Majáles and have fun.</string>
-    <string name="actlikealocal_text5">Blackout? Whenever you cannot remember what you’ve been doing the past night, someone else would know for sure. Ask first person, either him or a friend of his will tell you. <b>We live in a capital of the regions which feels more like a village.</b> And we like it that</string>
-    <string name="actlikealocal_text6"><b>The town has two faces.</b> The pretty centre is there for show, shopping and socializing, the sea of Soviet panel block buildings (called “Paneláky”) everywhere around is there for sleeping. Surprisingly most of us come from Máj - the concrete quarter with an extensive part of Roma population (lately Máj become republic-famous for its racial riot which started over the sand playground). After a drunken night, be sympathetic and join us for the way back home and have your last drink in an authentic non-stop bar drowning somewhere between “paneláky”.</string>
-    <string name="actlikealocal_text7">Everyone knows, that <b>everyone wants to live in České Budějovice.</b> Take that! Or ask locals where hell does the quote come from?!</string>
-    <string name="actlikealocal_text8"><b>Learn who to cheer for.</b> It might sound like a list of machines, but don’t be mistaken: Dynamo for football and Jihostroj (means SouthMachine) for volleyball. Motor used to be for hockey (we have never learned the new up-to-date name). Shout loudly!!</string>
-    <string name="actlikealocal_text9"><b>Get to know local characters</b> and ask locals for more detailed stories about: Láďa Kajbar who would never remove his radio from his ear, Bohuna who might invite you home or Bába Igelitka (Hag the Plastig Bag) with her eccentric make-up.</string>
-    <string name="actlikealocal_text10">If you happen to be abstinent, <b>order “točený Římov”</b> - Římov from the tap. Although it sounds like fancy local beer brand, do not shout at the waiter, if you receive a glass of tap water. What else do you expect for 10 CZK? Římov is - wittily - a reservoir of drinking water nearby.</string>
     <string name="app_name">USE-IT Budějovice</string>
     <string name="contact_mail">&lt;a href="budejovice.krumlov@use-it.cz">budejovice.krumlov@use-it.cz&lt;/a></string>
     <string name="contact_title">Contact:</string>
@@ -58,7 +48,7 @@
     <string name="show_on_map">Show on Map</string>
     <string name="title_activity_about">About this Map (App)</string>
     <string name="title_activity_database_helper">Database Helper</string>
-    <string name="title_activity_places">List of Places</string>
+    <string name="title_activity_places">Places</string>
     <string name="title_activity_places_description">Details</string>
     <string name="use_it_logo">use it europe logo</string>
     <string name="writers_text"><b>Writers collective:</b> Eva Křížová, Kamila Kačmáčková, Miroslav Řezníček, Katka Jedličková, Radka Záhrobovská, Týna Houdková, Magda Zronková, Marie Rychlá Novotná, Katka Tůmová and others</string>
