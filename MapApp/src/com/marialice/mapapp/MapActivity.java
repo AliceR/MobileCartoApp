@@ -279,9 +279,8 @@ public class MapActivity extends FragmentActivity implements
 			Hint hint = hintlist.get(i);
 			String message = hint.getHinttext();
 			int hintnumber = i + 1;
-			int hintsize = dbclass.queryHintsFromDatabase(this).size();
 			builder.setTitle(R.string.actlikealocal)
-					.setMessage(Html.fromHtml("<p align='justify'>" + message + "</p> (Hint " + hintnumber + "/"+ hintsize +")"))
+					.setMessage(Html.fromHtml("<p align='justify'>" + message + "</p> (Hint " + hintnumber + "/"+ count +")"))
 					.setIcon(R.drawable.action_bulb_blue)
 					.setNeutralButton(R.string.close,
 							new DialogInterface.OnClickListener() {
