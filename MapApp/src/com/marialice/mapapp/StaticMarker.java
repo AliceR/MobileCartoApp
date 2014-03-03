@@ -16,6 +16,7 @@ public class StaticMarker {
 	private String category;
 	private String title;
 	private String description;
+	private String icon;
 	private int rotation;
 	private String anchor;
 	private String infowinanchor;
@@ -73,18 +74,13 @@ public class StaticMarker {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	public String getIcon() {
+		return icon;
+	}
 
-	public int getSymbol() {
-		int symbol = 0;
-		if (category.equals("atm")) {
-			symbol = R.drawable.poi_atm;
-		} else if (category.equals("sport")) {
-			symbol = R.drawable.poi_sport;
-		} else {
-			symbol = R.drawable.poi_action_bar3;
-		}
-
-		return symbol;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 	public int getRotation() {
@@ -110,6 +106,5 @@ public class StaticMarker {
 	public void setInfowinanchor(String infowinanchor) {
 		this.infowinanchor = infowinanchor;
 	}
-
 
 }

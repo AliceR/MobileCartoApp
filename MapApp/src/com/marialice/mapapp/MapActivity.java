@@ -189,15 +189,29 @@ public class MapActivity extends FragmentActivity implements
 
 		for (int i = 0; i < dbmarkers.size(); i++) {
 			StaticMarker marker = dbmarkers.get(i);
-			mMap.addMarker(new MarkerOptions()
+			String title = marker.getTitle();
+			int symbol = getResources().getIdentifier(marker.getIcon(), "drawable", this.getPackageName());
+			if (title.length() > 1){
+				// for markers that should have an info window
+				mMap.addMarker(new MarkerOptions()
 					.position(marker.getLatLng())
-					.title(marker.getTitle())
-					.snippet(marker.getCategory())
+					.title(title)
+					.snippet(marker.getDescription())
 					.icon(BitmapDescriptorFactory.fromResource(
-									marker.getSymbol()))
+								symbol))
 					.flat(true)
 					.rotation(marker.getRotation())
 					);
+			} else {
+				// for all others, without info window
+				mMap.addMarker(new MarkerOptions()
+					.position(marker.getLatLng())
+					.icon(BitmapDescriptorFactory.fromResource(
+								symbol))
+					.flat(true)
+					.rotation(marker.getRotation())
+					);
+			}
 		}
 
 		// create the pois from database

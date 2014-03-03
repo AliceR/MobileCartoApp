@@ -111,6 +111,7 @@ public class DatabaseContent extends Activity {
 			int titleindex = dbCursor.getColumnIndex("title");
 			int descindex = dbCursor.getColumnIndex("description");
 			int categoryindex = dbCursor.getColumnIndex("category");
+			int iconindex = dbCursor.getColumnIndex("icon");
 			int rotationindex = dbCursor.getColumnIndex("rotation");
 			int anchorindex = dbCursor.getColumnIndex("anchor");
 			int infowinanchorindex = dbCursor.getColumnIndex("infowinanchor");
@@ -124,6 +125,7 @@ public class DatabaseContent extends Activity {
 				String title = dbCursor.getString(titleindex);
 				String description = dbCursor.getString(descindex);
 				String category = dbCursor.getString(categoryindex);
+				String icon = dbCursor.getString(iconindex);
 				int rotation = dbCursor.getInt(rotationindex);
 				String anchor = dbCursor.getString(anchorindex);
 				String infowinanchor = dbCursor.getString(infowinanchorindex);
@@ -136,6 +138,7 @@ public class DatabaseContent extends Activity {
 				marker.setTitle(title);
 				marker.setDescription(description);
 				marker.setCategory(category);
+				marker.setIcon(icon);
 				marker.setRotation(rotation);
 				marker.setAnchor(anchor);
 				marker.setInfowinanchor(infowinanchor);
