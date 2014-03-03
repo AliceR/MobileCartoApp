@@ -16,6 +16,7 @@ public class Poi {
 	private String category;
 	private String title;
 	private String description;
+	private String icon;
 	private Boolean wifi;
 	private Boolean sundays;
 	private Boolean terrace;
@@ -82,45 +83,6 @@ public class Poi {
 		this.category = category;
 	}
 
-	public int getSymbol() {
-		int symbol = 0;
-		if (category.equals("bar")) {
-			symbol = R.drawable.poi_bar_shadow;
-		} else if (category.equals("cafe")) {
-			symbol = R.drawable.poi_cafe_shadow;
-		} else if (category.equals("eat")) {
-			symbol = R.drawable.poi_eat_shadow;
-		} else if (category.equals("hidden")) {
-			symbol = R.drawable.poi_hidden_shadow;
-		} else if (category.equals("museum")) {
-			symbol = R.drawable.poi_museum_shadow;
-		} else if (category.equals("shopping")) {
-			symbol = R.drawable.poi_shopping_shadow;
-		} else if (category.equals("sightseeing")) {
-			symbol = R.drawable.poi_sightseeing_shadow;
-		} else if (category.equals("museumsightseeing")) {
-			symbol = R.drawable.poi_museum_sightseeing_shadow;
-		} else if (category.equals("museumcafe")) {
-			symbol = R.drawable.poi_museum_cafe_shadow;		
-		} else if (category.equals("shoppingeat")) {
-			symbol = R.drawable.poi_shopping_eat_shadow;
-		} else if (category.equals("hiddencafe")) {
-			symbol = R.drawable.poi_hidden_cafe_shadow;
-		} else if (category.equals("shoppingcafe")) {
-			symbol = R.drawable.poi_shopping_cafe_shadow;
-		} else if (category.equals("shoppingsightseeing")) {
-			symbol = R.drawable.poi_shopping_sightseeing_shadow;
-		} else if (category.equals("barcafe")) {
-			symbol = R.drawable.poi_bar_cafe_shadow;
-		} else if (category.equals("barsightseeing")) {
-			symbol = R.drawable.poi_bar_sightseeing_shadow;
-		} else {
-			symbol = R.drawable.poi_action_bar3;
-		}
-
-		return symbol;
-	}
-
 	public String getCategoryName() {
 		String categoryName;
 		if (category.equals("bar")) {
@@ -160,6 +122,14 @@ public class Poi {
 		return categoryName;
 	}
 
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	
 	public Boolean getWifi() {
 		return wifi;
 	}
@@ -207,6 +177,5 @@ public class Poi {
 	public void setTouristclassic(Boolean touristclassic) {
 		this.touristclassic = touristclassic;
 	}
-
 
 }

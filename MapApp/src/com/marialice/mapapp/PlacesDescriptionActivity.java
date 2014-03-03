@@ -78,6 +78,7 @@ public class PlacesDescriptionActivity extends Activity {
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
 			String titledb = poi.getTitle();
+			int icon = getResources().getIdentifier(poi.getIcon(), "drawable", this.getPackageName());
 
 			if (titledb.equals(titlels)) {
 
@@ -86,7 +87,7 @@ public class PlacesDescriptionActivity extends Activity {
 				// creates the icon in the TextToBitmap class using symbol and
 				// number
 				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(
-						getApplicationContext(), poi.getSymbol(),
+						getApplicationContext(), icon,
 						poi.getNumber()));
 				// requests lat and lon for usage with the button 'goto_map'
 				lat = poi.getLat();
@@ -127,55 +128,9 @@ public class PlacesDescriptionActivity extends Activity {
 					// OnLongClickListener();
 				}
 
-				// show map button
-				if (poi.getCategory().equals("sightseeing")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_sightseeing);
-				} else if (poi.getCategory().equals("museum")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_museum);
-				} else if (poi.getCategory().equals("shopping")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_shopping);
-				} else if (poi.getCategory().equals("eat")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_eat);
-				} else if (poi.getCategory().equals("cafe")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_cafe);
-				} else if (poi.getCategory().equals("bar")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_bar);
-				} else if (poi.getCategory().equals("hidden")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_hidden);
-				} else if (poi.getCategory().equals("museumsightseeing")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_museumsightseeing);
-				} else if (poi.getCategory().equals("museumcafe")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_museumcafe);
-				} else if (poi.getCategory().equals("shoppingeat")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_shoppingeat);
-				} else if (poi.getCategory().equals("hiddencafe")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_hiddencafe);
-				} else if (poi.getCategory().equals("shoppingcafe")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_shoppingcafe);
-				} else if (poi.getCategory().equals("shoppingsightseeing")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_shoppingsightseeing);
-				} else if (poi.getCategory().equals("barcafe")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_barcafe);
-				} else if (poi.getCategory().equals("barsightseeing")) {
-					buttonShowMap
-							.setBackgroundResource(R.drawable.button_show_map_barsightseeing);
-				} else {
-					buttonShowMap.setBackgroundColor(R.color.grey);
-				}
+				int button = getResources().getIdentifier(poi.getIcon() + "button", "drawable", this.getPackageName());
+				buttonShowMap.setBackgroundResource(button);
+				
 			}
 		}
 	}

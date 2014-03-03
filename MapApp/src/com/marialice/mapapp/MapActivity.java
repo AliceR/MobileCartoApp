@@ -190,7 +190,7 @@ public class MapActivity extends FragmentActivity implements
 		for (int i = 0; i < dbmarkers.size(); i++) {
 			StaticMarker marker = dbmarkers.get(i);
 			String title = marker.getTitle();
-			int symbol = getResources().getIdentifier(marker.getIcon(), "drawable", this.getPackageName());
+			int icon = getResources().getIdentifier(marker.getIcon(), "drawable", this.getPackageName());
 			if (title.length() > 1){
 				// for markers that should have an info window
 				mMap.addMarker(new MarkerOptions()
@@ -198,7 +198,7 @@ public class MapActivity extends FragmentActivity implements
 					.title(title)
 					.snippet(marker.getDescription())
 					.icon(BitmapDescriptorFactory.fromResource(
-								symbol))
+								icon))
 					.flat(true)
 					.rotation(marker.getRotation())
 					);
@@ -207,7 +207,7 @@ public class MapActivity extends FragmentActivity implements
 				mMap.addMarker(new MarkerOptions()
 					.position(marker.getLatLng())
 					.icon(BitmapDescriptorFactory.fromResource(
-								symbol))
+								icon))
 					.flat(true)
 					.rotation(marker.getRotation())
 					);
@@ -219,13 +219,14 @@ public class MapActivity extends FragmentActivity implements
 
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
+			int icon = getResources().getIdentifier(poi.getIcon(), "drawable", this.getPackageName());
 			mMap.addMarker(new MarkerOptions()
 					.position(poi.getLatLng())
 					.title(poi.getTitle())
 					.snippet(poi.getCategoryName())
 					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
 							.drawTextToBitmap(getApplicationContext(),
-									poi.getSymbol(), poi.getNumber()))));
+									icon, poi.getNumber()))));
 		}
 	}
 

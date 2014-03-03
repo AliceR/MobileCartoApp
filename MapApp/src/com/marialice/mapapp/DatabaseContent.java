@@ -38,6 +38,7 @@ public class DatabaseContent extends Activity {
 			int catindex = dbCursor.getColumnIndex("category");
 			int titleindex = dbCursor.getColumnIndex("title");
 			int descindex = dbCursor.getColumnIndex("description");
+			int iconindex = dbCursor.getColumnIndex("icon");
 			int wifiindex = dbCursor.getColumnIndex("wifi");
 			int terraceindex = dbCursor.getColumnIndex("terrace");
 			int sundaysindex = dbCursor.getColumnIndex("sundays");
@@ -53,6 +54,7 @@ public class DatabaseContent extends Activity {
 				String category = dbCursor.getString(catindex);
 				String title = dbCursor.getString(titleindex);
 				String description = dbCursor.getString(descindex);
+				String icon = dbCursor.getString(iconindex);
 				Boolean wifi = dbCursor.getInt(wifiindex) > 0;
 				Boolean terrace = dbCursor.getInt(terraceindex) > 0;
 				Boolean sundays = dbCursor.getInt(sundaysindex) > 0;
@@ -68,6 +70,7 @@ public class DatabaseContent extends Activity {
 				poi.setCategory(category);
 				poi.setTitle(title);
 				poi.setDescription(description);
+				poi.setIcon(icon);
 				poi.setWifi(wifi);
 				poi.setTerrace(terrace);
 				poi.setSundays(sundays);
