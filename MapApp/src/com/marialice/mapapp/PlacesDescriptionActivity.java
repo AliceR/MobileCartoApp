@@ -135,20 +135,7 @@ public class PlacesDescriptionActivity extends Activity {
 		}
 	}
 
-	/*
-	 * // on long click listener private void OnLongClickListener() { ViewGroup
-	 * showLegend = (ViewGroup) findViewById(R.id.description_legend);
-	 * showLegend.setOnLongClickListener(new OnLongClickListener() {
-	 * 
-	 * @Override public boolean onLongClick(View view) {
-	 * 
-	 * LayoutInflater inflater = getLayoutInflater(); // Inflate the Layout View
-	 * layout = inflater.inflate( R.layout.custom_toast_description, (ViewGroup)
-	 * findViewById(R.id.custom_toast_layout)); Toast toast = new
-	 * Toast(getApplicationContext()); toast.setDuration(Toast.LENGTH_LONG);
-	 * toast.setGravity(Gravity.TOP | Gravity.RIGHT, 10, 300);
-	 * toast.setView(layout); toast.show(); return true; } }); }
-	 */
+
 
 	// on click listener
 	public void showLegend(View view) {
