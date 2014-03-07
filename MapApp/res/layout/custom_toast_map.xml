@@ -10,7 +10,7 @@
         android:id="@+id/legend_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/poi_info"
+        android:drawableLeft="@drawable/info"
         android:drawablePadding="16dp"
         android:gravity="center_vertical"
         android:text="@string/legend_info" />
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_info"
-        android:drawableLeft="@drawable/poi_hostel"
+        android:drawableLeft="@drawable/hostel"
         android:drawablePadding="20dp"
         android:gravity="center_vertical"
         android:text="@string/legend_hostel" />
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_hostel"
-        android:drawableLeft="@drawable/poi_hungry_window"
+        android:drawableLeft="@drawable/hungry_window"
         android:drawablePadding="18dp"
         android:gravity="center_vertical"
         android:text="@string/legend_hungrywindow" />
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_hungrywindow"
-        android:drawableLeft="@drawable/poi_grocery"
+        android:drawableLeft="@drawable/grocery"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
         android:text="@string/legend_grocery" />
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_grocery"
-        android:drawableLeft="@drawable/poi_shopping_centre"
+        android:drawableLeft="@drawable/shopping_centre"
         android:drawablePadding="14dp"
         android:gravity="center_vertical"
         android:text="@string/legend_shoppingcentre" />
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_shoppingcentre"
-        android:drawableLeft="@drawable/poi_pharmacy"
+        android:drawableLeft="@drawable/pharmacy"
         android:drawablePadding="20dp"
         android:gravity="center_vertical"
         android:text="@string/legend_pharmacy" />
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_pharmacy"
-        android:drawableLeft="@drawable/poi_hospital"
+        android:drawableLeft="@drawable/hospital"
         android:drawablePadding="20dp"
         android:gravity="center_vertical"
         android:text="@string/legend_hospital" />
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_hospital"
-        android:drawableLeft="@drawable/poi_post"
+        android:drawableLeft="@drawable/post"
         android:drawablePadding="19dp"
         android:gravity="center_vertical"
         android:text="@string/legend_post" />
@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_post"
-        android:drawableLeft="@drawable/poi_atm"
+        android:drawableLeft="@drawable/atm"
         android:drawablePadding="17dp"
         android:gravity="center_vertical"
         android:text="@string/legend_atm" />
@@ -100,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/legend_atm"
-        android:drawableLeft="@drawable/poi_sport"
+        android:drawableLeft="@drawable/sport"
         android:drawablePadding="19dp"
         android:gravity="center_vertical"
         android:text="@string/legend_sport" />
