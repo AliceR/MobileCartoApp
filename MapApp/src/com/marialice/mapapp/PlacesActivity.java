@@ -87,7 +87,7 @@ public class PlacesActivity extends Activity {
 		listDataHeader.add("Museum, venue");
 		listDataHeader.add("Shopping");
 		listDataHeader.add("Eat, drink");
-		listDataHeader.add("Café, tea room");
+		listDataHeader.add("CafŽ, tea room");
 		listDataHeader.add("Bar, club");
 		listDataHeader.add("Hidden, chill out");
 
@@ -104,41 +104,26 @@ public class PlacesActivity extends Activity {
 
 		for (int i = 0; i < dbpois.size(); i++) {
 			Poi poi = dbpois.get(i);
-			if (poi.getCategory().equals("sightseeing")
-					| poi.getCategory().equals("museumsightseeing")
-					| poi.getCategory().equals("shoppingsightseeing")
-					| poi.getCategory().equals("barsightseeing")) {
+			
+			if (poi.getCategory().contains("sightseeing")) {
 				listSightseeing.add(poi.getTitle());
 			}
-			if (poi.getCategory().equals("museum")
-					| poi.getCategory().equals("museumsightseeing")
-					| poi.getCategory().equals("museumcafe")) {
+			if (poi.getCategory().contains("museum")) {
 				listMuseum.add(poi.getTitle());
 			}
-			if (poi.getCategory().equals("shopping")
-					| poi.getCategory().equals("shoppingsightseeing")
-					| poi.getCategory().equals("shoppingeat")
-					| poi.getCategory().equals("shoppingcafe")) {
+			if (poi.getCategory().contains("shopping")) {
 				listShopping.add(poi.getTitle());
 			}
-			if (poi.getCategory().equals("eat")
-					| poi.getCategory().equals("shoppingeat")) {
+			if (poi.getCategory().contains("eat")) {
 				listEat.add(poi.getTitle());
 			}
-			if (poi.getCategory().equals("cafe")
-					| poi.getCategory().equals("museumcafe")
-					| poi.getCategory().equals("shoppingcafe")
-					| poi.getCategory().equals("hiddencafe")
-					| poi.getCategory().equals("barcafe")) {
+			if (poi.getCategory().contains("tea")) {
 				listCafe.add(poi.getTitle());
 			}
-			if (poi.getCategory().equals("bar")
-					| poi.getCategory().equals("barcafe")
-					| poi.getCategory().equals("barsightseeing")) {
+			if (poi.getCategory().contains("bar")) {
 				listBar.add(poi.getTitle());
 			}
-			if (poi.getCategory().equals("hidden")
-					| poi.getCategory().equals("hiddencafe")) {
+			if (poi.getCategory().contains("hidden")) {
 				listHidden.add(poi.getTitle());
 			}
 		}

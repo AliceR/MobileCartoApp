@@ -83,45 +83,6 @@ public class Poi {
 		this.category = category;
 	}
 
-	public String getCategoryName() {
-		String categoryName;
-		if (category.equals("bar")) {
-			categoryName = "bar, club";
-		} else if (category.equals("cafe")) {
-			categoryName = "café, tea room";
-		} else if (category.equals("eat")) {
-			categoryName = "eat, drink";
-		} else if (category.equals("hidden")) {
-			categoryName = "hidden, chill out";
-		} else if (category.equals("museum")) {
-			categoryName = "museum, venue";
-		} else if (category.equals("shopping")) {
-			categoryName = "shopping";
-		} else if (category.equals("sightseeing")) {
-			categoryName = "sightseeing";
-		} else if (category.equals("museumsightseeing")) {
-			categoryName = "museum, venue + sightseeing";
-		} else if (category.equals("museumcafe")) {
-			categoryName = "museum, venue + café, tea room";			
-		} else if (category.equals("shoppingeat")) {
-			categoryName = "shopping + eat, drink";
-		} else if (category.equals("hiddencafe")) {
-			categoryName = "hidden, chill out + café, tea room";
-		} else if (category.equals("shoppingcafe")) {
-			categoryName = "shopping + café, tea room";
-		} else if (category.equals("shoppingsightseeing")) {
-			categoryName = "shopping + sightseeing";
-		} else if (category.equals("barcafe")) {
-			categoryName = "bar, club + café, tea room";
-		} else if (category.equals("barsightseeing")) {
-			categoryName = "bar, club + sightseeing";
-		} else {
-			categoryName = "no category";
-		}
-
-		return categoryName;
-	}
-
 	public String getIcon() {
 		return icon;
 	}

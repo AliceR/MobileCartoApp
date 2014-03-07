@@ -223,7 +223,7 @@ public class MapActivity extends FragmentActivity implements
 			mMap.addMarker(new MarkerOptions()
 					.position(poi.getLatLng())
 					.title(poi.getTitle())
-					.snippet(poi.getCategoryName())
+					.snippet(poi.getCategory())
 					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
 							.drawTextToBitmap(getApplicationContext(),
 									icon, poi.getNumber()))));
