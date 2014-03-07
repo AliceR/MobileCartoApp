@@ -116,8 +116,6 @@ public class DatabaseContent extends Activity {
 			int categoryindex = dbCursor.getColumnIndex("category");
 			int iconindex = dbCursor.getColumnIndex("icon");
 			int rotationindex = dbCursor.getColumnIndex("rotation");
-			int anchorindex = dbCursor.getColumnIndex("anchor");
-			int infowinanchorindex = dbCursor.getColumnIndex("infowinanchor");
 			
 
 			while (!dbCursor.isAfterLast()) {
@@ -130,8 +128,6 @@ public class DatabaseContent extends Activity {
 				String category = dbCursor.getString(categoryindex);
 				String icon = dbCursor.getString(iconindex);
 				int rotation = dbCursor.getInt(rotationindex);
-				String anchor = dbCursor.getString(anchorindex);
-				String infowinanchor = dbCursor.getString(infowinanchorindex);
 
 				StaticMarker marker = new StaticMarker();
 
@@ -143,8 +139,6 @@ public class DatabaseContent extends Activity {
 				marker.setCategory(category);
 				marker.setIcon(icon);
 				marker.setRotation(rotation);
-				marker.setAnchor(anchor);
-				marker.setInfowinanchor(infowinanchor);
 
 				dbmarkers.add(marker);
 
