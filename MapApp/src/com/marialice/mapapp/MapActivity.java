@@ -207,7 +207,8 @@ public class MapActivity extends FragmentActivity implements
 				mMap.addMarker(new MarkerOptions()
 					.position(marker.getLatLng())
 					.icon(BitmapDescriptorFactory.fromResource(
-								icon))
+								//icon))
+							R.drawable.action_bulb_blue))
 					.flat(true)
 					.rotation(marker.getRotation())
 					);
