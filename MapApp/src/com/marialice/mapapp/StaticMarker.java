@@ -18,8 +18,6 @@ public class StaticMarker {
 	private String description;
 	private String icon;
 	private int rotation;
-	private String anchor;
-	private String infowinanchor;
 	
 
 	public Double getLat() {
@@ -89,22 +87,6 @@ public class StaticMarker {
 
 	public void setRotation(int rotation) {
 		this.rotation = rotation;
-	}
-
-	public String getAnchor() {
-		return anchor;
-	}
-
-	public void setAnchor(String anchor) {
-		this.anchor = anchor;
-	}
-
-	public String getInfowinanchor() {
-		return infowinanchor;
-	}
-
-	public void setInfowinanchor(String infowinanchor) {
-		this.infowinanchor = infowinanchor;
 	}
 
 }
