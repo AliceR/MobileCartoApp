@@ -190,7 +190,8 @@ public class MapActivity extends FragmentActivity implements
 		for (int i = 0; i < dbmarkers.size(); i++) {
 			StaticMarker marker = dbmarkers.get(i);
 			String title = marker.getTitle();
-			int icon = getResources().getIdentifier(marker.getIcon(), "drawable", this.getPackageName());
+			String filename = marker.getIcon().trim();
+			int icon = this.getResources().getIdentifier(filename, "drawable", this.getPackageName());
 			if (title.length() > 1){
 				// for markers that should have an info window
 				mMap.addMarker(new MarkerOptions()
@@ -207,8 +208,7 @@ public class MapActivity extends FragmentActivity implements
 				mMap.addMarker(new MarkerOptions()
 					.position(marker.getLatLng())
 					.icon(BitmapDescriptorFactory.fromResource(
-								//icon))
-							R.drawable.action_bulb_blue))
+								icon))
 					.flat(true)
 					.rotation(marker.getRotation())
 					);
