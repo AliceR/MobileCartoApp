@@ -5,6 +5,7 @@ package com.marialice.mapapp;
  */
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -13,6 +14,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -43,6 +45,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.android.gms.maps.model.TileProvider;
 import com.google.android.gms.maps.model.UrlTileProvider;
@@ -101,33 +105,32 @@ public class MapActivity extends FragmentActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle presses on the action bar items
-		switch (item.getItemId()) {
-		case R.id.goto_actlikelocal:
+		if (item.getItemId() == R.id.goto_actlikelocal) {
 			// start the pop up with a random hint
 			Random randomi = new Random();
 			int max = dbclass.queryHintsFromDatabase(this).size() - 1;
 			int min = 0;
 			int i = randomi.nextInt((max - min) + 1) + min;
 			createPopUp(i);
-			return true;
-		case R.id.goto_legend:
+			return true;}
+		else if (item.getItemId() == R.id.goto_legend) {
 			Intent legendintent = new Intent(MapActivity.this,
 					LegendActivity.class);
 			startActivity(legendintent);
-			return true;
-		case R.id.goto_about:
+			return true;}
+		else if (item.getItemId() == R.id.goto_about) {
 			Intent aboutintent = new Intent(MapActivity.this,
 					AboutActivity.class);
 			startActivity(aboutintent);
-			return true;
-		case R.id.goto_places:
+			return true;}
+		else if (item.getItemId() == R.id.goto_places) {
 			Intent placesintent = new Intent(MapActivity.this,
 					PlacesActivity.class);
 			startActivity(placesintent);
-			return true;
-		default:
+			return true;}
+		else
 			return super.onOptionsItemSelected(item);
-		}
+		
 	}
 
 	private void setUpMapIfNeeded() {
@@ -144,6 +147,7 @@ public class MapActivity extends FragmentActivity implements
 			}
 		}
 	}
+	
 
 	private void setUpMap() {
 		// declare map properties
@@ -184,6 +188,44 @@ public class MapActivity extends FragmentActivity implements
 		// add the tile overlay to the map
 		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(tileProvider));
 
+		
+		// Add polyline "walks water"		
+		ArrayList<LatLng> coordListWater = new ArrayList<LatLng>();
+		List<WalkWater> dbwalkwaternodes = dbclass.queryWalksWaterFromDatabase(this); 
+
+		// Adding points to ArrayList		
+		for (int i = 0; i < dbwalkwaternodes.size(); i++) {
+			WalkWater location = dbwalkwaternodes.get(i);
+			coordListWater.add(new LatLng(location.getLat(), location.getLon()));
+		 }
+		
+		// Create polyline options with existing LatLng ArrayList		
+		Polyline line = mMap.addPolyline(new PolylineOptions() 
+			.addAll(coordListWater)
+			.width(16)
+        	.color(Color.parseColor("#B37570b3"))
+			.geodesic(true));
+		line.setZIndex(1000);
+		
+		//Add marker to "walks water"
+		List<WalkWaterPoi> dbwalkwaterpois = dbclass.queryWalksWaterPoiFromDatabase(this);
+
+		for (int i = 0; i < dbwalkwaterpois.size(); i++) {
+			WalkWaterPoi waterpoi = dbwalkwaterpois.get(i);
+			String number = String.valueOf(waterpoi.getId());
+			String title = waterpoi.getTitle();
+			int icon = getResources().getIdentifier(waterpoi.getIcon(), "drawable", this.getPackageName());
+				mMap.addMarker(new MarkerOptions()
+					.position(waterpoi.getLatLng())
+					.title(title)
+					.snippet(waterpoi.getName())
+					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
+							.drawTextToBitmap(getApplicationContext(),
+									icon, number)))
+					);
+		}
+		
+				
 		// create the markers from database
 		List<StaticMarker> dbmarkers = dbclass.queryMarkersFromDatabase(this);
 
@@ -231,6 +273,8 @@ public class MapActivity extends FragmentActivity implements
 		}
 	}
 
+	
+	
 	// Zoom to city center button
 	public void zoomCityCenter(View view) {
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
@@ -253,8 +297,17 @@ public class MapActivity extends FragmentActivity implements
 	@Override
 	public void onInfoWindowClick(Marker marker) {
 		String title = marker.getTitle();
+		LatLng position = marker.getPosition();
 		if (marker.isFlat()) {
 			// do nothing
+		} if ( marker.getSnippet().equals("Along water by local feet")
+			|| marker.getSnippet().equals("Along water by local feet")
+			|| marker.getSnippet().equals("Along water by local feet"))	{
+			// start the description with extras in the intent
+			Intent walkinfowindowintent = new Intent(this,
+					WalksDescriptionActivity.class);
+			walkinfowindowintent.putExtra("walkPoi", String.valueOf(position));
+			startActivity(walkinfowindowintent);
 		} else {
 			// start the description with extras in the intent
 			Intent infowindowintent = new Intent(this,
@@ -263,6 +316,7 @@ public class MapActivity extends FragmentActivity implements
 			startActivity(infowindowintent);
 		}
 	}
+	
 
 	// this method creates the pop up info when clicking the bulb icon
 	private int createPopUp(int i) {
