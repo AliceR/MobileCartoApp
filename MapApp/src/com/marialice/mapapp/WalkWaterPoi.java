@@ -11,6 +11,7 @@ public class WalkWaterPoi {
 	private String description;
 	private String name;
 	private String icon;
+	private String address;
 	private Boolean wifi;
 	private Boolean sundays;
 	private Boolean terrace;
@@ -66,6 +67,14 @@ public class WalkWaterPoi {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 		
 	public LatLng getLatLng() {

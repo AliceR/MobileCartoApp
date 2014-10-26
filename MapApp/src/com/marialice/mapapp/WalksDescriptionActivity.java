@@ -62,6 +62,7 @@ public class WalksDescriptionActivity extends Activity {
 		TextView textViewTitle = (TextView) findViewById(R.id.desc_title);
 		TextView textViewWalk = (TextView) findViewById(R.id.walkname);
 		TextView textViewDesc = (TextView) findViewById(R.id.description);
+		TextView textViewAddress = (TextView) findViewById(R.id.address);
 		ImageView imageViewIcon = (ImageView) findViewById(R.id.desc_icon);
 		ImageView imageViewWifi = (ImageView) findViewById(R.id.wifi);
 		ImageView imageViewTerrace = (ImageView) findViewById(R.id.terrace);
@@ -86,6 +87,7 @@ public class WalksDescriptionActivity extends Activity {
 				textViewDesc.setText(Html.fromHtml(waterpoi.getDescription()));
 				textViewWalk.setText(Html.fromHtml(waterpoi.getName()));
 				textViewTitle.setText(Html.fromHtml(waterpoi.getTitle()));
+				textViewAddress.setText(Html.fromHtml(waterpoi.getAddress()));
 				// creates the icon in the TextToBitmap class using symbol and
 				// number
 				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(

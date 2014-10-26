@@ -53,6 +53,20 @@
             android:paddingRight="20dp"
             android:paddingTop="20dp"
             android:textSize="17sp" />
+        
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="60dp"
+            android:gravity="fill_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"            
+            android:textStyle="italic"
+            android:paddingTop="20dp"
+            android:textSize="17sp" />
 
         <RelativeLayout
             android:id="@+id/description_legend"
@@ -113,7 +127,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_below="@+id/description"
+            android:layout_below="@+id/address"
             android:layout_marginRight="80dp"
             android:paddingBottom="70dp"
             android:layout_marginTop="60dp" 

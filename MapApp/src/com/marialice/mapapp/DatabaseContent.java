@@ -220,6 +220,7 @@ public class DatabaseContent extends Activity {
 			int latindex = dbCursor.getColumnIndex("Lat");
 			int lonindex = dbCursor.getColumnIndex("Lon");
 			int titleindex = dbCursor.getColumnIndex("title");
+			int addressindex = dbCursor.getColumnIndex("address");
 			int descindex = dbCursor.getColumnIndex("popis");
 			int nameindex = dbCursor.getColumnIndex("name");
 			int iconindex = dbCursor.getColumnIndex("icon");
@@ -239,6 +240,7 @@ public class DatabaseContent extends Activity {
 				String description = dbCursor.getString(descindex);
 				String name = dbCursor.getString(nameindex);
 				String icon = dbCursor.getString(iconindex);
+				String address = dbCursor.getString(addressindex);
 				Boolean wifi = dbCursor.getInt(wifiindex) > 0;
 				Boolean terrace = dbCursor.getInt(terraceindex) > 0;
 				Boolean sundays = dbCursor.getInt(sundaysindex) > 0;
@@ -254,6 +256,7 @@ public class DatabaseContent extends Activity {
 				walkwaterpoi.setTitle(title);
 				walkwaterpoi.setDescription(description);
 				walkwaterpoi.setName(name);
+				walkwaterpoi.setAddress(address);
 				walkwaterpoi.setIcon(icon);
 				walkwaterpoi.setWifi(wifi);
 				walkwaterpoi.setTerrace(terrace);
