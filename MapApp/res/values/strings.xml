@@ -50,6 +50,7 @@
     <string name="title_activity_database_helper">Database Helper</string>
     <string name="title_activity_places">Places</string>
     <string name="title_activity_places_description">Details</string>
+    <string name="title_activity_walks_description">Details of the walk</string>
     <string name="use_it_logo">use it europe logo</string>
     <string name="writers_text"><b>Writers collective:</b> Eva Křížová, Kamila Kačmáčková, Miroslav Řezníček, Katka Jedličková, Radka Záhrobovská, Týna Houdková, Magda Zronková, Marie Rychlá Novotná, Katka Tůmová and others</string>
     <string name="previous">Previous</string>
