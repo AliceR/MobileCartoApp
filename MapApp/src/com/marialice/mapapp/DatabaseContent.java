@@ -197,6 +197,94 @@ public class DatabaseContent extends Activity {
 		return dbwalkwaternodes;
 	}
 	
+	public List<WalkBeer> queryWalksBeerFromDatabase(Context context) {
+
+		SQLiteDatabase db = null;
+		Cursor dbCursor;
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+
+		List<WalkBeer> dbwalkbeernodes = new ArrayList<WalkBeer>();
+
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		try {
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT * FROM walkbeer;", null);
+			dbCursor.moveToFirst();
+
+			int latindex = dbCursor.getColumnIndex("latitude");
+			int lonindex = dbCursor.getColumnIndex("longitude");
+			
+
+			while (!dbCursor.isAfterLast()) {
+
+				Double lat = dbCursor.getDouble(latindex);
+				Double lon = dbCursor.getDouble(lonindex);
+
+				WalkBeer walkbeernode = new WalkBeer();
+
+				walkbeernode.setLat(lat);
+				walkbeernode.setLon(lon);
+
+				dbwalkbeernodes.add(walkbeernode);
+
+				dbCursor.moveToNext();
+
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+		return dbwalkbeernodes;
+	}
+	
+	
+	public List<WalkSights> queryWalksSightsFromDatabase(Context context) {
+
+		SQLiteDatabase db = null;
+		Cursor dbCursor;
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+
+		List<WalkSights> dbwalksightsnodes = new ArrayList<WalkSights>();
+
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		try {
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT * FROM walksights;", null);
+			dbCursor.moveToFirst();
+
+			int latindex = dbCursor.getColumnIndex("latitude");
+			int lonindex = dbCursor.getColumnIndex("longitude");
+			
+
+			while (!dbCursor.isAfterLast()) {
+
+				Double lat = dbCursor.getDouble(latindex);
+				Double lon = dbCursor.getDouble(lonindex);
+
+				WalkSights walksightsnode = new WalkSights();
+
+				walksightsnode.setLat(lat);
+				walksightsnode.setLon(lon);
+
+				dbwalksightsnodes.add(walksightsnode);
+
+				dbCursor.moveToNext();
+
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+		return dbwalksightsnodes;
+	}
 	
 	
 	public List<WalkWaterPoi> queryWalksWaterPoiFromDatabase(Context context) {
@@ -277,6 +365,168 @@ public class DatabaseContent extends Activity {
 		}
 		return dbwalkwaterpois;
 	}
+	
+	
+	
+	public List<WalkSightsPoi> queryWalksSightsPoiFromDatabase(Context context) {
+
+		SQLiteDatabase db = null;
+		Cursor dbCursor;
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+
+		List<WalkSightsPoi> dbwalksightspois = new ArrayList<WalkSightsPoi>();
+
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		try {
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT * FROM walksights_pois;", null);
+			dbCursor.moveToFirst();
+			
+			int idindex = dbCursor.getColumnIndex("id");
+			int latindex = dbCursor.getColumnIndex("Lat");
+			int lonindex = dbCursor.getColumnIndex("Lon");
+			int titleindex = dbCursor.getColumnIndex("title");
+			int addressindex = dbCursor.getColumnIndex("address");
+			int descindex = dbCursor.getColumnIndex("popis");
+			int nameindex = dbCursor.getColumnIndex("name");
+			int iconindex = dbCursor.getColumnIndex("icon");
+			int wifiindex = dbCursor.getColumnIndex("wifi");
+			int terraceindex = dbCursor.getColumnIndex("terrace");
+			int sundaysindex = dbCursor.getColumnIndex("sundays");
+			int calmplaceindex = dbCursor.getColumnIndex("calmplace");
+			int nonsmokingindex = dbCursor.getColumnIndex("nonsmoking");
+			int touristclassicindex = dbCursor.getColumnIndex("touristclassic");
+
+			while (!dbCursor.isAfterLast()) {
+
+				int id = dbCursor.getInt(idindex);
+				Double lat = dbCursor.getDouble(latindex);
+				Double lon = dbCursor.getDouble(lonindex);
+				String title = dbCursor.getString(titleindex);
+				String description = dbCursor.getString(descindex);
+				String name = dbCursor.getString(nameindex);
+				String icon = dbCursor.getString(iconindex);
+				String address = dbCursor.getString(addressindex);
+				Boolean wifi = dbCursor.getInt(wifiindex) > 0;
+				Boolean terrace = dbCursor.getInt(terraceindex) > 0;
+				Boolean sundays = dbCursor.getInt(sundaysindex) > 0;
+				Boolean calmplace = dbCursor.getInt(calmplaceindex) > 0;
+				Boolean nonsmoking = dbCursor.getInt(nonsmokingindex) > 0;
+				Boolean touristclassic = dbCursor.getInt(touristclassicindex) > 0;
+
+				WalkSightsPoi walksightspoi = new WalkSightsPoi();
+
+				walksightspoi.setId(id);
+				walksightspoi.setLat(lat);
+				walksightspoi.setLon(lon);
+				walksightspoi.setTitle(title);
+				walksightspoi.setDescription(description);
+				walksightspoi.setName(name);
+				walksightspoi.setAddress(address);
+				walksightspoi.setIcon(icon);
+				walksightspoi.setWifi(wifi);
+				walksightspoi.setTerrace(terrace);
+				walksightspoi.setSundays(sundays);
+				walksightspoi.setCalmplace(calmplace);
+				walksightspoi.setNonsmoking(nonsmoking);
+				walksightspoi.setTouristclassic(touristclassic);
+
+				dbwalksightspois.add(walksightspoi);
+
+				dbCursor.moveToNext();
+
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+		return dbwalksightspois;
+	}
+	
+	
+	public List<WalkBeerPoi> queryWalksBeerPoiFromDatabase(Context context) {
+
+		SQLiteDatabase db = null;
+		Cursor dbCursor;
+		DatabaseHelper dbHelper = new DatabaseHelper(context);
+
+		List<WalkBeerPoi> dbwalkbeerpois = new ArrayList<WalkBeerPoi>();
+
+		try {
+			dbHelper.createDataBase();
+		} catch (IOException ioe) {
+		}
+		try {
+			db = dbHelper.getDataBase();
+			dbCursor = db.rawQuery("SELECT * FROM walkbeer_pois;", null);
+			dbCursor.moveToFirst();
+			
+			int idindex = dbCursor.getColumnIndex("id");
+			int latindex = dbCursor.getColumnIndex("Lat");
+			int lonindex = dbCursor.getColumnIndex("Lon");
+			int titleindex = dbCursor.getColumnIndex("title");
+			int addressindex = dbCursor.getColumnIndex("address");
+			int descindex = dbCursor.getColumnIndex("popis");
+			int nameindex = dbCursor.getColumnIndex("name");
+			int iconindex = dbCursor.getColumnIndex("icon");
+			int wifiindex = dbCursor.getColumnIndex("wifi");
+			int terraceindex = dbCursor.getColumnIndex("terrace");
+			int sundaysindex = dbCursor.getColumnIndex("sundays");
+			int calmplaceindex = dbCursor.getColumnIndex("calmplace");
+			int nonsmokingindex = dbCursor.getColumnIndex("nonsmoking");
+			int touristclassicindex = dbCursor.getColumnIndex("touristclassic");
+
+			while (!dbCursor.isAfterLast()) {
+
+				int id = dbCursor.getInt(idindex);
+				Double lat = dbCursor.getDouble(latindex);
+				Double lon = dbCursor.getDouble(lonindex);
+				String title = dbCursor.getString(titleindex);
+				String description = dbCursor.getString(descindex);
+				String name = dbCursor.getString(nameindex);
+				String icon = dbCursor.getString(iconindex);
+				String address = dbCursor.getString(addressindex);
+				Boolean wifi = dbCursor.getInt(wifiindex) > 0;
+				Boolean terrace = dbCursor.getInt(terraceindex) > 0;
+				Boolean sundays = dbCursor.getInt(sundaysindex) > 0;
+				Boolean calmplace = dbCursor.getInt(calmplaceindex) > 0;
+				Boolean nonsmoking = dbCursor.getInt(nonsmokingindex) > 0;
+				Boolean touristclassic = dbCursor.getInt(touristclassicindex) > 0;
+
+				WalkBeerPoi walkbeerpoi = new WalkBeerPoi();
+
+				walkbeerpoi.setId(id);
+				walkbeerpoi.setLat(lat);
+				walkbeerpoi.setLon(lon);
+				walkbeerpoi.setTitle(title);
+				walkbeerpoi.setDescription(description);
+				walkbeerpoi.setName(name);
+				walkbeerpoi.setAddress(address);
+				walkbeerpoi.setIcon(icon);
+				walkbeerpoi.setWifi(wifi);
+				walkbeerpoi.setTerrace(terrace);
+				walkbeerpoi.setSundays(sundays);
+				walkbeerpoi.setCalmplace(calmplace);
+				walkbeerpoi.setNonsmoking(nonsmoking);
+				walkbeerpoi.setTouristclassic(touristclassic);
+
+				dbwalkbeerpois.add(walkbeerpoi);
+
+				dbCursor.moveToNext();
+
+			}
+		} finally {
+			if (db != null) {
+				dbHelper.close();
+			}
+		}
+		return dbwalkbeerpois;
+	}
+	
 	
 	
 	public List<Hint> queryHintsFromDatabase(Context context) {
