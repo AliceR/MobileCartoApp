@@ -192,20 +192,53 @@ public class MapActivity extends FragmentActivity implements
 		// Add polyline "walks water"		
 		ArrayList<LatLng> coordListWater = new ArrayList<LatLng>();
 		List<WalkWater> dbwalkwaternodes = dbclass.queryWalksWaterFromDatabase(this); 
-
 		// Adding points to ArrayList		
 		for (int i = 0; i < dbwalkwaternodes.size(); i++) {
 			WalkWater location = dbwalkwaternodes.get(i);
 			coordListWater.add(new LatLng(location.getLat(), location.getLon()));
-		 }
-		
+			}		
 		// Create polyline options with existing LatLng ArrayList		
-		Polyline line = mMap.addPolyline(new PolylineOptions() 
+		Polyline waterWalk = mMap.addPolyline(new PolylineOptions() 
 			.addAll(coordListWater)
-			.width(16)
+			.width(13)
         	.color(Color.parseColor("#B37570b3"))
 			.geodesic(true));
-		line.setZIndex(1000);
+		waterWalk.setZIndex(1000);
+		
+		
+		// Add polyline "walks beer"		
+		ArrayList<LatLng> coordListBeer = new ArrayList<LatLng>();
+		List<WalkBeer> dbwalkbeernodes = dbclass.queryWalksBeerFromDatabase(this); 
+		// Adding points to ArrayList		
+		for (int i = 0; i < dbwalkbeernodes.size(); i++) {
+			WalkBeer location = dbwalkbeernodes.get(i);
+			coordListBeer.add(new LatLng(location.getLat(), location.getLon()));
+			}		
+		// Create polyline options with existing LatLng ArrayList		
+		Polyline beerWalk = mMap.addPolyline(new PolylineOptions() 
+			.addAll(coordListBeer)
+			.width(13)
+        	.color(Color.parseColor("#B3d95f02"))
+			.geodesic(true));
+		beerWalk.setZIndex(1000);
+		
+		
+		// Add polyline "walks sights"		
+		ArrayList<LatLng> coordListSights = new ArrayList<LatLng>();
+		List<WalkSights> dbwalksightsnodes = dbclass.queryWalksSightsFromDatabase(this); 
+		// Adding points to ArrayList		
+		for (int i = 0; i < dbwalksightsnodes.size(); i++) {
+			WalkSights location = dbwalksightsnodes.get(i);
+			coordListSights.add(new LatLng(location.getLat(), location.getLon()));
+			}		
+		// Create polyline options with existing LatLng ArrayList		
+		Polyline sightsWalk = mMap.addPolyline(new PolylineOptions() 
+			.addAll(coordListSights)
+			.width(13)
+        	.color(Color.parseColor("#B31b9e77"))
+			.geodesic(true));
+		sightsWalk.setZIndex(1000);
+		
 		
 		//Add marker to "walks water"
 		List<WalkWaterPoi> dbwalkwaterpois = dbclass.queryWalksWaterPoiFromDatabase(this);
@@ -219,6 +252,42 @@ public class MapActivity extends FragmentActivity implements
 					.position(waterpoi.getLatLng())
 					.title(title)
 					.snippet(waterpoi.getName())
+					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
+							.drawTextToBitmap(getApplicationContext(),
+									icon, number)))
+					);
+		}
+		
+		//Add marker to "walks sights"
+		List<WalkSightsPoi> dbwalksightspois = dbclass.queryWalksSightsPoiFromDatabase(this);
+
+		for (int i = 0; i < dbwalksightspois.size(); i++) {
+			WalkSightsPoi sightspoi = dbwalksightspois.get(i);
+			String number = String.valueOf(sightspoi.getId());
+			String title = sightspoi.getTitle();
+			int icon = getResources().getIdentifier(sightspoi.getIcon(), "drawable", this.getPackageName());
+				mMap.addMarker(new MarkerOptions()
+					.position(sightspoi.getLatLng())
+					.title(title)
+					.snippet(sightspoi.getName())
+					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
+							.drawTextToBitmap(getApplicationContext(),
+									icon, number)))
+					);
+		}
+		
+		//Add marker to "walks beer"
+		List<WalkBeerPoi> dbwalkbeerpois = dbclass.queryWalksBeerPoiFromDatabase(this);
+
+		for (int i = 0; i < dbwalkbeerpois.size(); i++) {
+			WalkBeerPoi beerpoi = dbwalkbeerpois.get(i);
+			String number = String.valueOf(beerpoi.getId());
+			String title = beerpoi.getTitle();
+			int icon = getResources().getIdentifier(beerpoi.getIcon(), "drawable", this.getPackageName());
+				mMap.addMarker(new MarkerOptions()
+					.position(beerpoi.getLatLng())
+					.title(title)
+					.snippet(beerpoi.getName())
 					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
 							.drawTextToBitmap(getApplicationContext(),
 									icon, number)))
@@ -300,14 +369,27 @@ public class MapActivity extends FragmentActivity implements
 		LatLng position = marker.getPosition();
 		if (marker.isFlat()) {
 			// do nothing
-		} if ( marker.getSnippet().equals("Along water by local feet")
-			|| marker.getSnippet().equals("Along water by local feet")
-			|| marker.getSnippet().equals("Along water by local feet"))	{
+		} if ( marker.getSnippet().equals("Along water by local feet"))	{
 			// start the description with extras in the intent
-			Intent walkinfowindowintent = new Intent(this,
-					WalksDescriptionActivity.class);
-			walkinfowindowintent.putExtra("walkPoi", String.valueOf(position));
-			startActivity(walkinfowindowintent);
+			Intent walkwaterinfowindowintent = new Intent(this,
+					WalksWaterDescriptionActivity.class);
+			walkwaterinfowindowintent.putExtra("walkWaterPoi", String.valueOf(position));
+			startActivity(walkwaterinfowindowintent);
+			
+		} if ( marker.getSnippet().equals("Sights walk"))	{
+				// start the description with extras in the intent
+			Intent walksightsinfowindowintent = new Intent(this,
+					WalksSightsDescriptionActivity.class);
+			walksightsinfowindowintent.putExtra("walkSightsPoi", String.valueOf(position));
+			startActivity(walksightsinfowindowintent);
+			
+		} if ( marker.getSnippet().equals("Beer walk"))	{
+			// start the description with extras in the intent
+			Intent walkbeerinfowindowintent = new Intent(this,
+					WalksBeerDescriptionActivity.class);
+			walkbeerinfowindowintent.putExtra("walkBeerPoi", String.valueOf(position));
+			startActivity(walkbeerinfowindowintent);
+				
 		} else {
 			// start the description with extras in the intent
 			Intent infowindowintent = new Intent(this,
