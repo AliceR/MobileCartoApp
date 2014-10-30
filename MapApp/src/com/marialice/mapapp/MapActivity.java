@@ -369,21 +369,21 @@ public class MapActivity extends FragmentActivity implements
 		LatLng position = marker.getPosition();
 		if (marker.isFlat()) {
 			// do nothing
-		} if ( marker.getSnippet().equals("Along water by local feet"))	{
+		} else if ( marker.getSnippet().equals("Along water by local feet"))	{
 			// start the description with extras in the intent
 			Intent walkwaterinfowindowintent = new Intent(this,
 					WalksWaterDescriptionActivity.class);
 			walkwaterinfowindowintent.putExtra("walkWaterPoi", String.valueOf(position));
 			startActivity(walkwaterinfowindowintent);
 			
-		} if ( marker.getSnippet().equals("Sights walk"))	{
+		} else if ( marker.getSnippet().equals("Sights walk"))	{
 				// start the description with extras in the intent
 			Intent walksightsinfowindowintent = new Intent(this,
 					WalksSightsDescriptionActivity.class);
 			walksightsinfowindowintent.putExtra("walkSightsPoi", String.valueOf(position));
 			startActivity(walksightsinfowindowintent);
 			
-		} if ( marker.getSnippet().equals("Beer walk"))	{
+		} else if ( marker.getSnippet().equals("Beer walk"))	{
 			// start the description with extras in the intent
 			Intent walkbeerinfowindowintent = new Intent(this,
 					WalksBeerDescriptionActivity.class);
