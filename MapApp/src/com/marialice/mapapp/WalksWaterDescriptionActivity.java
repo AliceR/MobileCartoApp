@@ -91,7 +91,7 @@ public class WalksWaterDescriptionActivity extends Activity {
 				// creates the icon in the TextToBitmap class using symbol and
 				// number
 				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(
-						getApplicationContext(), icon, String.valueOf(waterpoi.getId())));
+						getApplicationContext(), icon, String.valueOf(waterpoi.getId()),"Roboto-Light"));
 				// requests lat and lon for usage with the button 'goto_map'
 				lat = waterpoi.getLat();
 				lon = waterpoi.getLon();

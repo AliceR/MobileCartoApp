@@ -201,7 +201,7 @@ public class MapActivity extends FragmentActivity implements
 		Polyline waterWalk = mMap.addPolyline(new PolylineOptions() 
 			.addAll(coordListWater)
 			.width(13)
-        	.color(Color.parseColor("#B37570b3"))
+        	.color(Color.parseColor("#B3f04e23"))
 			.geodesic(true));
 		waterWalk.setZIndex(1000);
 		
@@ -218,7 +218,7 @@ public class MapActivity extends FragmentActivity implements
 		Polyline beerWalk = mMap.addPolyline(new PolylineOptions() 
 			.addAll(coordListBeer)
 			.width(13)
-        	.color(Color.parseColor("#B3d95f02"))
+        	.color(Color.parseColor("#B300868a"))
 			.geodesic(true));
 		beerWalk.setZIndex(1000);
 		
@@ -235,7 +235,7 @@ public class MapActivity extends FragmentActivity implements
 		Polyline sightsWalk = mMap.addPolyline(new PolylineOptions() 
 			.addAll(coordListSights)
 			.width(13)
-        	.color(Color.parseColor("#B31b9e77"))
+        	.color(Color.parseColor("#B3b00d27"))
 			.geodesic(true));
 		sightsWalk.setZIndex(1000);
 		
@@ -254,7 +254,7 @@ public class MapActivity extends FragmentActivity implements
 					.snippet(waterpoi.getName())
 					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
 							.drawTextToBitmap(getApplicationContext(),
-									icon, number)))
+									icon, number, "Roboto-Light")))
 					);
 		}
 		
@@ -272,7 +272,7 @@ public class MapActivity extends FragmentActivity implements
 					.snippet(sightspoi.getName())
 					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
 							.drawTextToBitmap(getApplicationContext(),
-									icon, number)))
+									icon, number, "Roboto-Light")))
 					);
 		}
 		
@@ -290,7 +290,7 @@ public class MapActivity extends FragmentActivity implements
 					.snippet(beerpoi.getName())
 					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
 							.drawTextToBitmap(getApplicationContext(),
-									icon, number)))
+									icon, number, "Roboto-Light")))
 					);
 		}
 		
@@ -338,7 +338,7 @@ public class MapActivity extends FragmentActivity implements
 					.snippet(poi.getCategory())
 					.icon(BitmapDescriptorFactory.fromBitmap(drawclass
 							.drawTextToBitmap(getApplicationContext(),
-									icon, poi.getNumber()))));
+									icon, poi.getNumber(), "DINNextRounded"))));
 		}
 	}
 

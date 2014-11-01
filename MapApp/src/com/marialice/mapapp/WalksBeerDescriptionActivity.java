@@ -91,7 +91,7 @@ public class WalksBeerDescriptionActivity extends Activity {
 				// creates the icon in the TextToBitmap class using symbol and
 				// number
 				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(
-						getApplicationContext(), icon, String.valueOf(beerpoi.getId())));
+						getApplicationContext(), icon, String.valueOf(beerpoi.getId()), "Roboto-Light"));
 				// requests lat and lon for usage with the button 'goto_map'
 				lat = beerpoi.getLat();
 				lon = beerpoi.getLon();

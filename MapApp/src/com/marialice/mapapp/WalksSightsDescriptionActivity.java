@@ -91,7 +91,7 @@ public class WalksSightsDescriptionActivity extends Activity {
 				// creates the icon in the TextToBitmap class using symbol and
 				// number
 				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(
-						getApplicationContext(), icon, String.valueOf(sightspoi.getId())));
+						getApplicationContext(), icon, String.valueOf(sightspoi.getId()), "Roboto-Light"));
 				// requests lat and lon for usage with the button 'goto_map'
 				lat = sightspoi.getLat();
 				lon = sightspoi.getLon();

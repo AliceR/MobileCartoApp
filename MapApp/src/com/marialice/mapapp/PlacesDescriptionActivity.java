@@ -88,7 +88,7 @@ public class PlacesDescriptionActivity extends Activity {
 				// number
 				imageViewIcon.setImageBitmap(drawclass.drawTextToBitmap(
 						getApplicationContext(), icon,
-						poi.getNumber()));
+						poi.getNumber(), "DINNextRounded"));
 				// requests lat and lon for usage with the button 'goto_map'
 				lat = poi.getLat();
 				lon = poi.getLon();
