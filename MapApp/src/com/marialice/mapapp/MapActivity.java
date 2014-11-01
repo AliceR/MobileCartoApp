@@ -369,7 +369,7 @@ public class MapActivity extends FragmentActivity implements
 		LatLng position = marker.getPosition();
 		if (marker.isFlat()) {
 			// do nothing
-		} else if ( marker.getSnippet().equals("Along water by local feet"))	{
+		} else if ( marker.getSnippet().equals("Water/river walk"))	{
 			// start the description with extras in the intent
 			Intent walkwaterinfowindowintent = new Intent(this,
 					WalksWaterDescriptionActivity.class);
