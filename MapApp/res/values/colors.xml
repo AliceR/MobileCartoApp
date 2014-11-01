@@ -29,9 +29,9 @@
     <color name="bar65">#A60D3891</color>
     <color name="hidden65">#A6149940</color>
     <!-- walks -->
-    <color name="water65">#A67570b3</color>
-    <color name="beer65">#A6d95f02</color>
-    <color name="sights65">#A61b9e77</color>
+    <color name="water65">#A6f04e23</color>
+    <color name="beer65">#A600868a</color>
+    <color name="sights65">#A6b00d27</color>
 
     <!-- colors of categories with 95 % transparecy -->
     <color name="sightseeing95">#F2E83D90</color>
@@ -42,9 +42,9 @@
     <color name="bar95">#F20D3891</color>
     <color name="hidden95">#F2149940</color>
     <!-- walks -->
-    <color name="water95">#F27570b3</color>
-    <color name="beer95">#F2d95f02</color>
-    <color name="sights95">#F21b9e77</color>
+    <color name="water95">#F2f04e23</color>
+    <color name="beer95">#F200868a</color>
+    <color name="sights95">#F2b00d27</color>
 
     <!-- colors of categories without transparecy -->
     <color name="sightseeing">#E83D90</color>
@@ -55,8 +55,8 @@
     <color name="bar">#0D3891</color>
     <color name="hidden">#149940</color> 
     <!-- walks -->   
-    <color name="water">#7570b3</color>
-    <color name="beer">#d95f02</color>
-    <color name="sights">#1b9e77</color>
+    <color name="water">#f04e23</color>
+    <color name="beer">#00868a</color>
+    <color name="sights">#b00d27</color>
 
 </resources>
