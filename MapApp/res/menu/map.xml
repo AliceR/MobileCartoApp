@@ -1,6 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/goto_about_walk"
+        android:icon="@drawable/action_walk"
+        android:onClick="onOptionsItemSelected"
+        android:showAsAction="always"
+        android:title="@string/hello_world"/>
+    <item
         android:id="@+id/goto_actlikelocal"
         android:icon="@drawable/action_bulb"
         android:onClick="onOptionsItemSelected"

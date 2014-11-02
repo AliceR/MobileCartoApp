@@ -123,6 +123,11 @@ public class MapActivity extends FragmentActivity implements
 					AboutActivity.class);
 			startActivity(aboutintent);
 			return true;}
+		else if (item.getItemId() == R.id.goto_about_walk) {
+			Intent aboutintent = new Intent(MapActivity.this,
+					AboutWalkActivity.class);
+			startActivity(aboutintent);
+			return true;}
 		else if (item.getItemId() == R.id.goto_places) {
 			Intent placesintent = new Intent(MapActivity.this,
 					PlacesActivity.class);

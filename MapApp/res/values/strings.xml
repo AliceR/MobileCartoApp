@@ -47,6 +47,7 @@
     <string name="places">Places</string>
     <string name="show_on_map">Show on Map</string>
     <string name="title_activity_about">About this Map (App)</string>
+    <string name="title_activity_walk_about">Follow locals (walks)</string>
     <string name="title_activity_database_helper">Database Helper</string>
     <string name="title_activity_places">Places</string>
     <string name="title_activity_places_description">Details</string>
