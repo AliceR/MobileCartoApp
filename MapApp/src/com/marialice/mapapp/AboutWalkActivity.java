@@ -1,8 +1,5 @@
 package com.marialice.mapapp;
 
-/* 
- * this activity shows info about us, about use-it, about the app
- */
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -20,42 +17,18 @@ public class AboutWalkActivity extends Activity {
 		setContentView(R.layout.activity_about_walk);
 		// Show the Up button in the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		//createLinks();
+		createLinks();
 	}
 
-	/*public void createLinks() {
+	public void createLinks() {
 		// create links in text views
-		((TextView) findViewById(R.id.link_useit))
+		((TextView) findViewById(R.id.about_sponsors_link))
 				.setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView) findViewById(R.id.link_useit)).setText(Html
-				.fromHtml(getResources().getString(R.string.link_useit)));
+		((TextView) findViewById(R.id.about_sponsors_link)).setText(Html
+				.fromHtml(getResources().getString(R.string.about_sponsors_link)));
+			}
 
-		((TextView) findViewById(R.id.contact_mail))
-				.setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView) findViewById(R.id.contact_mail)).setText(Html
-				.fromHtml(getResources().getString(R.string.contact_mail)));
-
-		((TextView) findViewById(R.id.link_cbuseit))
-				.setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView) findViewById(R.id.link_cbuseit)).setText(Html
-				.fromHtml(getResources().getString(R.string.link_cbuseit)));
-
-		((TextView) findViewById(R.id.link_fbuseit))
-				.setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView) findViewById(R.id.link_fbuseit)).setText(Html
-				.fromHtml(getResources().getString(R.string.link_fbuseit)));
-
-		((TextView) findViewById(R.id.link_fbcbck))
-				.setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView) findViewById(R.id.link_fbcbck)).setText(Html
-				.fromHtml(getResources().getString(R.string.link_fbcbck)));
-
-		((TextView) findViewById(R.id.link_detail))
-				.setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView) findViewById(R.id.link_detail)).setText(Html
-				.fromHtml(getResources().getString(R.string.link_detail)));
-	}*/
-
+		
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -64,5 +37,5 @@ public class AboutWalkActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+		}
 	}
-}

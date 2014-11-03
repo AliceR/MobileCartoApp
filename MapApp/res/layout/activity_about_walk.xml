@@ -3,6 +3,135 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".AboutActivity" >       
 
+		<TextView
+            android:id="@+id/about_sightsname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_sights_name"             
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+		
+        <TextView
+            android:id="@+id/about_sights"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_sightsname"
+            android:text="@string/about_sightswalk" />
+        
+        <TextView
+            android:id="@+id/about_sights_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_sights"
+            android:text="@string/about_sights_duration" />
+        
+        <TextView
+            android:id="@+id/about_beername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:paddingTop="10dp"
+            android:layout_below="@id/about_sights_duration"
+            android:text="@string/about_beer_name"             
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:id="@+id/about_beer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_beername"
+            android:text="@string/about_beerwalk" />
+        
+        <TextView
+            android:id="@+id/about_beer_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_beer"
+            android:text="@string/about_sights_duration" />
+        
+         <TextView
+            android:id="@+id/about_rivername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:paddingTop="10dp"
+            android:layout_below="@id/about_beer_duration"
+            android:text="@string/about_river_name"             
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:id="@+id/about_river"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_rivername"
+            android:text="@string/about_riverwalk" />
+        
+        <TextView
+            android:id="@+id/about_river_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_river"
+            android:text="@string/about_sights_duration" />
+        
+        
+         <TextView
+            android:id="@+id/about_sponsors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_river_duration"
+            android:paddingTop="10dp"
+            android:text="@string/about_sponsors" />
+         
+         <TextView
+            android:id="@+id/about_sponsors_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_sponsors"
+            android:paddingBottom="10dp"
+            android:linksClickable="true" />
+
+
+        <RelativeLayout
+            android:id="@+id/sponsors"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/about_sponsors"
+            android:paddingTop="20dp" >
+            
+            <ImageView
+                android:id="@+id/use_it_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/use_it_logo"
+                android:src="@drawable/juzit_logo" />
+
+            <ImageView
+                android:id="@+id/cb_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/use_it_logo"
+                android:contentDescription="@string/use_it_logo"
+                android:paddingLeft="10dp"
+                android:src="@drawable/cb_logo" />
+
+            <ImageView
+                android:id="@+id/czechrep_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/cb_logo"
+                android:contentDescription="@string/use_it_logo"
+                android:paddingLeft="10dp"
+                android:src="@drawable/cz_logo" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 </ScrollView>
