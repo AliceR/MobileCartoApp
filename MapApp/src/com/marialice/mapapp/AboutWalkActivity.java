@@ -6,6 +6,7 @@ import android.support.v4.app.NavUtils;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class AboutWalkActivity extends Activity {
@@ -18,6 +19,10 @@ public class AboutWalkActivity extends Activity {
 		// Show the Up button in the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		createLinks();
+		
+		((RelativeLayout) findViewById(R.id.sights)).setBackgroundResource(R.drawable.border_sights);
+		((RelativeLayout) findViewById(R.id.beer)).setBackgroundResource(R.drawable.border_beer);
+		((RelativeLayout) findViewById(R.id.river)).setBackgroundResource(R.drawable.border_river);
 	}
 
 	public void createLinks() {
@@ -25,7 +30,7 @@ public class AboutWalkActivity extends Activity {
 		((TextView) findViewById(R.id.about_sponsors_link))
 				.setMovementMethod(LinkMovementMethod.getInstance());
 		((TextView) findViewById(R.id.about_sponsors_link)).setText(Html
-				.fromHtml(getResources().getString(R.string.about_sponsors_link)));
+				.fromHtml(getResources().getString(R.string.link_about_sponsor)));
 			}
 
 		
