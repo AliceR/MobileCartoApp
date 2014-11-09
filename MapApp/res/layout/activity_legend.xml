@@ -1,7 +1,11 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <RelativeLayout
+    android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
     android:background="@color/grey_dark65"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="110dp"
         android:background="@drawable/legend_activity_background"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
@@ -137,6 +141,17 @@
                 android:gravity="center_vertical"
                 android:text="@string/legend_sport"
                 android:textColor="#000000" />
+            
+            <TextView
+                android:id="@+id/legend_wc"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_below="@+id/legend_sport"
+                android:drawableLeft="@drawable/wc"
+                android:drawablePadding="19dp"
+                android:gravity="center_vertical"
+                android:text="@string/legend_wc"
+                android:textColor="#000000" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -221,6 +236,39 @@
                 android:gravity="center_vertical"
                 android:text="@string/legend_hidden"
                 android:textColor="#000000" />
+            
+            <TextView
+                android:id="@+id/legend_sights"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_below="@+id/legend_hidden"
+                android:drawableLeft="@drawable/sights"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/legend_sights"
+                android:textColor="#000000" />
+            
+            <TextView
+                android:id="@+id/legend_beer"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_below="@+id/legend_sights"
+                android:drawableLeft="@drawable/beer"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/legend_beer"
+                android:textColor="#000000" />
+            
+            <TextView
+                android:id="@+id/legend_river"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_below="@+id/legend_beer"
+                android:drawableLeft="@drawable/water"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/legend_river"
+                android:textColor="#000000" />
         </RelativeLayout>
 
 <!--         <Button
@@ -237,3 +285,5 @@
     </RelativeLayout>
 
 </RelativeLayout>
+
+</ScrollView>

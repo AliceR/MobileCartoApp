@@ -104,5 +104,16 @@
         android:drawablePadding="19dp"
         android:gravity="center_vertical"
         android:text="@string/legend_sport" />
+    
+    <TextView
+        android:id="@+id/legend_wc"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_below="@+id/legend_sport"
+        android:drawableLeft="@drawable/wc"
+        android:drawablePadding="19dp"
+        android:gravity="center_vertical"
+        android:text="@string/legend_wc"
+        android:textColor="#000000" />
 
 </RelativeLayout>
