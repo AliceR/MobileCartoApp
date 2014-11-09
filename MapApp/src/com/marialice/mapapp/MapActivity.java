@@ -206,7 +206,7 @@ public class MapActivity extends FragmentActivity implements
 		Polyline waterWalk = mMap.addPolyline(new PolylineOptions() 
 			.addAll(coordListWater)
 			.width(13)
-        	.color(Color.parseColor("#B3f04e23"))
+        	.color(Color.parseColor("#A6f04e23"))
 			.geodesic(true));
 		waterWalk.setZIndex(1000);
 		
@@ -223,7 +223,7 @@ public class MapActivity extends FragmentActivity implements
 		Polyline beerWalk = mMap.addPolyline(new PolylineOptions() 
 			.addAll(coordListBeer)
 			.width(13)
-        	.color(Color.parseColor("#B300868a"))
+        	.color(Color.parseColor("#A600868a"))
 			.geodesic(true));
 		beerWalk.setZIndex(1000);
 		
@@ -240,7 +240,7 @@ public class MapActivity extends FragmentActivity implements
 		Polyline sightsWalk = mMap.addPolyline(new PolylineOptions() 
 			.addAll(coordListSights)
 			.width(13)
-        	.color(Color.parseColor("#B3b00d27"))
+        	.color(Color.parseColor("#A6b00d27"))
 			.geodesic(true));
 		sightsWalk.setZIndex(1000);
 		
@@ -374,7 +374,7 @@ public class MapActivity extends FragmentActivity implements
 		LatLng position = marker.getPosition();
 		if (marker.isFlat()) {
 			// do nothing
-		} else if ( marker.getSnippet().equals("Water/river walk"))	{
+		} else if ( marker.getSnippet().equals("River walk"))	{
 			// start the description with extras in the intent
 			Intent walkwaterinfowindowintent = new Intent(this,
 					WalksWaterDescriptionActivity.class);
