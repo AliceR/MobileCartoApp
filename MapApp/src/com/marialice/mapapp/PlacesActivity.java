@@ -87,7 +87,7 @@ public class PlacesActivity extends Activity {
 		listDataHeader.add("Museum, venue");
 		listDataHeader.add("Shopping");
 		listDataHeader.add("Eat, drink");
-		listDataHeader.add("Caf, tea room");
+		listDataHeader.add("Café, tea room");
 		listDataHeader.add("Bar, club");
 		listDataHeader.add("Hidden, chill out");
 
