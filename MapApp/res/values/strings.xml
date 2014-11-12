@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation">
 
-    <string name="about_authors">November 2014, © Jůzit, o.s.</string>
+    <string name="about_authors">November 2014, © Jůzit, z.s.</string>
     <string name="about_beerwalk">We are Czechs, so we know how to brew a beer. And what about South-Czechs? Taste local mini-breweries and answer yourself. We know the answer. And if you are sweet-tooth, you are simply hungry, in need of a good coffee or bio beer, this walk is the right one for you.</string>
     <string name="about_beer_duration"><b>Duration:</b> 30min + beer time</string>
     <string name="about_beer_name">Beer walk</string>
@@ -16,6 +16,7 @@
     <string name="about_sponsors">This project is co-financed by the statutory city of Ceske Budejovice</string>
     <string name="about_text">USE-IT is non-commercial, no nonsense, up-to-date and free! We - young locals made the selection, prepared the maps and map applications for you, run infocentres and websites. And we can not wait to hear your feedback! If we made a mistake, please tell us. You can make next year\'s edition better!</string>
     <string name="about_us">About</string>
+    <string name="about_walks"><b>About walks "Follow locals"</b></string>
     <string name="actlikealocal">Act like a local</string>
     <string name="app_name">USE-IT Budějovice</string>
     <string name="contact_mail">&lt;a href="budejovice.krumlov@use-it.cz">budejovice.krumlov@use-it.cz&lt;/a></string>
