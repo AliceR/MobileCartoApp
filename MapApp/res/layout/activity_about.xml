@@ -148,6 +148,95 @@
                 android:paddingLeft="10dp"
                 android:src="@drawable/cz_logo" />
         </RelativeLayout>
-    </RelativeLayout>
+     <RelativeLayout
+         	android:id="@+id/about_walks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/partners1"
+            android:paddingTop="20dp" >             
+         <TextView
+            android:id="@+id/about_walks_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/about_walks" />
+         
+         <TextView
+            android:id="@+id/about_sponsors"
+            android:layout_width="wrap_content"            
+            android:layout_below="@id/about_walks_text"
+            android:layout_height="wrap_content"
+            android:text="@string/about_sponsors" />
+         
+         <TextView
+            android:id="@+id/about_sponsors_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_sponsors"
+            android:paddingBottom="10dp"
+            android:linksClickable="true" />
+         
+         <TextView
+            android:id="@+id/about_authors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_sponsors_link"
+            android:text="@string/about_authors" />
 
+
+        <RelativeLayout
+            android:id="@+id/sponsors1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/about_authors"
+            android:layout_marginTop="10dp" >
+            
+            <ImageView
+                android:id="@+id/use_it_logo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/use_it_logo"
+                android:src="@drawable/juzit_logo" />
+
+            <ImageView
+                android:id="@+id/inbudejovice_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/use_it_logo2"
+                android:contentDescription="@string/use_it_logo"
+                android:paddingLeft="10dp"
+                android:src="@drawable/inbud" />
+            </RelativeLayout>
+            
+            <RelativeLayout
+	            android:id="@+id/sponsors2"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:layout_below="@id/sponsors1"
+	            android:layout_marginTop="10dp" >
+            
+            <ImageView
+                android:id="@+id/hostelsingers_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/use_it_logo"
+                android:paddingLeft="10dp"
+                android:src="@drawable/hostelsingers" />
+
+            <ImageView
+                android:id="@+id/kavaranalana_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/hostelsingers_logo"
+                android:contentDescription="@string/use_it_logo"
+                android:paddingLeft="10dp"
+                android:src="@drawable/kavarnalana" />
+        </RelativeLayout>
+      </RelativeLayout>
+
+    </RelativeLayout>
 </ScrollView>
