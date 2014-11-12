@@ -54,6 +54,11 @@ public class AboutActivity extends Activity {
 				.setMovementMethod(LinkMovementMethod.getInstance());
 		((TextView) findViewById(R.id.link_detail)).setText(Html
 				.fromHtml(getResources().getString(R.string.link_detail)));
+		
+		((TextView) findViewById(R.id.about_sponsors_link))
+				.setMovementMethod(LinkMovementMethod.getInstance());
+		((TextView) findViewById(R.id.about_sponsors_link)).setText(Html
+				.fromHtml(getResources().getString(R.string.link_about_sponsor)));
 	}
 
 	@Override
