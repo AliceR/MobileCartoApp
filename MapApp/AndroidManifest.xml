@@ -27,9 +27,13 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAfyXB5-zFNb2EyjABWj2NOTeH3deSSLJM" />
+            android:value="AIzaSyDh2zo29BNca45mtGGwP-AwwLCXr2MuNLo" />
         
-        <!--  <meta-data
+		<!-- Mary<meta-data 
+           android:name="com.google.android.maps.v2.API_KEY"
+           android:value="AIzaSyAfyXB5-zFNb2EyjABWj2NOTeH3deSSLJM" /> -->
+        
+        <!--  Alice<meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBZZm18IyzrBc2x079TJMWGcG-cicjhnZ4" /> -->
 
